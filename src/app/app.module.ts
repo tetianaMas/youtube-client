@@ -8,8 +8,8 @@ import SearchPanelComponent from './components/header/search-panel/search-panel.
 import CardListComponent from './components/card-list/card-list.component';
 import CardItemComponent from './components/card-list/card-item/card-item.component';
 import FiltersComponent from './components/filters/filters.component';
-import InfoPanelComponent from './components/card-list/card-item/info-panel/info-panel.component';
 import ProfilePanelComponent from './components/header/profile-panel/profile-panel.component';
+import StatisticsPanelComponent from './components/card-list/card-item/statistics-panel/statistics-panel.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +19,8 @@ import ProfilePanelComponent from './components/header/profile-panel/profile-pan
     CardListComponent,
     CardItemComponent,
     FiltersComponent,
-    InfoPanelComponent,
     ProfilePanelComponent,
+    StatisticsPanelComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
