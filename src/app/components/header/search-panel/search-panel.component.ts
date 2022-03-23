@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-panel',
   templateUrl: './search-panel.component.html',
   styleUrls: ['./search-panel.component.scss'],
 })
-export default class SearchPanelComponent {}
+export class SearchPanelComponent implements OnInit {
+  ngOnInit() {}
+}
