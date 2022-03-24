@@ -1,0 +1,38 @@
+@import "../../../../variables";
+
+.card {
+  padding: 20px 20px 10px 20px;
+  min-height: 327px;
+  width: 263px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: $background-color;
+  filter: $card-shadow;
+  &__img__wrapper {
+    height: 123px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+  }
+  &__img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  &__title {
+    font-family: $roboto-font;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: right;
+    color: $title-color;
+  }
+  &__btn {
+    width: 120px;
+    min-height: 32px;
+    background-color: $card-btn-color;
+    filter: $button-shadow;
+  }
+}

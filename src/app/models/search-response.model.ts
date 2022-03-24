@@ -4,7 +4,7 @@ interface IThumbnailItem {
   height: number;
 }
 
-interface IThumbnail {
+export interface IThumbnail {
   default: IThumbnailItem;
   medium: IThumbnailItem;
   high: IThumbnailItem;

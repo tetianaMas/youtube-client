@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
+import { cards } from '../mocks/cards-mock';
 
 @Component({
   selector: 'app-card-list',
@@ -7,5 +8,5 @@ import { Card } from 'src/app/models/card.model';
   styleUrls: ['./card-list.component.scss'],
 })
 export class CardListComponent {
-  public cards: Card[] = [];
+  public cards: Card[] = cards;
 }

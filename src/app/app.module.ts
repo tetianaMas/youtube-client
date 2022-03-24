@@ -14,6 +14,10 @@ import { ProfilePanelComponent } from './components/header/profile-panel/profile
 import { StatisticsPanelComponent } from './components/card-list/card-item/statistics-panel/statistics-panel.component';
 import { SettingsButtonComponent } from './components/header/settings-button/settings-button.component';
 import { LogoComponent } from './components/header/logo/logo.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,7 @@ import { LogoComponent } from './components/header/logo/logo.component';
     SettingsButtonComponent,
     LogoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatListModule, MatCardModule, MatButtonModule],
   providers: [],
   bootstrap: [AppComponent],
 })

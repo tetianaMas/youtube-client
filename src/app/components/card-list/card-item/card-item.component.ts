@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
 
 @Component({
@@ -6,6 +6,12 @@ import { Card } from 'src/app/models/card.model';
   templateUrl: './card-item.component.html',
   styleUrls: ['./card-item.component.scss'],
 })
-export class CardItemComponent {
-  @Input() card!: Card;
+export class CardItemComponent implements OnInit {
+  @Input() public card!: Card;
+
+  public imgUrl = '';
+
+  ngOnInit() {
+    this.imgUrl = this.card.imgUrl.standard.url;
+  }
 }

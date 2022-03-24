@@ -1,1 +1,7 @@
-<p>card-item works!</p>
+<mat-card class="card">
+  <div class="card__img__wrapper">
+    <img class="card__img" [src]="imgUrl" alt="card image">
+  </div>
+  <h3 class="card__title">{{ card.title }}</h3>
+  <button mat-raised-button class="card__btn" color="primary">more...</button>
+</mat-card>
