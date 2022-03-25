@@ -1,1 +1,6 @@
-<p>profile-panel works!</p>
+<div class="profile">
+  <p class="profile__name">{{ name ? name : nameDefault }}</p>
+  <app-button [width]="23" [height]="24">
+    <mat-icon svgIcon="profile-btn" aria-hidden="false" aria-label="Settings toggle button"></mat-icon>
+  </app-button>
+</div>

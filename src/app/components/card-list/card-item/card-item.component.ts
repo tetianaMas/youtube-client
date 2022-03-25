@@ -11,6 +11,8 @@ export class CardItemComponent implements OnInit {
 
   public imgUrl = '';
 
+  public readonly btnText: string = 'more...';
+
   ngOnInit() {
     this.imgUrl = this.card.imgUrl.standard.url;
   }

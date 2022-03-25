@@ -1,10 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-profile-panel',
   templateUrl: './profile-panel.component.html',
   styleUrls: ['./profile-panel.component.scss'],
 })
-export class ProfilePanelComponent implements OnInit {
-  ngOnInit() {}
+export class ProfilePanelComponent {
+  @Input() public name: string = '';
+
+  public nameDefault: string = 'Your name';
+
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'profile-btn',
+      sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/profile-button-icon.svg'),
+    );
+  }
 }

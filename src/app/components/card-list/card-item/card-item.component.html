@@ -4,6 +4,6 @@
   </div>
   <app-statistics-panel [statistic]="card.statistics"></app-statistics-panel>
   <h3 class="card__title">{{ card.title }}</h3>
-  <button mat-raised-button class="card__btn" color="primary">more...</button>
+  <app-button [text]="btnText"></app-button>
   <span class="card__type"></span>
 </mat-card>

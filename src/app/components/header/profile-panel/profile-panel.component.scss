@@ -1,0 +1,22 @@
+@import "../../../../variables";
+
+.mat-icon {
+  width: 18.4px;
+}
+
+.profile {
+  position: absolute;
+  top: 13px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  &__name {
+    margin: 0;
+    margin-right: 8px;
+    font-family: $roboto-font;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: $title-color;
+  }
+}

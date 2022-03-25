@@ -24,6 +24,11 @@ import { ViewsCountComponent } from './components/card-list/card-item/statistics
 import { LikesCountComponent } from './components/card-list/card-item/statistics-panel/likes-count/likes-count.component';
 import { DislikesCountComponent } from './components/card-list/card-item/statistics-panel/dislikes-count/dislikes-count.component';
 import { CommentsCountComponent } from './components/card-list/card-item/statistics-panel/comments-count/comments-count.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ButtonComponent } from './components/card-list/card-item/button/button.component';
+import { MatRippleModule } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,6 +48,7 @@ import { CommentsCountComponent } from './components/card-list/card-item/statist
     LikesCountComponent,
     DislikesCountComponent,
     CommentsCountComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +59,10 @@ import { CommentsCountComponent } from './components/card-list/card-item/statist
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
