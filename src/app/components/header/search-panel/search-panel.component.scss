@@ -27,3 +27,19 @@
     }
   }
 }
+
+@media screen and (max-width: 950px) {
+  .search-form {
+    width: 50vw;
+
+    &__input {
+      width: 50vw;
+    }
+  }
+}
+
+@media screen and (max-width: 422px) {
+  .search-form {
+    width: 71.5vw;
+  }
+}

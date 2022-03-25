@@ -25,3 +25,9 @@
     color: $btn-color;
   }
 }
+
+@media screen and (max-width: 334px) {
+  .filters__sort {
+    margin-bottom: 10px;
+  }
+}

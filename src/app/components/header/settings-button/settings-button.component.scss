@@ -2,3 +2,9 @@
   width: 15px;
   height: 15px;
 }
+
+@media screen and (max-width: 950px) {
+  :host {
+    margin-left: 5vw;
+  }
+}
