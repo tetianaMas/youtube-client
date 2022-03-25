@@ -18,6 +18,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
+import { ViewsCountComponent } from './components/card-list/card-item/statistics-panel/views-count/views-count.component';
+import { LikesCountComponent } from './components/card-list/card-item/statistics-panel/likes-count/likes-count.component';
+import { DislikesCountComponent } from './components/card-list/card-item/statistics-panel/dislikes-count/dislikes-count.component';
+import { CommentsCountComponent } from './components/card-list/card-item/statistics-panel/comments-count/comments-count.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +39,21 @@ import { MatButtonModule } from '@angular/material/button';
     StatisticsPanelComponent,
     SettingsButtonComponent,
     LogoComponent,
+    ViewsCountComponent,
+    LikesCountComponent,
+    DislikesCountComponent,
+    CommentsCountComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatListModule, MatCardModule, MatButtonModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
