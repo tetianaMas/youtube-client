@@ -22,9 +22,6 @@
     &:focus {
       outline: $title-color;
     }
-    &:disabled {
-      background-color: $btn-color-disabled;
-    }
     &::placeholder {
       color: $input-text-color-placeholder;
     }

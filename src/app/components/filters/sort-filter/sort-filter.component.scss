@@ -1,0 +1,27 @@
+@import "../../../../variables";
+
+.filters__sort {
+  max-width: 100%;
+  width: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 21px;
+  &__text {
+    margin: 0;
+    font-family: $roboto-font;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: $input-text-color-placeholder;
+  }
+  &__btn {
+    padding: 0;
+    min-width: auto;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-decoration-line: underline;
+    color: $btn-color;
+  }
+}

@@ -17,4 +17,11 @@
   &:hover {
     background-color: $btn-color-hovered;
   }
+  &:disabled {
+    background-color: $btn-color-disabled;
+  }
+}
+
+:host-context(.card:hover) .btn {
+  background-color: $btn-color-hovered;
 }

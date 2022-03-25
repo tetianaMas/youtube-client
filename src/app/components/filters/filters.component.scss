@@ -1,0 +1,14 @@
+@import "../../../variables";
+
+.filters {
+  min-height: 50px;
+  background-color: $header-bg-color;
+}
+
+.container {
+  max-width: 570px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
