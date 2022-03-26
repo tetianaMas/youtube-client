@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
           transform: 'translateY(0)',
         }),
         animate(
-          '300ms ease-in',
+          '250ms ease-in',
           style({
             opacity: 0.0,
             transform: 'translateY(-15%)',
@@ -26,7 +26,7 @@ import { Component } from '@angular/core';
           transform: 'translateY(-15%)',
         }),
         animate(
-          '300ms ease-in',
+          '250ms ease-in',
           style({
             opacity: 1.0,
             transform: 'translateY(0)',
@@ -35,28 +35,9 @@ import { Component } from '@angular/core';
       ]),
     ]),
     trigger('smoothMoving', [
-      transition('up => down', [
-        style({
-          transform: 'translateY(0)',
-        }),
-        animate(
-          '300ms ease-in',
-          style({
-            transform: 'translateY(-2%)',
-          }),
-        ),
-      ]),
-      transition('down => up', [
-        style({
-          transform: 'translateY(-2%)',
-        }),
-        animate(
-          '300ms ease-in',
-          style({
-            transform: 'translateY(0)',
-          }),
-        ),
-      ]),
+      state('up', style({ transform: 'translateY(3%)' })),
+      state('down', style({ transform: 'translateY(0)' })),
+      transition('up <=> down', [animate('400ms cubic-bezier(0.25, 0.1, 0.25, 1)')]),
     ]),
   ],
 })
