@@ -1,3 +1,7 @@
 <app-header (toggleFilter)="toggleFilters()"></app-header>
-<app-filters *ngIf="filterIsActive" [isOpen]="filterIsActive"></app-filters>
-<app-card-list></app-card-list>
+<div *ngIf="isShowingFilters" [@filtersShowing]="filtersState">
+  <app-filters></app-filters>
+</div>
+<div [@smoothMoving]="isShowingFilters ? 'up': 'down'">
+  <app-card-list></app-card-list>
+</div>
