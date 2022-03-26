@@ -1,6 +1,8 @@
 @import "../../../variables";
 
 .filters {
+  position: absolute;
+  width: 100%;
   min-height: 50px;
   background-color: $header-bg-color;
 }

@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
           transform: 'translateY(0)',
         }),
         animate(
-          '250ms ease-in',
+          '300ms ease-in',
           style({
             opacity: 0.0,
             transform: 'translateY(-15%)',
@@ -26,7 +26,7 @@ import { Component } from '@angular/core';
           transform: 'translateY(-15%)',
         }),
         animate(
-          '250ms ease-in',
+          '300ms ease-in',
           style({
             opacity: 1.0,
             transform: 'translateY(0)',
@@ -35,9 +35,10 @@ import { Component } from '@angular/core';
       ]),
     ]),
     trigger('smoothMoving', [
-      state('up', style({ transform: 'translateY(3%)' })),
-      state('down', style({ transform: 'translateY(0)' })),
-      transition('up <=> down', [animate('400ms cubic-bezier(0.25, 0.1, 0.25, 1)')]),
+      state('up', style({ paddingTop: 50 })),
+      state('down', style({ paddingTop: 0 })),
+      transition('down => up', [animate('400ms cubic-bezier(0.25, 0.1, 0.25, 1)')]),
+      transition('up => down', [animate('300ms 100ms ease-in')]),
     ]),
   ],
 })
