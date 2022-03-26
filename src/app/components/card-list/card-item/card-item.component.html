@@ -5,5 +5,5 @@
   <app-statistics-panel [statistic]="card.statistics"></app-statistics-panel>
   <h3 class="card__title">{{ card.title }}</h3>
   <app-button [text]="btnText"></app-button>
-  <span class="card__type"></span>
+  <span class="card__type" [appDateCheck]="card.publishedAt"></span>
 </mat-card>

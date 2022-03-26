@@ -29,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ButtonComponent } from './components/card-list/card-item/button/button.component';
 import { MatRippleModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
+import { DateCheckDirective } from './directives/date-check.directive';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FormsModule } from '@angular/forms';
     DislikesCountComponent,
     CommentsCountComponent,
     ButtonComponent,
+    DateCheckDirective,
   ],
   imports: [
     BrowserModule,

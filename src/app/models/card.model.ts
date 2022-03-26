@@ -5,6 +5,7 @@ export interface ICard {
   title: string;
   description: string;
   statistics: IStatistics;
+  publishedAt: string;
 }
 
 export class Card implements ICard {
@@ -16,9 +17,12 @@ export class Card implements ICard {
 
   statistics: IStatistics;
 
+  publishedAt: string;
+
   constructor(responseItem: ISearchResponseItem) {
     this.imgUrl = responseItem.snippet.thumbnails;
     this.title = responseItem.snippet.title;
+    this.publishedAt = responseItem.snippet.publishedAt;
     this.description = responseItem.snippet.description;
     this.statistics = responseItem.statistics;
   }
