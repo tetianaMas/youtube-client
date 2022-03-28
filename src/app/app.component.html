@@ -1,7 +1,6 @@
-<app-header (toggleFilter)="toggleFilters()"></app-header>
-<div *ngIf="isShowingFilters" [@filtersShowing]="filtersState">
-  <app-filters></app-filters>
-</div>
-<div [@smoothMoving]="isShowingFilters ? 'up': 'down'">
-  <app-card-list></app-card-list>
-</div>
+<app-header (filtersToggle)="toggleFilters()"></app-header>
+<app-filters [isShowingFilters]="isShowingFilters" (sortBy)="setSortData($event)"></app-filters>
+<app-card-list [cards]="cards" [isFilterActive]="isShowingFilters" [sortType]="sortData.type"
+  [isSortDescending]="sortData.isDescendingOrder"></app-card-list>
+
+<router-outlet></router-outlet>

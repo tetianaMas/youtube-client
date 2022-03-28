@@ -30,6 +30,7 @@ import { ButtonComponent } from './components/card-list/card-item/button/button.
 import { MatRippleModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { DateCheckDirective } from './directives/date-check.directive';
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { DateCheckDirective } from './directives/date-check.directive';
     CommentsCountComponent,
     ButtonComponent,
     DateCheckDirective,
+    SortByPipe,
   ],
   imports: [
     BrowserModule,

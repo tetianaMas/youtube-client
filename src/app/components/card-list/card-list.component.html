@@ -1,5 +1,6 @@
-<div class="container">
+<div class="container" [@smoothMoving]="isFilterActive ? 'up': 'down'">
   <mat-list class="card-list">
-    <app-card-item *ngFor="let cardElem of cards" [card]="cardElem"></app-card-item>
+    <app-card-item *ngFor="let cardElem of cards | sortBy: sortType: isSortDescending" [card]="cardElem">
+    </app-card-item>
   </mat-list>
 </div>
