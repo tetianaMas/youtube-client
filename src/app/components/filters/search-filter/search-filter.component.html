@@ -1,6 +1,7 @@
 <div class="filters__search">
   <form>
     <label class="filters__search__text" for="filter-search-input">by word or sentence</label>
-    <input matInput class="filters__search__input" name="filter-input" id="filter-search-input">
+    <input matInput class="filters__search__input" name="filter-input" id="filter-search-input" [(ngModel)]="inputValue"
+      (input)="filter()">
   </form>
 </div>

@@ -31,6 +31,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { DateCheckDirective } from './directives/date-check.directive';
 import { SortByPipe } from './pipes/sort-by.pipe';
+import { FilterByPipe } from './pipes/filter-by.pipe';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     ButtonComponent,
     DateCheckDirective,
     SortByPipe,
+    FilterByPipe,
   ],
   imports: [
     BrowserModule,

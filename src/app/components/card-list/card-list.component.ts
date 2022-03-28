@@ -23,4 +23,6 @@ export class CardListComponent {
   @Input() public isSortDescending: boolean = false;
 
   @Input() public isFilterActive: boolean = false;
+
+  @Input() public filterPhrase: string = '';
 }

@@ -42,7 +42,13 @@ export class FiltersComponent {
 
   @Output() public sortBy: EventEmitter<TSortType> = new EventEmitter();
 
+  @Output() public filterBy: EventEmitter<string> = new EventEmitter();
+
   sort(event: TSortType) {
     this.sortBy.emit(event);
+  }
+
+  filter(event: string) {
+    this.filterBy.emit(event);
   }
 }
