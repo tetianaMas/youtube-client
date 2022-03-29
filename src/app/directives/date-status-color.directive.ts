@@ -1,10 +1,10 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appDateCheck]',
+  selector: '[appDateStatusColor]',
 })
-export class DateCheckDirective implements OnInit {
-  @Input() appDateCheck = '';
+export class DateStatusColorDirective implements OnInit {
+  @Input() appDateStatusColor = '';
 
   private readonly hugeAmountColor: string = '#EB5757';
 
@@ -24,13 +24,15 @@ export class DateCheckDirective implements OnInit {
 
   private readonly YEAR_HALF: number = 180;
 
+  private readonly BORDER_DEF_STYLE = `inset 5px ${this.smallAmountColor}`;
+
   constructor(private elRef: ElementRef) {}
 
   ngOnInit() {
-    const currentDate = new Date(this.appDateCheck.substring(0, 10));
+    const currentDate = new Date(this.appDateStatusColor.substring(0, 10));
     const diff = Math.floor((this.date.getTime() - currentDate.getTime()) / this.MILLISECONDS_IN_DAY);
     let currElem = this.elRef.nativeElement;
-    currElem.style.borderBottom = 'inset 5px';
+    currElem.style.borderBottom = this.BORDER_DEF_STYLE;
 
     if (diff < this.WEEK) {
       currElem.style.borderBottomColor = this.smallAmountColor;

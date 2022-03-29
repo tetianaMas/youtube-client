@@ -28,7 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ButtonComponent } from './components/card-list/card-item/button/button.component';
 import { MatRippleModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
-import { DateCheckDirective } from './directives/date-check.directive';
+import { DateStatusColorDirective } from './directives/date-status-color.directive';
 import { SortByPipe } from './pipes/sort-by.pipe';
 import { FilterByPipe } from './pipes/filter-by.pipe';
 import { VideoThumbnailComponent } from './components/card-list/card-item/video-thumbnail/video-thumbnail.component';
@@ -52,7 +52,7 @@ import { VideoTitleComponent } from './components/card-list/card-item/video-titl
     DislikesCountComponent,
     CommentsCountComponent,
     ButtonComponent,
-    DateCheckDirective,
+    DateStatusColorDirective,
     SortByPipe,
     FilterByPipe,
     VideoThumbnailComponent,
