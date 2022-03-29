@@ -1,6 +1,6 @@
 <app-header (filtersToggle)="toggleFilters()" (searchEmit)="search()"></app-header>
-<app-filters [isShowingFilters]="isShowingFilters" (sortBy)="setSortData($event)" (filterBy)="setfilterPhrase($event)"
-  [filterPhrase]="filterPhrase">
+<app-filters *ngIf="isShowingFilters" [isActive]="isShowingFilters" (sortBy)="setSortData($event)"
+  (filterBy)="setfilterPhrase($event)" [filterPhrase]="filterPhrase">
 </app-filters>
 <app-card-list [cards]="cards" [isFilterActive]="isShowingFilters" [sortParams]="sortData"
   [filterPhrase]="filterPhrase">

@@ -34,17 +34,13 @@ import { TSortType } from 'src/app/models/sortType.model';
   ],
 })
 export class FiltersComponent {
-  @Output() public sortType: string = '';
+  @Input() public isActive: boolean = false;
 
-  @Output() public isDescendingOrder: boolean = true;
-
-  @Input() public isShowingFilters: boolean = false;
+  @Input() public filterPhrase: string = '';
 
   @Output() public sortBy: EventEmitter<TSortType> = new EventEmitter();
 
   @Output() public filterBy: EventEmitter<string> = new EventEmitter();
-
-  @Input() public filterPhrase: string = '';
 
   sort(event: TSortType) {
     this.sortBy.emit(event);

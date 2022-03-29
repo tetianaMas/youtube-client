@@ -1,4 +1,4 @@
-<div class="filters" [@filtersShowing]="isShowingFilters ? 'active' : 'none'" *ngIf="isShowingFilters">
+<div class="filters" [@filtersShowing]="isActive ? 'active' : 'none'">
   <div class="container">
     <app-sort-filter (sortBy)="sort($event)"></app-sort-filter>
     <app-search-filter (filterBy)="filter($event)" [inputValue]="filterPhrase"></app-search-filter>
