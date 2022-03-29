@@ -44,11 +44,14 @@ export class FiltersComponent {
 
   @Output() public filterBy: EventEmitter<string> = new EventEmitter();
 
+  @Input() public filterPhrase: string = '';
+
   sort(event: TSortType) {
     this.sortBy.emit(event);
   }
 
   filter(event: string) {
+    this.filterPhrase = event;
     this.filterBy.emit(event);
   }
 }

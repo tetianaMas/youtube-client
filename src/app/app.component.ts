@@ -18,7 +18,7 @@ export class AppComponent {
     isDescendingOrder: false,
   };
 
-  public filterData: string = '';
+  public filterPhrase: string = '';
 
   toggleFilters(): void {
     this.isShowingFilters = !this.isShowingFilters;
@@ -28,8 +28,8 @@ export class AppComponent {
     this.sortData = sortData;
   }
 
-  setFilterData(filterData: string): void {
-    this.filterData = filterData;
+  setfilterPhrase(filterPhrase: string): void {
+    this.filterPhrase = filterPhrase;
   }
 
   search(): void {
