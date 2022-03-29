@@ -15,7 +15,7 @@ export class AppComponent {
 
   public sortData: TSortType = {
     type: SortType.default,
-    isDescendingOrder: false,
+    isAscendingOrder: true,
   };
 
   public filterPhrase: string = '';

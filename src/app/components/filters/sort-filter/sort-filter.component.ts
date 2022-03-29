@@ -9,19 +9,23 @@ import { SortType, TSortType } from 'src/app/models/sortType.model';
 export class SortFilterComponent {
   @Output() public sortBy: EventEmitter<TSortType> = new EventEmitter();
 
-  public sortType: SortType = SortType.date;
+  private sortType: SortType = SortType.date;
 
-  public isDescendingOrder: boolean = false;
+  private isDateAscendingOrder: boolean = true;
+
+  private isViewsAscendingOrder: boolean = true;
 
   sortByDate(): void {
-    this.isDescendingOrder = !this.isDescendingOrder;
     this.sortType = SortType.date;
-    this.sortBy.emit({ type: this.sortType, isDescendingOrder: this.isDescendingOrder });
+    this.sortBy.emit({ type: this.sortType, isAscendingOrder: this.isDateAscendingOrder });
+    this.isViewsAscendingOrder = true;
+    this.isDateAscendingOrder = !this.isDateAscendingOrder;
   }
 
   sortByViewsCount(): void {
-    this.isDescendingOrder = !this.isDescendingOrder;
     this.sortType = SortType.viewCount;
-    this.sortBy.emit({ type: this.sortType, isDescendingOrder: this.isDescendingOrder });
+    this.sortBy.emit({ type: this.sortType, isAscendingOrder: this.isViewsAscendingOrder });
+    this.isDateAscendingOrder = true;
+    this.isViewsAscendingOrder = !this.isViewsAscendingOrder;
   }
 }

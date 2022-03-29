@@ -10,27 +10,27 @@ export class SortByPipe implements PipeTransform {
     if (!cards.length || cards.length === 1 || sortParams.type === SortType.default) return cards;
 
     if (sortParams.type === SortType.date) {
-      return this.sortByDate(cards, sortParams.isDescendingOrder);
+      return this.sortByDate(cards, sortParams.isAscendingOrder);
     }
 
-    return this.sortByViewCount(cards, sortParams.isDescendingOrder);
+    return this.sortByViewCount(cards, sortParams.isAscendingOrder);
   }
 
-  sortByDate(cards: ICard[], isDescending: boolean): ICard[] {
+  sortByDate(cards: ICard[], isAscending: boolean): ICard[] {
     return cards.sort((first: ICard, second: ICard) => {
       const date1 = new Date(first.publishedAt.slice(0, 10));
       const date2 = new Date(second.publishedAt.slice(0, 10));
 
-      return isDescending ? date2.getTime() - date1.getTime() : date1.getTime() - date2.getTime();
+      return isAscending ? date2.getTime() - date1.getTime() : date1.getTime() - date2.getTime();
     });
   }
 
-  sortByViewCount(cards: ICard[], isDescending: boolean): ICard[] {
+  sortByViewCount(cards: ICard[], isAscending: boolean): ICard[] {
     return cards.sort((first: ICard, second: ICard) => {
       const count1 = Number(first.statistics.viewCount);
       const count2 = Number(second.statistics.viewCount);
 
-      return isDescending ? count2 - count1 : count1 - count2;
+      return isAscending ? count1 - count2 : count2 - count1;
     });
   }
 }

@@ -1,6 +1,6 @@
 export type TSortType = {
   type: SortType;
-  isDescendingOrder: boolean;
+  isAscendingOrder: boolean;
 };
 
 export enum SortType {
