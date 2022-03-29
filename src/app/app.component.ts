@@ -9,7 +9,7 @@ import { TSortType } from './models/sortType.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public cards: ICard[] = cards;
+  public cards: ICard[] = [];
 
   public isShowingFilters: boolean = false;
 
@@ -30,5 +30,11 @@ export class AppComponent {
 
   setFilterData(filterData: string): void {
     this.filterData = filterData;
+  }
+
+  search(): void {
+    if (!this.cards.length) {
+      this.cards = cards;
+    }
   }
 }

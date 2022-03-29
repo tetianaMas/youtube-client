@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header__content-wrapper">
       <app-logo></app-logo>
-      <app-search-panel></app-search-panel>
+      <app-search-panel (searchBy)="onSearch()"></app-search-panel>
       <app-settings-button (toggleFilter)="toggleFilters()"></app-settings-button>
     </div>
     <app-profile-panel></app-profile-panel>
