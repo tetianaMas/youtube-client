@@ -1,4 +1,10 @@
 export type TSortType = {
-  type: string;
+  type: SortType;
   isDescendingOrder: boolean;
 };
+
+export enum SortType {
+  date = 'date',
+  viewCount = 'viewCount',
+  default = 'default',
+}

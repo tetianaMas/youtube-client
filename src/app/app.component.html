@@ -1,7 +1,7 @@
 <app-header (filtersToggle)="toggleFilters()" (searchEmit)="search()"></app-header>
 <app-filters [isShowingFilters]="isShowingFilters" (sortBy)="setSortData($event)" (filterBy)="setFilterData($event)">
 </app-filters>
-<app-card-list [cards]="cards" [isFilterActive]="isShowingFilters" [sortType]="sortData.type"
-  [isSortDescending]="sortData.isDescendingOrder" [filterPhrase]="filterData"></app-card-list>
+<app-card-list [cards]="cards" [isFilterActive]="isShowingFilters" [sortParams]="sortData" [filterPhrase]="filterData">
+</app-card-list>
 
 <router-outlet></router-outlet>

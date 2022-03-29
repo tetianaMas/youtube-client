@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ICard } from './models/card.model';
 import { cards } from './mocks/cards-mock';
-import { TSortType } from './models/sortType.model';
+import { SortType, TSortType } from './models/sortType.model';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent {
   public isShowingFilters: boolean = false;
 
   public sortData: TSortType = {
-    type: '',
+    type: SortType.default,
     isDescendingOrder: false,
   };
 

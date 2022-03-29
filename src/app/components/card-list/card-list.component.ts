@@ -1,6 +1,7 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, Input } from '@angular/core';
 import { ICard } from 'src/app/models/card.model';
+import { TSortType } from 'src/app/models/sortType.model';
 
 @Component({
   selector: 'app-card-list',
@@ -18,9 +19,7 @@ import { ICard } from 'src/app/models/card.model';
 export class CardListComponent {
   @Input() public cards: ICard[] = [];
 
-  @Input() public sortType: string = '';
-
-  @Input() public isSortDescending: boolean = false;
+  @Input() public sortParams!: TSortType;
 
   @Input() public isFilterActive: boolean = false;
 

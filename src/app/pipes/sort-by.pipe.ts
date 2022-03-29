@@ -1,23 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ICard } from '../models/card.model';
-
-type TSortingType = {
-  [index: string]: (cards: ICard[], isDescending: boolean) => ICard[];
-};
+import { SortType, TSortType } from '../models/sortType.model';
 
 @Pipe({
   name: 'sortBy',
 })
 export class SortByPipe implements PipeTransform {
-  transform(cards: ICard[], type: string, isDescending: boolean): ICard[] {
-    const typeSorting: TSortingType = {
-      date: this.sortByDate,
-      viewCount: this.sortByViewCount,
-    };
+  transform(cards: ICard[], sortParams: TSortType): ICard[] {
+    if (!cards.length || cards.length === 1 || sortParams.type === SortType.default) return cards;
 
-    if (!cards.length || cards.length === 1 || !type || !typeSorting[type]) return cards;
+    if (sortParams.type === SortType.date) {
+      return this.sortByDate(cards, sortParams.isDescendingOrder);
+    }
 
-    return typeSorting[type](cards, isDescending);
+    return this.sortByViewCount(cards, sortParams.isDescendingOrder);
   }
 
   sortByDate(cards: ICard[], isDescending: boolean): ICard[] {
