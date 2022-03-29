@@ -30,15 +30,16 @@ export class DateCheckDirective implements OnInit {
     const currentDate = new Date(this.appDateCheck.substring(0, 10));
     const diff = Math.floor((this.date.getTime() - currentDate.getTime()) / this.MILLISECONDS_IN_DAY);
     let currElem = this.elRef.nativeElement;
+    currElem.style.borderBottom = 'inset 5px';
 
     if (diff < this.WEEK) {
-      currElem.style.backgroundColor = this.smallAmountColor;
+      currElem.style.borderBottomColor = this.smallAmountColor;
     } else if (diff < this.MONTH && diff >= this.WEEK) {
-      currElem.style.backgroundColor = this.mediumAmountColor;
+      currElem.style.borderBottomColor = this.mediumAmountColor;
     } else if (diff >= this.MONTH && diff < this.YEAR_HALF) {
-      currElem.style.backgroundColor = this.bigAmountColor;
+      currElem.style.borderBottomColor = this.bigAmountColor;
     } else if (diff >= this.YEAR_HALF) {
-      currElem.style.backgroundColor = this.hugeAmountColor;
+      currElem.style.borderBottomColor = this.hugeAmountColor;
     }
   }
 }

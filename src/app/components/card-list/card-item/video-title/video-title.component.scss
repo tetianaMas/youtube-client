@@ -1,0 +1,29 @@
+@import "../../../../../variables";
+
+:host {
+  margin-bottom: auto;
+}
+
+.card__title {
+  max-height: 70px;
+  font-family: $roboto-font;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: right;
+  color: $title-color;
+  overflow: hidden auto;
+  &::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $input-bg-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $btn-color-disabled;
+    border-radius: 10px;
+  }
+}

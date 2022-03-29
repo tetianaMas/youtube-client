@@ -1,0 +1,20 @@
+@import "../../../../../variables";
+
+:host {
+  width: 100%;
+}
+
+.card {
+  &__img__wrapper {
+    height: 123px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+  }
+  &__img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 21px;
+    object-fit: cover;
+  }
+}

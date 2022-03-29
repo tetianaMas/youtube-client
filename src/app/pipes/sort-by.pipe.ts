@@ -10,12 +10,12 @@ type TSortingType = {
 })
 export class SortByPipe implements PipeTransform {
   transform(cards: ICard[], type: string, isDescending: boolean): ICard[] {
-    if (!cards.length || cards.length === 1 || !type) return cards;
-
     const typeSorting: TSortingType = {
       date: this.sortByDate,
       viewCount: this.sortByViewCount,
     };
+
+    if (!cards.length || cards.length === 1 || !type || !typeSorting[type]) return cards;
 
     return typeSorting[type](cards, isDescending);
   }
