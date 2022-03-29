@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ICard } from './models/card.model';
-import { cards } from './components/mocks/cards-mock';
+import { cards } from './mocks/cards-mock';
 import { TSortType } from './models/sortType.model';
 
 @Component({
