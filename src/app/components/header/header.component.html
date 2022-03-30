@@ -1,10 +1,10 @@
 <header class="header">
   <div class="container">
     <div class="header__content-wrapper">
-      <ytube-logo></ytube-logo>
-      <ytube-search-panel (searchBy)="onSearch($event)"></ytube-search-panel>
-      <ytube-settings-button (toggleFilter)="onToggleFilters()"></ytube-settings-button>
+      <ytube-client-logo></ytube-client-logo>
+      <ytube-client-search-panel (searchBy)="onSearch($event)"></ytube-client-search-panel>
+      <ytube-client-settings-button (toggleFilter)="onToggleFilters()"></ytube-client-settings-button>
     </div>
-    <ytube-profile-panel></ytube-profile-panel>
+    <ytube-client-profile-panel></ytube-client-profile-panel>
   </div>
 </header>

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'ytube-button',
+  selector: 'ytube-client-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
 })

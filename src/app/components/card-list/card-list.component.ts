@@ -5,7 +5,7 @@ import { TSortType } from 'src/app/shared/models/sortType.model';
 import { SORT_DATA_DEFAULT } from 'src/app/shared/constants';
 
 @Component({
-  selector: 'ytube-card-list',
+  selector: 'ytube-client-card-list',
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.scss'],
   animations: [

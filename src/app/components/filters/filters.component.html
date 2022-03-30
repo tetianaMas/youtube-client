@@ -1,6 +1,6 @@
 <div class="filters" [@filtersShowing]="isActive ? 'active' : 'void'" *ngIf="isActive">
   <div class="container">
-    <ytube-sort-filter (sortBy)="onSort($event)"></ytube-sort-filter>
-    <ytube-search-filter (filterBy)="onFilter($event)" [inputValue]="filterPhrase"></ytube-search-filter>
+    <ytube-client-sort-filter (sortBy)="onSort($event)"></ytube-client-sort-filter>
+    <ytube-client-search-filter (filterBy)="onFilter($event)" [inputValue]="filterPhrase"></ytube-client-search-filter>
   </div>
 </div>

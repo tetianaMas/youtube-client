@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
-  selector: 'ytube-views-count',
+  selector: 'ytube-client-views-count',
   templateUrl: './views-count.component.html',
 })
 export class ViewsCountComponent {

@@ -2,10 +2,10 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { BORDER_DEF_STYLE, Colors, DatePeriod, MILLISECONDS_IN_DAY } from '../constants';
 
 @Directive({
-  selector: '[ytubeDateStatusColor]',
+  selector: '[ytubeClientDateStatusColor]',
 })
 export class DateStatusColorDirective implements OnInit {
-  @Input() ytubeDateStatusColor: string = '';
+  @Input() ytubeClientDateStatusColor: string = '';
 
   private readonly date: Date = new Date();
 
@@ -14,9 +14,9 @@ export class DateStatusColorDirective implements OnInit {
   }
 
   public ngOnInit(): void {
-    if (!this.ytubeDateStatusColor) return;
+    if (!this.ytubeClientDateStatusColor) return;
 
-    const currentDate = new Date(this.ytubeDateStatusColor.substring(0, 10));
+    const currentDate = new Date(this.ytubeClientDateStatusColor.substring(0, 10));
     const diff = Math.floor((this.date.getTime() - currentDate.getTime()) / MILLISECONDS_IN_DAY);
 
     if (diff < DatePeriod.WEEK) {

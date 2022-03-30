@@ -15,7 +15,7 @@
             },
             "root": "",
             "sourceRoot": "src",
-            "prefix": "ytube",
+            "prefix": "ytube-client",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",

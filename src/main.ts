@@ -1,7 +1,7 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import YtubeModule from './app/ytube.module';
+import YtubeClientModule from './app/ytube-client.module';
 import environment from './environments/environment';
 
 if (environment.production) {
@@ -9,7 +9,7 @@ if (environment.production) {
 }
 
 platformBrowserDynamic()
-  .bootstrapModule(YtubeModule)
+  .bootstrapModule(YtubeClientModule)
   .catch((err) => {
     console.error(err);
   });

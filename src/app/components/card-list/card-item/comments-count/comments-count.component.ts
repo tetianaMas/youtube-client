@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
-  selector: 'ytube-comments-count',
+  selector: 'ytube-client-comments-count',
   templateUrl: './comments-count.component.html',
 })
 export class CommentsCountComponent {

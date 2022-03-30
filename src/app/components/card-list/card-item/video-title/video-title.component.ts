@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'ytube-video-title',
+  selector: 'ytube-client-video-title',
   templateUrl: './video-title.component.html',
   styleUrls: ['./video-title.component.scss'],
 })

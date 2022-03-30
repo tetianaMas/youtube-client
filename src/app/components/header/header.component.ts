@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'ytube-header',
+  selector: 'ytube-client-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })

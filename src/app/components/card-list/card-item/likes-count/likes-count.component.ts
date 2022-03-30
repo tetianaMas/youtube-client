@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
-  selector: 'ytube-likes-count',
+  selector: 'ytube-client-likes-count',
   templateUrl: './likes-count.component.html',
 })
 export class LikesCountComponent {
