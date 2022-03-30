@@ -3,7 +3,7 @@ import { Card } from 'src/app/shared/models/card.model';
 import { BUTTON_TEXT } from './constants';
 
 @Component({
-  selector: 'ytube-clientcard-item',
+  selector: 'ytube-client-card-item',
   templateUrl: './card-item.component.html',
   styleUrls: ['./card-item.component.scss'],
 })
