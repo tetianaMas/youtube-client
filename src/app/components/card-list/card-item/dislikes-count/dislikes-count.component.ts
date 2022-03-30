@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-dislikes-count',
+  selector: 'ytube-dislikes-count',
   templateUrl: './dislikes-count.component.html',
 })
 export class DislikesCountComponent {

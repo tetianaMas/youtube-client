@@ -1,11 +1,11 @@
-<mat-card class="card" [appDateStatusColor]="card && card.publishedAt ? card.publishedAt : ''">
-  <app-video-thumbnail [imgUrl]="card?.imgUrl?.standard?.url"></app-video-thumbnail>
+<mat-card class="card" [ytubeDateStatusColor]="card && card.publishedAt ? card.publishedAt : ''">
+  <ytube-video-thumbnail [imgUrl]="card?.imgUrl?.standard?.url"></ytube-video-thumbnail>
   <div class="stat-panel">
-    <app-views-count [count]="card?.statistics?.viewCount"></app-views-count>
-    <app-likes-count [count]="card?.statistics?.likeCount"></app-likes-count>
-    <app-dislikes-count [count]="card?.statistics?.dislikeCount"></app-dislikes-count>
-    <app-comments-count [count]="card?.statistics?.commentCount"></app-comments-count>
+    <ytube-views-count [count]="card?.statistics?.viewCount"></ytube-views-count>
+    <ytube-likes-count [count]="card?.statistics?.likeCount"></ytube-likes-count>
+    <ytube-dislikes-count [count]="card?.statistics?.dislikeCount"></ytube-dislikes-count>
+    <ytube-comments-count [count]="card?.statistics?.commentCount"></ytube-comments-count>
   </div>
-  <app-video-title [title]="card && card.title ? card.title : ''"></app-video-title>
-  <app-button [text]="btnText"></app-button>
+  <ytube-video-title [title]="card && card.title ? card.title : ''"></ytube-video-title>
+  <ytube-button [text]="btnText"></ytube-button>
 </mat-card>

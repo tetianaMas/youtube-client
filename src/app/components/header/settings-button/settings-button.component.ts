@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-settings-button',
+  selector: 'ytube-settings-button',
   templateUrl: './settings-button.component.html',
   styleUrls: ['./settings-button.component.scss'],
 })

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-video-thumbnail',
+  selector: 'ytube-video-thumbnail',
   templateUrl: './video-thumbnail.component.html',
   styleUrls: ['./video-thumbnail.component.scss'],
 })

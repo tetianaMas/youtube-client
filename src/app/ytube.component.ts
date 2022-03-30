@@ -6,11 +6,11 @@ import { response } from './shared/mocks/response-mock';
 import { SORT_DATA_DEFAULT } from './shared/constants';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'ytube-root',
+  templateUrl: './ytube.component.html',
+  styleUrls: ['./ytube.component.scss'],
 })
-export class AppComponent {
+export class YtubeComponent {
   public cards: Card[] = [];
 
   public isShowingFilters: boolean = false;

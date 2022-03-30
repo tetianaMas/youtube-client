@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './shared/material.module';
-import AppRoutingModule from './app-routing.module';
+import AppRoutingModule from './ytube-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
+import { YtubeComponent } from './ytube.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchPanelComponent } from './components/header/search-panel/search-panel.component';
 import { CardListComponent } from './components/card-list/card-list.component';
@@ -30,7 +30,7 @@ import { VideoTitleComponent } from './components/card-list/card-item/video-titl
 
 @NgModule({
   declarations: [
-    AppComponent,
+    YtubeComponent,
     HeaderComponent,
     SearchPanelComponent,
     CardListComponent,
@@ -54,6 +54,6 @@ import { VideoTitleComponent } from './components/card-list/card-item/video-titl
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, FormsModule, MaterialModule],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [YtubeComponent],
 })
-export default class AppModule {}
+export default class YtubeModule {}

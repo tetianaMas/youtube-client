@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-profile-panel',
+  selector: 'ytube-profile-panel',
   templateUrl: './profile-panel.component.html',
   styleUrls: ['./profile-panel.component.scss'],
 })

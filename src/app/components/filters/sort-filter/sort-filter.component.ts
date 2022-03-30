@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { SortType, TSortType } from 'src/app/shared/models/sortType.model';
 
 @Component({
-  selector: 'app-sort-filter',
+  selector: 'ytube-sort-filter',
   templateUrl: './sort-filter.component.html',
   styleUrls: ['./sort-filter.component.scss'],
 })

@@ -1,6 +1,6 @@
 <div class="container" [@smoothMoving]="isFilterActive ? 'up': 'down'">
   <mat-list class="card-list">
-    <app-card-item *ngFor="let cardItem of cards | filterBy: filterPhrase | sortBy: sortParams" [card]="cardItem">
-    </app-card-item>
+    <ytube-card-item *ngFor="let cardItem of cards | filterBy: filterPhrase | sortBy: sortParams" [card]="cardItem">
+    </ytube-card-item>
   </mat-list>
 </div>

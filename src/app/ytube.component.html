@@ -1,0 +1,9 @@
+<ytube-header (filtersToggle)="onToggleFilters()" (searchEmit)="onSearch($event)"></ytube-header>
+<ytube-filters [isActive]="isShowingFilters" (sortBy)="onSetSortData($event)" (filterBy)="onSetFilterPhrase($event)"
+  [filterPhrase]="filterPhrase">
+</ytube-filters>
+<ytube-card-list [cards]="cards" [isFilterActive]="isShowingFilters" [sortParams]="sortData"
+  [filterPhrase]="filterPhrase">
+</ytube-card-list>
+
+<router-outlet></router-outlet>

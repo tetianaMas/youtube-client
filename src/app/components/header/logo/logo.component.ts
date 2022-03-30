@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-logo',
+  selector: 'ytube-logo',
   templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.scss'],
 })

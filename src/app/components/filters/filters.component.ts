@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TSortType } from 'src/app/shared/models/sortType.model';
 
 @Component({
-  selector: 'app-filters',
+  selector: 'ytube-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss'],
   animations: [
