@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { BORDER_DEF_STYLE, Colors, DatePeriod, MILLISECONDS_IN_DAY } from '../constants';
 
 @Directive({
@@ -9,26 +9,26 @@ export class DateStatusColorDirective implements OnInit {
 
   private readonly date: Date = new Date();
 
-  constructor(private elRef: ElementRef) {}
-
-  public ngOnInit(): void {
-    this.elRef.nativeElement.style.borderBottom = BORDER_DEF_STYLE;
-    if (this.appDateStatusColor) {
-      this.setCurrentColor();
-    }
+  constructor(private elRef: ElementRef, private renderer: Renderer2) {
+    this.setBorderStyle();
   }
 
-  private setCurrentColor(): void {
-    const currElem = this.elRef.nativeElement;
+  public ngOnInit(): void {
+    if (!this.appDateStatusColor) return;
+
     const currentDate = new Date(this.appDateStatusColor.substring(0, 10));
     const diff = Math.floor((this.date.getTime() - currentDate.getTime()) / MILLISECONDS_IN_DAY);
 
     if (diff < DatePeriod.WEEK) {
-      currElem.style.borderBottomColor = Colors.smallAmount;
+      this.setBorderStyle(Colors.smallAmount);
     } else if (diff < DatePeriod.MONTH && diff >= DatePeriod.WEEK) {
-      currElem.style.borderBottomColor = Colors.mediumAmount;
+      this.setBorderStyle(Colors.mediumAmount);
     } else if (diff >= DatePeriod.YEAR_HALF) {
-      currElem.style.borderBottomColor = Colors.hugeAmount;
+      this.setBorderStyle(Colors.hugeAmount);
     }
+  }
+
+  private setBorderStyle(color: string = Colors.bigAmount): void {
+    this.renderer.setStyle(this.elRef.nativeElement, 'border-bottom', BORDER_DEF_STYLE + color);
   }
 }
