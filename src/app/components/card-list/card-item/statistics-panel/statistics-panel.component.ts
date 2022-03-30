@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-statistics-panel',
+  selector: 'ytube-client-statistics-panel',
   templateUrl: './statistics-panel.component.html',
   styleUrls: ['./statistics-panel.component.scss'],
 })
-export class StatisticsPanelComponent implements OnInit {
-  ngOnInit() {}
-}
+export class StatisticsPanelComponent {}

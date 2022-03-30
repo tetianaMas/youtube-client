@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-search-filter',
+  selector: 'ytube-client-search-filter',
   templateUrl: './search-filter.component.html',
   styleUrls: ['./search-filter.component.scss'],
 })
-export class SearchFilterComponent implements OnInit {
-  ngOnInit(): void {}
-}
+export class SearchFilterComponent {}

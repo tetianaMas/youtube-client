@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import AppRoutingModule from './app-routing.module';
-import { AppComponent } from './app.component';
+import AppRoutingModule from './ytube-client-routing.module';
+import { YtubeClientComponent } from './ytube-client.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchPanelComponent } from './components/header/search-panel/search-panel.component';
 import { CardListComponent } from './components/card-list/card-list.component';
@@ -17,7 +17,7 @@ import { LogoComponent } from './components/header/logo/logo.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    YtubeClientComponent,
     HeaderComponent,
     SearchPanelComponent,
     CardListComponent,
@@ -32,6 +32,6 @@ import { LogoComponent } from './components/header/logo/logo.component';
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [YtubeClientComponent],
 })
 export default class AppModule {}

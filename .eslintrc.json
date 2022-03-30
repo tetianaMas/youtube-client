@@ -20,7 +20,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "app",
+            "prefix": "ytubeClient",
             "style": "camelCase"
           }
         ],
@@ -28,7 +28,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "app",
+            "prefix": "ytube-client",
             "style": "kebab-case"
           }
         ],

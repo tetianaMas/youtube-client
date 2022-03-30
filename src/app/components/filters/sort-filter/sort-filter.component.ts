@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-sort-filter',
+  selector: 'ytube-client-sort-filter',
   templateUrl: './sort-filter.component.html',
   styleUrls: ['./sort-filter.component.scss'],
 })
-export class SortFilterComponent implements OnInit {
-  ngOnInit(): void {}
-}
+export class SortFilterComponent {}
