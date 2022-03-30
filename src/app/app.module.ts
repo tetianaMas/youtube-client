@@ -22,9 +22,9 @@ import { ViewsCountComponent } from './components/card-list/card-item/views-coun
 import { LikesCountComponent } from './components/card-list/card-item/likes-count/likes-count.component';
 import { DislikesCountComponent } from './components/card-list/card-item/dislikes-count/dislikes-count.component';
 import { CommentsCountComponent } from './components/card-list/card-item/comments-count/comments-count.component';
-import { DateStatusColorDirective } from './components/card-list/card-item/date-status-color.directive';
-import { SortByPipe } from './components/card-list/card-item/sort-by.pipe';
-import { FilterByPipe } from './components/card-list/card-item/filter-by.pipe';
+import { DateStatusColorDirective } from './components/card-list/card-item/directives/date-status-color.directive';
+import { SortByPipe } from './components/card-list/card-item/pipes/sort-by.pipe';
+import { FilterByPipe } from './components/card-list/card-item/pipes/filter-by.pipe';
 import { VideoThumbnailComponent } from './components/card-list/card-item/video-thumbnail/video-thumbnail.component';
 import { VideoTitleComponent } from './components/card-list/card-item/video-title/video-title.component';
 

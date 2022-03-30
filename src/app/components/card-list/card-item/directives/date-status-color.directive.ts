@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { BORDER_DEF_STYLE, Colors, DatePeriod, MILLISECONDS_IN_DAY } from './constants';
+import { BORDER_DEF_STYLE, Colors, DatePeriod, MILLISECONDS_IN_DAY } from '../constants';
 
 @Directive({
   selector: '[appDateStatusColor]',
