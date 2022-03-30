@@ -1,11 +1,11 @@
-<mat-card class="card" [appDateStatusColor]="card.publishedAt">
-  <app-video-thumbnail [imgUrl]="imgUrl"></app-video-thumbnail>
+<mat-card class="card" [appDateStatusColor]="card && card.publishedAt ? card.publishedAt : ''">
+  <app-video-thumbnail [imgUrl]="card?.imgUrl?.standard?.url"></app-video-thumbnail>
   <div class="stat-panel">
-    <app-views-count [count]="card.statistics.viewCount"></app-views-count>
-    <app-likes-count [count]="card.statistics.likeCount"></app-likes-count>
-    <app-dislikes-count [count]="card.statistics.dislikeCount"></app-dislikes-count>
-    <app-comments-count [count]="card.statistics.commentCount"></app-comments-count>
+    <app-views-count [count]="card?.statistics?.viewCount"></app-views-count>
+    <app-likes-count [count]="card?.statistics?.likeCount"></app-likes-count>
+    <app-dislikes-count [count]="card?.statistics?.dislikeCount"></app-dislikes-count>
+    <app-comments-count [count]="card?.statistics?.commentCount"></app-comments-count>
   </div>
-  <app-video-title [title]="card.title"></app-video-title>
+  <app-video-title [title]="card && card.title ? card.title : ''"></app-video-title>
   <app-button [text]="btnText"></app-button>
 </mat-card>

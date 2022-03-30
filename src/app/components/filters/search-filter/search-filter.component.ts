@@ -10,7 +10,7 @@ export class SearchFilterComponent {
 
   @Output() public filterBy: EventEmitter<string> = new EventEmitter();
 
-  filter(): void {
+  public onFilter(): void {
     this.filterBy.emit(this.inputValue);
   }
 }

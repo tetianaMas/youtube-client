@@ -7,7 +7,7 @@ import { MatIconRegistry } from '@angular/material/icon';
   templateUrl: './dislikes-count.component.html',
 })
 export class DislikesCountComponent {
-  @Input() public count!: string;
+  @Input() public count: string | void = '';
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(

@@ -8,11 +8,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class SearchPanelComponent {
   public readonly btnText: string = 'search';
 
-  public seachInput = '';
+  public seachInput: string = '';
 
-  @Output() public searchBy: EventEmitter<void> = new EventEmitter();
+  @Output() public searchBy: EventEmitter<string> = new EventEmitter();
 
-  search(): void {
-    this.searchBy.emit();
+  public onSearch(): void {
+    this.searchBy.emit(this.seachInput.trim());
   }
 }

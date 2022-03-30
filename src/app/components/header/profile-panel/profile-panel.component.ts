@@ -10,7 +10,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 export class ProfilePanelComponent {
   @Input() public name: string = '';
 
-  public nameDefault: string = 'Your name';
+  public readonly nameDefault: string = 'Your name';
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(

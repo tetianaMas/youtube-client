@@ -2,8 +2,8 @@
   <div class="container">
     <div class="header__content-wrapper">
       <app-logo></app-logo>
-      <app-search-panel (searchBy)="onSearch()"></app-search-panel>
-      <app-settings-button (toggleFilter)="toggleFilters()"></app-settings-button>
+      <app-search-panel (searchBy)="onSearch($event)"></app-search-panel>
+      <app-settings-button (toggleFilter)="onToggleFilters()"></app-settings-button>
     </div>
     <app-profile-panel></app-profile-panel>
   </div>

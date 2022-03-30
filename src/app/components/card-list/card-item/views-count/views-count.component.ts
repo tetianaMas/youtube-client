@@ -7,7 +7,7 @@ import { MatIconRegistry } from '@angular/material/icon';
   templateUrl: './views-count.component.html',
 })
 export class ViewsCountComponent {
-  @Input() public count!: string;
+  @Input() public count: string | void = '';
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('views-count', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/views-count.svg'));

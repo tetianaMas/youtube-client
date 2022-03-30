@@ -1,6 +1,6 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TSortType } from 'src/app/models/sortType.model';
+import { TSortType } from 'src/app/shared/models/sortType.model';
 
 @Component({
   selector: 'app-filters',
@@ -42,12 +42,12 @@ export class FiltersComponent {
 
   @Output() public filterBy: EventEmitter<string> = new EventEmitter();
 
-  sort(event: TSortType) {
+  public onSort(event: TSortType) {
     this.sortBy.emit(event);
   }
 
-  filter(event: string) {
-    this.filterPhrase = event;
-    this.filterBy.emit(event);
+  public onFilter(value: string) {
+    this.filterPhrase = value;
+    this.filterBy.emit(value);
   }
 }

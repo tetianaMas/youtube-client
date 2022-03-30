@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MaterialModule } from './shared/material.module';
 import AppRoutingModule from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchPanelComponent } from './components/header/search-panel/search-panel.component';
@@ -13,24 +17,14 @@ import { SearchFilterComponent } from './components/filters/search-filter/search
 import { ProfilePanelComponent } from './components/header/profile-panel/profile-panel.component';
 import { SettingsButtonComponent } from './components/header/settings-button/settings-button.component';
 import { LogoComponent } from './components/header/logo/logo.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
+import { ButtonComponent } from './components/card-list/card-item/button/button.component';
 import { ViewsCountComponent } from './components/card-list/card-item/views-count/views-count.component';
 import { LikesCountComponent } from './components/card-list/card-item/likes-count/likes-count.component';
 import { DislikesCountComponent } from './components/card-list/card-item/dislikes-count/dislikes-count.component';
 import { CommentsCountComponent } from './components/card-list/card-item/comments-count/comments-count.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { ButtonComponent } from './components/card-list/card-item/button/button.component';
-import { MatRippleModule } from '@angular/material/core';
-import { FormsModule } from '@angular/forms';
-import { DateStatusColorDirective } from './directives/date-status-color.directive';
-import { SortByPipe } from './pipes/sort-by.pipe';
-import { FilterByPipe } from './pipes/filter-by.pipe';
+import { DateStatusColorDirective } from './components/card-list/card-item/date-status-color.directive';
+import { SortByPipe } from './components/card-list/card-item/sort-by.pipe';
+import { FilterByPipe } from './components/card-list/card-item/filter-by.pipe';
 import { VideoThumbnailComponent } from './components/card-list/card-item/video-thumbnail/video-thumbnail.component';
 import { VideoTitleComponent } from './components/card-list/card-item/video-title/video-title.component';
 
@@ -58,20 +52,7 @@ import { VideoTitleComponent } from './components/card-list/card-item/video-titl
     VideoThumbnailComponent,
     VideoTitleComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatListModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatRippleModule,
-    FormsModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, FormsModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -8,13 +8,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
   @Output() public filtersToggle: EventEmitter<void> = new EventEmitter();
 
-  @Output() public searchEmit: EventEmitter<void> = new EventEmitter();
+  @Output() public searchEmit: EventEmitter<string> = new EventEmitter();
 
-  toggleFilters(): void {
+  public onToggleFilters(): void {
     this.filtersToggle.emit();
   }
 
-  onSearch(): void {
-    this.searchEmit.emit();
+  public onSearch(value: string): void {
+    this.searchEmit.emit(value);
   }
 }

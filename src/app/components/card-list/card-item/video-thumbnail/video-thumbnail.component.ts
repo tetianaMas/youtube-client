@@ -6,5 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./video-thumbnail.component.scss'],
 })
 export class VideoThumbnailComponent {
-  @Input() public imgUrl: string = '';
+  @Input() public imgUrl: string | void = '';
+
+  public readonly imgUrlDefault: string = './assets/card-bg-default.jpg';
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { SortType, TSortType } from 'src/app/models/sortType.model';
+import { SortType, TSortType } from 'src/app/shared/models/sortType.model';
 
 @Component({
   selector: 'app-sort-filter',
@@ -15,14 +15,14 @@ export class SortFilterComponent {
 
   private isViewsAscendingOrder: boolean = true;
 
-  sortByDate(): void {
+  public onSortByDate(): void {
     this.sortType = SortType.date;
     this.sortBy.emit({ type: this.sortType, isAscendingOrder: this.isDateAscendingOrder });
     this.isViewsAscendingOrder = true;
     this.isDateAscendingOrder = !this.isDateAscendingOrder;
   }
 
-  sortByViewsCount(): void {
+  public onSortByViewsCount(): void {
     this.sortType = SortType.viewCount;
     this.sortBy.emit({ type: this.sortType, isAscendingOrder: this.isViewsAscendingOrder });
     this.isDateAscendingOrder = true;

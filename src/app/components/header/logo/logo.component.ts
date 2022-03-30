@@ -8,7 +8,7 @@ import { MatIconRegistry } from '@angular/material/icon';
   styleUrls: ['./logo.component.scss'],
 })
 export class LogoComponent {
-  @Input() public count!: string;
+  @Input() public count: string = '';
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('logo', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo.svg'));

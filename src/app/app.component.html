@@ -1,5 +1,5 @@
-<app-header (filtersToggle)="toggleFilters()" (searchEmit)="search()"></app-header>
-<app-filters [isActive]="isShowingFilters" (sortBy)="setSortData($event)" (filterBy)="setfilterPhrase($event)"
+<app-header (filtersToggle)="onToggleFilters()" (searchEmit)="onSearch($event)"></app-header>
+<app-filters [isActive]="isShowingFilters" (sortBy)="onSetSortData($event)" (filterBy)="onSetFilterPhrase($event)"
   [filterPhrase]="filterPhrase">
 </app-filters>
 <app-card-list [cards]="cards" [isFilterActive]="isShowingFilters" [sortParams]="sortData"

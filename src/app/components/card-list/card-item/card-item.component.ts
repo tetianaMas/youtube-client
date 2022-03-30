@@ -1,19 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Card } from 'src/app/models/card.model';
+import { Component, Input } from '@angular/core';
+import { Card } from 'src/app/shared/models/card.model';
+import { BUTTON_TEXT } from './constants';
 
 @Component({
   selector: 'app-card-item',
   templateUrl: './card-item.component.html',
   styleUrls: ['./card-item.component.scss'],
 })
-export class CardItemComponent implements OnInit {
-  @Input() public card!: Card;
+export class CardItemComponent {
+  @Input() public card: Card | null = null;
 
-  public imgUrl = '';
-
-  public readonly btnText: string = 'more...';
-
-  ngOnInit() {
-    this.imgUrl = this.card.imgUrl.standard.url;
-  }
+  public readonly btnText: string = BUTTON_TEXT;
 }

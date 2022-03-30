@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { ICard } from './models/card.model';
-import { cards } from './mocks/cards-mock';
-import { SortType, TSortType } from './models/sortType.model';
+import { TSortType } from './shared/models/sortType.model';
+import { Card } from './shared/models/card.model';
+import { ISearchResponseItem } from './shared/models/search-response.model';
+import { response } from './shared/mocks/response-mock';
+import { SORT_DATA_DEFAULT } from './shared/constants';
 
 @Component({
   selector: 'app-root',
@@ -9,32 +11,29 @@ import { SortType, TSortType } from './models/sortType.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public cards: ICard[] = [];
+  public cards: Card[] = [];
 
   public isShowingFilters: boolean = false;
 
-  public sortData: TSortType = {
-    type: SortType.default,
-    isAscendingOrder: true,
-  };
+  public sortData: TSortType = SORT_DATA_DEFAULT;
 
   public filterPhrase: string = '';
 
-  toggleFilters(): void {
+  public onToggleFilters(): void {
     this.isShowingFilters = !this.isShowingFilters;
   }
 
-  setSortData(sortData: TSortType): void {
+  public onSetSortData(sortData: TSortType): void {
     this.sortData = sortData;
   }
 
-  setfilterPhrase(filterPhrase: string): void {
+  public onSetFilterPhrase(filterPhrase: string): void {
     this.filterPhrase = filterPhrase;
   }
 
-  search(): void {
-    if (!this.cards.length) {
-      this.cards = cards;
+  public onSearch(value: string): void {
+    if (!this.cards.length && value.length) {
+      this.cards = response.items.map((resItem: ISearchResponseItem) => new Card(resItem));
     }
   }
 }

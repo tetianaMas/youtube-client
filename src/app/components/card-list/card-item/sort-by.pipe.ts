@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ICard } from '../models/card.model';
-import { SortType, TSortType } from '../models/sortType.model';
+import { Card } from 'src/app/shared/models/card.model';
+import { SortType, TSortType } from 'src/app/shared/models/sortType.model';
 
 @Pipe({
   name: 'sortBy',
 })
 export class SortByPipe implements PipeTransform {
-  transform(cards: ICard[], sortParams: TSortType): ICard[] {
+  public transform(cards: Card[], sortParams: TSortType): Card[] {
     if (!cards.length || cards.length === 1 || sortParams.type === SortType.default) return cards;
 
     if (sortParams.type === SortType.date) {
@@ -16,21 +16,21 @@ export class SortByPipe implements PipeTransform {
     return this.sortByViewCount(cards, sortParams.isAscendingOrder);
   }
 
-  sortByDate(cards: ICard[], isAscending: boolean): ICard[] {
-    return cards.sort((first: ICard, second: ICard) => {
+  private sortByDate(cards: Card[], isAscendingOrder: boolean): Card[] {
+    return cards.sort((first: Card, second: Card) => {
       const date1 = new Date(first.publishedAt.slice(0, 10));
       const date2 = new Date(second.publishedAt.slice(0, 10));
 
-      return isAscending ? date2.getTime() - date1.getTime() : date1.getTime() - date2.getTime();
+      return isAscendingOrder ? date2.getTime() - date1.getTime() : date1.getTime() - date2.getTime();
     });
   }
 
-  sortByViewCount(cards: ICard[], isAscending: boolean): ICard[] {
-    return cards.sort((first: ICard, second: ICard) => {
+  private sortByViewCount(cards: Card[], isAscendingOrder: boolean): Card[] {
+    return cards.sort((first: Card, second: Card) => {
       const count1 = Number(first.statistics.viewCount);
       const count2 = Number(second.statistics.viewCount);
 
-      return isAscending ? count1 - count2 : count2 - count1;
+      return isAscendingOrder ? count1 - count2 : count2 - count1;
     });
   }
 }

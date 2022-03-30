@@ -17,7 +17,7 @@ export class SettingsButtonComponent {
     );
   }
 
-  public toggleFiltersPanel() {
+  public onToggleFiltersPanel() {
     this.toggleFilter.emit();
   }
 }
