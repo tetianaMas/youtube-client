@@ -10,7 +10,7 @@ export class HeaderComponent {
 
   @Output() public searchEmit: EventEmitter<string> = new EventEmitter();
 
-  public onToggleFilters(): void {
+  public onToggleFilter(): void {
     this.filtersToggle.emit();
   }
 

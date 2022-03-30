@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { URL_DEFAULT } from './constants';
 
 @Component({
   selector: 'ytube-client-video-thumbnail',
@@ -8,5 +9,5 @@ import { Component, Input } from '@angular/core';
 export class VideoThumbnailComponent {
   @Input() public imgUrl: string | void = '';
 
-  public readonly imgUrlDefault: string = './assets/card-bg-default.jpg';
+  public readonly imgUrlDefault: string = URL_DEFAULT;
 }

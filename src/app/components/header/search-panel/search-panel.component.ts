@@ -10,9 +10,9 @@ export class SearchPanelComponent {
 
   public seachInput: string = '';
 
-  @Output() public searchBy: EventEmitter<string> = new EventEmitter();
+  @Output() public search: EventEmitter<string> = new EventEmitter();
 
   public onSearch(): void {
-    this.searchBy.emit(this.seachInput.trim());
+    this.search.emit(this.seachInput.trim());
   }
 }

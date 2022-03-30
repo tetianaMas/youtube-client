@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { HEIGHT, RADIUS, WIDTH } from './constants';
 
 @Component({
   selector: 'ytube-client-button',
@@ -8,9 +9,9 @@ import { Component, Input } from '@angular/core';
 export class ButtonComponent {
   @Input() public text: string = '';
 
-  @Input() public width: number = 120;
+  @Input() public width: number = WIDTH;
 
-  @Input() public height: number = 32;
+  @Input() public height: number = HEIGHT;
 
-  @Input() public radius: string = '5px';
+  @Input() public radius: string = RADIUS;
 }
