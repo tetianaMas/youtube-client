@@ -5,16 +5,16 @@
 }
 
 .card {
-  &__img__wrapper {
-    height: 123px;
+  &-img-wrapper {
+    height: 125px;
     width: 100%;
-    overflow: hidden;
     display: flex;
+    overflow: hidden;
   }
-  &__img {
+  &-img {
     width: 100%;
     height: auto;
-    margin-bottom: 21px;
+    margin-bottom: 20px;
     object-fit: cover;
   }
 }

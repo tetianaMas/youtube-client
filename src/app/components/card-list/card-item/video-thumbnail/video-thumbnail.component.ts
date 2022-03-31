@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { URL_DEFAULT } from './constants';
+
+const URL_DEFAULT: string = './assets/card-bg-default.jpg';
 
 @Component({
   selector: 'ytube-client-video-thumbnail',

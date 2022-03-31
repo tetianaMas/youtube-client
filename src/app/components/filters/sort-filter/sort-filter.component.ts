@@ -1,6 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SortType, TSortType } from 'src/app/shared/models/sortType.model';
 
+enum BtnState {
+  active = 'active',
+  disabled = 'disabled',
+}
+
 @Component({
   selector: 'ytube-client-sort-filter',
   templateUrl: './sort-filter.component.html',
@@ -15,11 +20,17 @@ export class SortFilterComponent {
 
   private isViewsAscendingOrder: boolean = true;
 
+  public dateSortBtnState: BtnState = BtnState.disabled;
+
+  public viewsSortBtnState: BtnState = BtnState.disabled;
+
   public onSortByDate(): void {
     this.sortType = SortType.date;
     this.sortBy.emit({ type: this.sortType, isAscendingOrder: this.isDateAscendingOrder });
     this.isViewsAscendingOrder = true;
     this.isDateAscendingOrder = !this.isDateAscendingOrder;
+    this.dateSortBtnState = BtnState.active;
+    this.viewsSortBtnState = BtnState.disabled;
   }
 
   public onSortByViewsCount(): void {
@@ -27,5 +38,7 @@ export class SortFilterComponent {
     this.sortBy.emit({ type: this.sortType, isAscendingOrder: this.isViewsAscendingOrder });
     this.isDateAscendingOrder = true;
     this.isViewsAscendingOrder = !this.isViewsAscendingOrder;
+    this.viewsSortBtnState = BtnState.active;
+    this.dateSortBtnState = BtnState.disabled;
   }
 }

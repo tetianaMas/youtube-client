@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LikesCountComponent } from './likes-count.component';
+import { StatPanelComponent } from './stat-panel.component';
 
-describe('LikesCountComponent', () => {
-  let component: LikesCountComponent;
-  let fixture: ComponentFixture<LikesCountComponent>;
+describe('StatPanelComponent', () => {
+  let component: StatPanelComponent;
+  let fixture: ComponentFixture<StatPanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LikesCountComponent ]
+      declarations: [ StatPanelComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LikesCountComponent);
+    fixture = TestBed.createComponent(StatPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

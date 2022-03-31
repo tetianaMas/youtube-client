@@ -6,11 +6,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./search-filter.component.scss'],
 })
 export class SearchFilterComponent {
-  @Input() public inputValue!: string;
+  @Input() public inputValue: string = '';
 
   @Output() public filterBy: EventEmitter<string> = new EventEmitter();
 
   public onFilter(): void {
-    this.filterBy.emit(this.inputValue);
+    this.filterBy.emit(this.inputValue.trim());
   }
 }

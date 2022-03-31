@@ -1,11 +1,6 @@
-<mat-card class="card" [ytubeClientDateStatusColor]="card && card.publishedAt ? card.publishedAt : ''">
+<mat-card class="card" [ytubeClientDateStatusColor]="card && card.publishedAt || ''">
   <ytube-client-video-thumbnail [imgUrl]="card?.imgUrl?.standard?.url"></ytube-client-video-thumbnail>
-  <div class="stat-panel">
-    <ytube-client-views-count [count]="card?.statistics?.viewCount"></ytube-client-views-count>
-    <ytube-client-likes-count [count]="card?.statistics?.likeCount"></ytube-client-likes-count>
-    <ytube-client-dislikes-count [count]="card?.statistics?.dislikeCount"></ytube-client-dislikes-count>
-    <ytube-client-comments-count [count]="card?.statistics?.commentCount"></ytube-client-comments-count>
-  </div>
-  <ytube-client-video-title [title]="card && card.title ? card.title : ''"></ytube-client-video-title>
+  <ytube-client-stat-panel [statistics]="card?.statistics"></ytube-client-stat-panel>
+  <ytube-client-video-title [title]="card && card.title || ''"></ytube-client-video-title>
   <ytube-client-button [text]="btnText"></ytube-client-button>
 </mat-card>

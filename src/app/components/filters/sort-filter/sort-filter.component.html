@@ -1,5 +1,7 @@
-<div class="filters__sort">
-  <p class="filters__sort__text">Sorting by:</p>
-  <button mat-button class="filters__sort__btn" (click)="onSortByDate()">date</button>
-  <button mat-button class="filters__sort__btn" (click)="onSortByViewsCount()">count of views</button>
+<div class="filters-sort">
+  <p class="filters-sort-text">Sorting by:</p>
+  <button mat-button class="filters-sort-btn" [ngClass]="{ 'filters-sort-btn-active': dateSortBtnState === 'active' }"
+    (click)="onSortByDate()">date</button>
+  <button mat-button class="filters-sort-btn" [ngClass]="{ 'filters-sort-btn-active': viewsSortBtnState === 'active' }"
+    (click)="onSortByViewsCount()">count of views</button>
 </div>

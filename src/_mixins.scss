@@ -1,0 +1,24 @@
+@mixin flex-sp-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-align-items-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin font($weight: 400, $size: 12px, $line-height: 14px) {
+  font-family: $roboto-font;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  color: $title-color;
+}

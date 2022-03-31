@@ -1,17 +1,16 @@
 @import "../../../variables";
+@import "../../../mixins";
 
 .header {
   position: relative;
   min-height: 80px;
   padding: 15px 0;
   background-color: $header-bg-color;
-  &__content-wrapper {
+  &-content-wrapper {
+    @include flex-sp-between;
     height: 100%;
     max-width: 570px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 }
 
@@ -20,9 +19,8 @@
 }
 
 @media screen and (max-width: 950px) {
-  .header__content-wrapper {
+  .header-content-wrapper {
     padding-top: 40px;
     max-width: 80vw;
-    justify-content: stretch;
   }
 }

@@ -1,14 +1,6 @@
 import { ISearchResponseItem, IStatistics, IThumbnail } from './search-response.model';
 
-export interface ICard {
-  imgUrl: IThumbnail;
-  title: string;
-  description: string;
-  statistics: IStatistics;
-  publishedAt: string;
-}
-
-export class Card implements ICard {
+export class Card {
   imgUrl: IThumbnail;
 
   title: string;

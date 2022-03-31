@@ -1,33 +1,29 @@
 @import "../../../../variables";
+@import "../../../../mixins";
 
-.filters__sort {
+.filters-sort {
+  @include flex-sp-between;
   max-width: 100%;
   width: 190px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-right: 21px;
-  &__text {
+  margin-right: 20px;
+  &-text {
+    @include font();
     margin: 0;
-    font-family: $roboto-font;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
     color: $input-text-color-placeholder;
   }
-  &__btn {
+  &-btn {
+    @include font();
     padding: 0;
     min-width: auto;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    text-decoration-line: underline;
     color: $btn-color;
+    &-active {
+      text-decoration-line: underline;
+    }
   }
 }
 
-@media screen and (max-width: 334px) {
-  .filters__sort {
+@media screen and (max-width: 340px) {
+  .filters-sort {
     margin-bottom: 10px;
   }
 }

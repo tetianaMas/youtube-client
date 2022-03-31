@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Card } from 'src/app/shared/models/card.model';
-import { BUTTON_TEXT } from './constants';
+
+const BUTTON_TEXT: string = 'more...';
 
 @Component({
   selector: 'ytube-client-card-item',

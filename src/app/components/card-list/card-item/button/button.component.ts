@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { HEIGHT, RADIUS, WIDTH } from './constants';
 
+const WIDTH: number = 120;
+const HEIGHT: number = 32;
+const RADIUS: string = '5px';
 @Component({
   selector: 'ytube-client-button',
   templateUrl: './button.component.html',

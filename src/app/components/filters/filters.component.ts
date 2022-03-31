@@ -2,31 +2,37 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TSortType } from 'src/app/shared/models/sortType.model';
 
+const STATE_ACTIVE: string = 'active';
+
+const STATE_VOID: string = 'void';
+
+const ANIMATION_STYLE: string = '300ms ease-in';
+
 @Component({
   selector: 'ytube-client-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss'],
   animations: [
     trigger('filtersShowing', [
-      transition('active => void', [
+      transition(`${STATE_ACTIVE} => ${STATE_VOID}`, [
         style({
-          opacity: 1.0,
+          opacity: 1,
         }),
         animate(
-          '300ms ease-in',
+          ANIMATION_STYLE,
           style({
-            opacity: 0.0,
+            opacity: 0,
           }),
         ),
       ]),
-      transition('void => active', [
+      transition(`${STATE_VOID} => ${STATE_ACTIVE}`, [
         style({
-          opacity: 0.0,
+          opacity: 0,
         }),
         animate(
-          '300ms ease-in',
+          ANIMATION_STYLE,
           style({
-            opacity: 1.0,
+            opacity: 1,
           }),
         ),
       ]),
@@ -41,6 +47,10 @@ export class FiltersComponent {
   @Output() public sortBy: EventEmitter<TSortType> = new EventEmitter();
 
   @Output() public filterBy: EventEmitter<string> = new EventEmitter();
+
+  public animationStateActive: string = STATE_ACTIVE;
+
+  public animationStateVoid: string = STATE_VOID;
 
   public onSort(event: TSortType) {
     this.sortBy.emit(event);
