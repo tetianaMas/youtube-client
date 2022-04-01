@@ -19,8 +19,8 @@ import { SettingsButtonComponent } from './components/header/settings-button/set
 import { LogoComponent } from './components/header/logo/logo.component';
 import { ButtonComponent } from './components/card-list/card-item/button/button.component';
 import { DateStatusColorDirective } from './components/card-list/card-item/date-status-color.directive';
-import { SortByPipe } from './components/card-list/card-item/sort-by.pipe';
-import { FilterByPipe } from './components/card-list/card-item/filter-by.pipe';
+import { SortByPipe } from './components/card-list/sort-by.pipe';
+import { FilterByPipe } from './components/card-list/filter-by.pipe';
 import { VideoThumbnailComponent } from './components/card-list/card-item/video-thumbnail/video-thumbnail.component';
 import { VideoTitleComponent } from './components/card-list/card-item/video-title/video-title.component';
 import { StatPanelComponent } from './components/card-list/card-item/stat-panel/stat-panel.component';

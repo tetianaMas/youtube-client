@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
 const ICON_LOGO_PATH: string = './assets/icons/logo.svg';
+
 @Component({
   selector: 'ytube-client-logo',
   templateUrl: './logo.component.html',

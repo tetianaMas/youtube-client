@@ -16,9 +16,9 @@ const ICON_SETTINGS_BTN_PATH: string = './assets/icons/settings-button-icon.svg'
 export class SettingsButtonComponent {
   @Output() public toggleFilter = new EventEmitter();
 
-  public width: number = WIDTH;
+  public readonly width: number = WIDTH;
 
-  public height: number = HEIGHT;
+  public readonly height: number = HEIGHT;
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('settings-btn', sanitizer.bypassSecurityTrustResourceUrl(ICON_SETTINGS_BTN_PATH));

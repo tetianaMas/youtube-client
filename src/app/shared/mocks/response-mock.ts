@@ -13,7 +13,7 @@ export const response: ISearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/tmmI1yiRrmLWlKikXk1gD3TXsUI"',
       id: 'YN8zNnV0sK8',
       snippet: {
-        publishedAt: '2022-03-01T12:42:19.000Z',
+        publishedAt: '2022-03-14T12:42:19.000Z',
         channelId: 'UCg8ss4xW9jASrqWGP30jXiw',
         title: 'Angular 8 - Быстрый курс за 60 минут',
         description:
@@ -95,7 +95,7 @@ export const response: ISearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/uto79F2R8W05GFpiUAcLdFGs7PQ"',
       id: 'Fdf5aTYRW0E',
       snippet: {
-        publishedAt: '2022-03-23T17:46:58.000Z',
+        publishedAt: '2022-03-31T17:46:58.000Z',
         channelId: 'UC29ju8bIPH5as8OGnQzwJyA',
         title: 'Angular Crash Course',
         description:
@@ -470,7 +470,7 @@ export const response: ISearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/u2qq5ltpXouoIrpkJgGLu8YOIeg"',
       id: 'u1VCxpvDgsk',
       snippet: {
-        publishedAt: '2022-03-25T15:00:05.000Z',
+        publishedAt: '2022-03-30T15:00:05.000Z',
         channelId: 'UCvuY904el7JvBlPbdqbfguw',
         title: 'Уроки Angular для начинающих / #1 - Введение в Angular',
         description:

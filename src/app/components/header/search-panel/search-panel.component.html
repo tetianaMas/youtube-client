@@ -1,5 +1,6 @@
 <form class="search-form" appearance="standard" (submit)="onSearch()">
-  <input matInput [placeholder]="placeholderText" type="text" class="search-form-input" [(ngModel)]="seachInput"
+  <input class="search-form-input" matInput [placeholder]="placeholderText" type="text" [(ngModel)]="seachInput"
     name="search-input">
-  <ytube-client-button [text]="btnText" [width]="80" [height]="24" [radius]="'0 4px 4px 0'"></ytube-client-button>
+  <ytube-client-button [text]="btnText" [width]="btnWidth" [height]="btnHeight" [radius]="btnRadius">
+  </ytube-client-button>
 </form>
