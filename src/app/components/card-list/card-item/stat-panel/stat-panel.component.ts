@@ -16,7 +16,7 @@ enum IconsPaths {
   styleUrls: ['./stat-panel.component.scss'],
 })
 export class StatPanelComponent {
-  @Input() public statistics: IStatistics | void = undefined;
+  @Input() public statistics: IStatistics | null = null;
 
   public viewCountIconName: string = 'views-count';
 
