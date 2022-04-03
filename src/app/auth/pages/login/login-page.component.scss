@@ -13,9 +13,8 @@
   background-color: $login-form-bg-color;
   border-radius: 5px;
   &-title {
-    @include font(700, 18px, 21px);
+    @include font(700, 18px, 21px, $statistic-font-color);
     margin-bottom: 10px;
-    color: $statistic-font-color;
   }
   &-field {
     display: flex;
@@ -26,18 +25,16 @@
     }
   }
   &-label {
-    @include font(400, 10px, 12px);
+    @include font(400, 10px, 12px, $login-form-label-font-color);
     margin-bottom: 4px;
-    color: $login-form-label-font-color;
     text-transform: lowercase;
   }
   &-input {
-    @include font(400, 10px, 12px);
+    @include font(400, 10px, 12px, $statistic-font-color);
     min-height: 37px;
     width: 304px;
     max-width: 100%;
     padding: 13px 8px;
-    color: $statistic-font-color;
     background-color: $login-form-input-font-color;
     border: none;
   }

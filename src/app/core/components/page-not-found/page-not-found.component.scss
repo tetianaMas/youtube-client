@@ -1,0 +1,22 @@
+@import "../../../../variables";
+@import "../../../../mixins";
+
+.container,
+.info {
+  height: calc(100% - 100px);
+}
+
+.info {
+  @include flex-sp-between();
+  margin: auto;
+  max-width: 100%;
+  width: 300px;
+  &-icon {
+    width: 100px;
+    height: 90px;
+    margin-right: 25px;
+  }
+  &-text {
+    @include font(700, 24px, 28px, $login-form-label-font-color);
+  }
+}
