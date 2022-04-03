@@ -1,6 +1,6 @@
-<mat-card class="card" [ytubeClientDateStatusColor]="card && card.publishedAt || ''" (click)="onClick()">
+<mat-card class="card" [ytubeClientDateStatusColor]="card && card.publishedAt || ''">
   <ytube-client-video-thumbnail [imgUrl]="card?.imgUrl?.standard?.url"></ytube-client-video-thumbnail>
   <ytube-client-stat-panel [statistics]="card?.statistics || null"></ytube-client-stat-panel>
   <ytube-client-video-title [title]="card && card.title || ''"></ytube-client-video-title>
-  <ytube-client-button [text]="btnText"></ytube-client-button>
+  <ytube-client-button [text]="btnText" (click)="onClick()"></ytube-client-button>
 </mat-card>

@@ -8,9 +8,17 @@ import { SearchPanelComponent } from './components/search-panel/search-panel.com
 import { ProfilePanelComponent } from './components/profile-panel/profile-panel.component';
 import { SettingsButtonComponent } from './components/settings-button/settings-button.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SearchPanelComponent, ProfilePanelComponent, SettingsButtonComponent, LogoComponent],
+  declarations: [
+    HeaderComponent,
+    SearchPanelComponent,
+    ProfilePanelComponent,
+    SettingsButtonComponent,
+    LogoComponent,
+    PageNotFoundComponent,
+  ],
   imports: [CommonModule, SharedModule, HttpClientModule],
   exports: [HeaderComponent],
 })
