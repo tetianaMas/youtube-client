@@ -1,3 +1,18 @@
 <router-outlet>
-  <p>login works!</p>
+  <div class="container">
+    <form class="form" [formGroup]="form">
+      <h1 class="form-title">Login</h1>
+      <div class="form-field">
+        <label class="form-label" for="login-input">Login</label>
+        <input class="form-input" name="login" formControlName="login" type="text" id="login-input">
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="password-input">Password</label>
+        <input class="form-input" name="password" formControlName="password" type="password" id="password-input">
+      </div>
+      <div class="form-buttons">
+        <ytube-client-button (click)="login()">Login</ytube-client-button>
+      </div>
+    </form>
+  </div>
 </router-outlet>

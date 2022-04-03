@@ -18,7 +18,6 @@ export class AuthService {
     const token = (Math.random() * (email.length + password.length || 1) * 10).toString(16);
 
     this.storage.setItem<string>(TOKEN_NAME, token);
-    this.router.navigateByUrl('');
   }
 
   public logout(): void {

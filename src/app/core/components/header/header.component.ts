@@ -19,10 +19,10 @@ export class HeaderComponent {
 
   public onSearch(value: string): void {
     this.searchEmit.emit(value);
-    this.router.navigate(['videos']);
+    this.router.navigateByUrl('main');
   }
 
   public onLogoClick(): void {
-    this.router.navigate(['']);
+    this.router.navigateByUrl('');
   }
 }

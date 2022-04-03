@@ -1,0 +1,48 @@
+@import "../../../../variables";
+@import "../../../../mixins";
+
+.container {
+  padding-top: 45px;
+}
+
+.form {
+  max-width: 100%;
+  width: 350px;
+  margin: 0 auto;
+  padding: 28px 20px;
+  background-color: $login-form-bg-color;
+  border-radius: 5px;
+  &-title {
+    @include font(700, 18px, 21px);
+    margin-bottom: 10px;
+    color: $statistic-font-color;
+  }
+  &-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    &:nth-last-of-type(2) {
+      margin-bottom: 22px;
+    }
+  }
+  &-label {
+    @include font(400, 10px, 12px);
+    margin-bottom: 4px;
+    color: $login-form-label-font-color;
+    text-transform: lowercase;
+  }
+  &-input {
+    @include font(400, 10px, 12px);
+    min-height: 37px;
+    width: 304px;
+    max-width: 100%;
+    padding: 13px 8px;
+    color: $statistic-font-color;
+    background-color: $login-form-input-font-color;
+    border: none;
+  }
+  &-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

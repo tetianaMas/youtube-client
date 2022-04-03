@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
 
 const routes: Routes = [
   {
-    path: 'videos',
+    path: 'main',
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
     canActivate: [AuthGuardService],
   },
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'videos',
+    redirectTo: 'main',
     pathMatch: 'full',
   },
   { path: '**', component: PageNotFoundComponent },
