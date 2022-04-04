@@ -17,6 +17,6 @@ export class CardItemComponent {
   constructor(private router: Router) {}
 
   public onClick(): void {
-    this.router.navigate(['videos', this.card?.id]);
+    this.router.navigate(['main', this.card?.id]);
   }
 }

@@ -17,7 +17,8 @@ import { VideoTitleComponent } from './components/video-title/video-title.compon
 import { StatPanelComponent } from './components/stat-panel/stat-panel.component';
 import { StatPanelItemComponent } from './components/stat-panel-item/stat-panel-item.component';
 import { MainPageComponent } from './pages/main/main.component';
-import { DetailedInfoPageComponent } from './pages/detailed-info/detailed-info.component';
+import { DetailedInfoComponent } from './pages/detailed-info/detailed-info.component';
+import { CardService } from './services/card.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,10 @@ import { DetailedInfoPageComponent } from './pages/detailed-info/detailed-info.c
     StatPanelComponent,
     StatPanelItemComponent,
     MainPageComponent,
-    DetailedInfoPageComponent,
+    DetailedInfoComponent,
   ],
   imports: [CommonModule, SharedModule, YoutubeRoutingModule, HttpClientModule],
-  exports: [MainPageComponent, DetailedInfoPageComponent],
+  exports: [MainPageComponent, DetailedInfoComponent],
+  providers: [CardService],
 })
 export class YoutubeModule {}

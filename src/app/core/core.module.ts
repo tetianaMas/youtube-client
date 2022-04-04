@@ -9,6 +9,7 @@ import { ProfilePanelComponent } from './components/profile-panel/profile-panel.
 import { SettingsButtonComponent } from './components/settings-button/settings-button.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LocalstorageService } from './services/localstorage.service';
 
 @NgModule({
   declarations: [
@@ -21,5 +22,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   ],
   imports: [CommonModule, SharedModule, HttpClientModule],
   exports: [HeaderComponent],
+  providers: [LocalstorageService],
 })
 export class CoreModule {}
