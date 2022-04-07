@@ -1,34 +1,36 @@
 @import "../../../../variables";
 @import "../../../../mixins";
 
-.mat-icon {
-  width: 19px;
-}
-
 .profile {
   position: absolute;
   top: 13px;
   right: 40px;
   display: flex;
   align-items: center;
-  &-name {
-    margin: 0;
-    margin-right: 8px;
-    @include font(400, 12px, 14px);
-    text-transform: capitalize;
-    white-space: nowrap;
+
+  @media screen and (max-width: $laptop) {
+    .profile {
+      top: 0;
+      right: 20px;
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    .profile {
+      right: 3.5vw;
+    }
   }
 }
 
-@media screen and (max-width: 950px) {
-  .profile {
-    top: 0;
-    right: 20px;
-  }
+.profile-name {
+  @include font();
+
+  margin: 0;
+  margin-right: 8px;
+  text-transform: capitalize;
+  white-space: nowrap;
 }
 
-@media screen and (max-width: 400px) {
-  .profile {
-    right: 3.5vw;
-  }
+.profile-icon {
+  width: 19px;
 }

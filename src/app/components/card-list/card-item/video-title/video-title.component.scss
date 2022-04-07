@@ -7,17 +7,7 @@
 
 .card-title {
   @include font(700, 20px, 23px);
+
   max-height: 70px;
   text-align: right;
-  overflow: hidden auto;
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-  &::-webkit-scrollbar-track {
-    background: $input-bg-color;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: $btn-color-disabled;
-    border-radius: 10px;
-  }
 }

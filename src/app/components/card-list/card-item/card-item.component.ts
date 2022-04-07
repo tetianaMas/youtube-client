@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Card } from 'src/app/shared/models/card.model';
 
-const BUTTON_TEXT: string = 'more...';
+const BUTTON_TEXT = 'more...';
 
 @Component({
   selector: 'ytube-client-card-item',
@@ -11,5 +11,5 @@ const BUTTON_TEXT: string = 'more...';
 export class CardItemComponent {
   @Input() public card: Card | null = null;
 
-  public readonly btnText: string = BUTTON_TEXT;
+  public readonly btnText = BUTTON_TEXT;
 }

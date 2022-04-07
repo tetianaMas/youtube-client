@@ -4,11 +4,17 @@ import { Card } from 'src/app/shared/models/card.model';
 import { TSortType } from 'src/app/shared/models/sortType.model';
 import { SORT_DATA_DEFAULT } from 'src/app/shared/constants';
 
-const ANIMATE_STATE_UP: string = 'up';
-const ANIMATE_STATE_DOWN: string = 'down';
-const ANIMATION_STYLE_UP: string = '400ms cubic-bezier(0.25, 0.1, 0.25, 1)';
-const ANIMATION_STYLE_DOWN: string = '300ms 100ms ease-in';
-const STYLE_PADDING: number = 50;
+enum AnimationState {
+  up = 'up',
+  down = 'down',
+}
+
+enum AnimationStateStyle {
+  up = '400ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+  down = '300ms 100ms ease-in',
+}
+
+const STYLE_PADDING = 50;
 
 @Component({
   selector: 'ytube-client-card-list',
@@ -16,10 +22,10 @@ const STYLE_PADDING: number = 50;
   styleUrls: ['./card-list.component.scss'],
   animations: [
     trigger('smoothMoving', [
-      state(ANIMATE_STATE_UP, style({ paddingTop: STYLE_PADDING })),
-      state(ANIMATE_STATE_DOWN, style({ paddingTop: 0 })),
-      transition(`${ANIMATE_STATE_DOWN} => ${ANIMATE_STATE_UP}`, [animate(ANIMATION_STYLE_UP)]),
-      transition(`${ANIMATE_STATE_UP} => ${ANIMATE_STATE_DOWN}`, [animate(ANIMATION_STYLE_DOWN)]),
+      state(AnimationState.up, style({ paddingTop: STYLE_PADDING })),
+      state(AnimationState.down, style({ paddingTop: 0 })),
+      transition(`${AnimationState.down} => ${AnimationState.up}`, [animate(AnimationStateStyle.up)]),
+      transition(`${AnimationState.up} => ${AnimationState.down}`, [animate(AnimationStateStyle.down)]),
     ]),
   ],
 })
@@ -32,7 +38,7 @@ export class CardListComponent {
 
   @Input() public filterPhrase: string = '';
 
-  public readonly cardListStateUp: string = ANIMATE_STATE_UP;
+  public readonly cardListStateUp: string = AnimationState.up;
 
-  public readonly cardListStateDown: string = ANIMATE_STATE_DOWN;
+  public readonly cardListStateDown: string = AnimationState.down;
 }

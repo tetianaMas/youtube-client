@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./stat-panel-item.component.scss'],
 })
 export class StatPanelItemComponent {
-  @Input() public count: string | void = '';
+  @Input() public count: string = '';
 
   @Input() public iconName: string = '';
 }

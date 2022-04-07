@@ -52,4 +52,4 @@ import { StatPanelItemComponent } from './components/card-list/card-item/stat-pa
   providers: [],
   bootstrap: [YtubeClientComponent],
 })
-export default class YtubeModule {}
+export default class YtubeClientModule {}

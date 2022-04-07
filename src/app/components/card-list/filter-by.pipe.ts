@@ -6,8 +6,8 @@ import { Card } from 'src/app/shared/models/card.model';
 })
 export class FilterByPipe implements PipeTransform {
   public transform(cards: Card[], wordToFilter: string): Card[] {
-    if (!cards.length || !wordToFilter) return cards;
-
-    return cards.filter((card: Card) => card.title.toLowerCase().includes(wordToFilter.toLowerCase()));
+    return cards.length && wordToFilter
+      ? cards.filter((card: Card) => card.title.toLowerCase().includes(wordToFilter.toLowerCase()))
+      : cards;
   }
 }

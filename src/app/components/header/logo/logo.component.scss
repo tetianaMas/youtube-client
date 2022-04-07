@@ -1,12 +1,14 @@
-.mat-icon {
+@import "../../../../variables";
+
+.logo {
   width: 50px;
   height: 50px;
-}
 
-@media screen and (max-width: 950px) {
-  .mat-icon {
-    position: absolute;
-    top: -12px;
-    left: 7vw;
+  @media screen and (max-width: $laptop) {
+    .logo {
+      position: absolute;
+      top: -12px;
+      left: 7vw;
+    }
   }
 }

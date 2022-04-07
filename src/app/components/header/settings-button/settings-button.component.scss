@@ -1,9 +1,11 @@
-.mat-icon {
+@import "../../../../variables";
+
+.btn-icon {
   width: 15px;
   height: 15px;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: $laptop) {
   :host {
     margin-left: 5vw;
   }

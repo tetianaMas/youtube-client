@@ -5,7 +5,8 @@
 }
 
 .stat-panel {
-  @include flex-sp-between;
+  @include flex-sp-between();
+
   margin-bottom: 20px;
   flex-wrap: nowrap;
 }

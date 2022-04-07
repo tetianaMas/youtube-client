@@ -2,32 +2,35 @@
 @import "../../../../mixins";
 
 .search-form {
-  @include flex-align-items-center;
+  display: flex;
+  align-items: center;
   padding: 0;
   width: 476px;
   max-width: 100%;
   height: 24px;
-  &-input {
-    @include flex-align-items-center;
-    width: 100%;
-    min-height: 24px;
-    color: $input-text-color;
-    background-color: $input-bg-color;
-    border: none;
-    &::placeholder {
-      color: $input-text-color-placeholder;
+
+  @media screen and (max-width: $laptop) {
+    .search-form {
+      width: 70vw;
+    }
+  }
+
+  @media screen and (max-width: $tablet) {
+    .search-form {
+      width: 71.5vw;
     }
   }
 }
 
-@media screen and (max-width: 950px) {
-  .search-form {
-    width: 70vw;
-  }
-}
-
-@media screen and (max-width: 590px) {
-  .search-form {
-    width: 71.5vw;
+.search-form-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 24px;
+  color: $input-text-color;
+  background-color: $input-bg-color;
+  border: none;
+  &::placeholder {
+    color: $input-text-color-placeholder;
   }
 }

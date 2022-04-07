@@ -2,9 +2,10 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TSortType } from 'src/app/shared/models/sortType.model';
 
-const STATE_ACTIVE: string = 'active';
-
-const STATE_VOID: string = 'void';
+enum AnimationState {
+  active = 'active',
+  void = 'void',
+}
 
 const ANIMATION_STYLE: string = '300ms ease-in';
 
@@ -14,7 +15,7 @@ const ANIMATION_STYLE: string = '300ms ease-in';
   styleUrls: ['./filters.component.scss'],
   animations: [
     trigger('filtersShowing', [
-      transition(`${STATE_ACTIVE} => ${STATE_VOID}`, [
+      transition(`${AnimationState.active} => ${AnimationState.void}`, [
         style({
           opacity: 1,
         }),
@@ -25,7 +26,7 @@ const ANIMATION_STYLE: string = '300ms ease-in';
           }),
         ),
       ]),
-      transition(`${STATE_VOID} => ${STATE_ACTIVE}`, [
+      transition(`${AnimationState.void} => ${AnimationState.active}`, [
         style({
           opacity: 0,
         }),
@@ -40,23 +41,23 @@ const ANIMATION_STYLE: string = '300ms ease-in';
   ],
 })
 export class FiltersComponent {
-  @Input() public isActive: boolean = false;
+  @Input() isActive: boolean = false;
 
-  @Input() public filterPhrase: string = '';
+  @Input() filterPhrase: string = '';
 
-  @Output() public sortBy: EventEmitter<TSortType> = new EventEmitter();
+  @Output() readonly sortBy = new EventEmitter();
 
-  @Output() public filterBy: EventEmitter<string> = new EventEmitter();
+  @Output() readonly filterBy = new EventEmitter();
 
-  public animationStateActive: string = STATE_ACTIVE;
+  animationStateActive = AnimationState.active;
 
-  public animationStateVoid: string = STATE_VOID;
+  animationStateVoid = AnimationState.void;
 
-  public onSort(event: TSortType) {
+  onSort(event: TSortType) {
     this.sortBy.emit(event);
   }
 
-  public onFilter(value: string) {
+  onFilter(value: string) {
     this.filterPhrase = value;
     this.filterBy.emit(value);
   }

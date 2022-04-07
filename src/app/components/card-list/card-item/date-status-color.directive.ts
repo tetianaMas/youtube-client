@@ -6,15 +6,13 @@ enum DatePeriod {
   yearHalf = 180,
 }
 
-enum Colors {
-  hugeAmount = '#EB5757',
-  bigAmount = '#F2C94C',
-  mediumAmount = '#27AE60',
-  smallAmount = '#2F80ED',
+enum ColorClasses {
+  bigAmount = 'red-border',
+  mediumAmount = 'green-border',
+  smallAmount = 'blue-border',
 }
 
-const MILLISECONDS_IN_DAY: number = 1000 * 60 * 60 * 24;
-const BORDER_DEF_STYLE = 'inset 5px';
+const MILLISECONDS_IN_DAY = 86400000;
 
 @Directive({
   selector: '[ytubeClientDateStatusColor]',
@@ -24,9 +22,7 @@ export class DateStatusColorDirective implements AfterViewInit {
 
   private readonly date: Date = new Date();
 
-  constructor(private elRef: ElementRef, private renderer: Renderer2) {
-    this.setBorderStyle();
-  }
+  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
 
   public ngAfterViewInit(): void {
     if (!this.statusColor) return;
@@ -35,15 +31,15 @@ export class DateStatusColorDirective implements AfterViewInit {
     const diff = Math.floor((this.date.getTime() - currentDate.getTime()) / MILLISECONDS_IN_DAY);
 
     if (diff < DatePeriod.week) {
-      this.setBorderStyle(Colors.smallAmount);
+      this.setBorderStyle(ColorClasses.smallAmount);
     } else if (diff < DatePeriod.month && diff >= DatePeriod.week) {
-      this.setBorderStyle(Colors.mediumAmount);
+      this.setBorderStyle(ColorClasses.mediumAmount);
     } else if (diff >= DatePeriod.yearHalf) {
-      this.setBorderStyle(Colors.hugeAmount);
+      this.setBorderStyle(ColorClasses.bigAmount);
     }
   }
 
-  private setBorderStyle(color: string = Colors.bigAmount): void {
-    this.renderer.setStyle(this.elRef.nativeElement, 'border-bottom', `${BORDER_DEF_STYLE} ${color}`);
+  private setBorderStyle(colorClass: string): void {
+    this.renderer.addClass(this.elRef.nativeElement, colorClass);
   }
 }

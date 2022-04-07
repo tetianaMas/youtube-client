@@ -3,11 +3,13 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IStatistics } from 'src/app/shared/models/search-response.model';
 
-enum IconsPaths {
-  viewsCount = './assets/icons/views-count.svg',
-  likesCount = './assets/icons/likes-count.svg',
-  dislikesCount = './assets/icons/dislikes-count.svg',
-  commentsCount = './assets/icons/comments-count.svg',
+const ICON_PATH = './assets/icons/';
+
+enum Icons {
+  viewsCount = 'views-count',
+  likesCount = 'likes-count',
+  dislikesCount = 'dislikes-count',
+  commentsCount = 'comments-count',
 }
 
 @Component({
@@ -18,24 +20,15 @@ enum IconsPaths {
 export class StatPanelComponent {
   @Input() public statistics: IStatistics | null = null;
 
-  public viewCountIconName: string = 'views-count';
-
-  public likesCountIconName: string = 'likes-count';
-
-  public dislikesCountIconName: string = 'dislikes-count';
-
-  public commentsCountIconName: string = 'comments-count';
+  icons = Icons;
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon(this.viewCountIconName, sanitizer.bypassSecurityTrustResourceUrl(IconsPaths.viewsCount));
-    iconRegistry.addSvgIcon(this.likesCountIconName, sanitizer.bypassSecurityTrustResourceUrl(IconsPaths.likesCount));
-    iconRegistry.addSvgIcon(
-      this.dislikesCountIconName,
-      sanitizer.bypassSecurityTrustResourceUrl(IconsPaths.dislikesCount),
-    );
-    iconRegistry.addSvgIcon(
-      this.commentsCountIconName,
-      sanitizer.bypassSecurityTrustResourceUrl(IconsPaths.commentsCount),
-    );
+    Object.values(this.icons).forEach((icon: Icons) => {
+      iconRegistry.addSvgIcon(icon, sanitizer.bypassSecurityTrustResourceUrl(this.getIconPath(icon)));
+    });
+  }
+
+  private getIconPath(name: string): string {
+    return `${ICON_PATH}${name}.svg`;
   }
 }
