@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { YoutubeService } from 'src/app/core/services/youtube.service';
 
 const BTN_TEXT: string = 'search';
 const INPUT_PLACEHOLDER_TEXT = 'What do you want to find?';
@@ -18,10 +20,11 @@ export class SearchPanelComponent {
 
   seachInput: string = '';
 
-  @Output() readonly search = new EventEmitter<string>();
+  constructor(private youtubeservice: YoutubeService, private router: Router) {}
 
   onSearch(): void {
-    this.search.emit(this.seachInput.trim());
+    this.youtubeservice.searchCards(this.seachInput.trim());
     this.seachInput = '';
+    this.router.navigate(['main']);
   }
 }

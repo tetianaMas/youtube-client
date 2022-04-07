@@ -1,6 +1,6 @@
 <router-outlet>
   <div class="container">
-    <form class="form" [formGroup]="form">
+    <form class="form" [formGroup]="form" (submit)="onLogin()">
       <h1 class="form-title">Login</h1>
       <div class="form-field">
         <label class="form-label" for="login-input">Login</label>
@@ -11,7 +11,7 @@
         <input class="form-input" name="password" formControlName="password" type="password" id="password-input">
       </div>
       <div class="form-buttons">
-        <ytube-client-button (click)="login()">Login</ytube-client-button>
+        <ytube-client-button>Login</ytube-client-button>
       </div>
     </form>
   </div>

@@ -18,7 +18,6 @@ import { StatPanelComponent } from './components/stat-panel/stat-panel.component
 import { StatPanelItemComponent } from './components/stat-panel-item/stat-panel-item.component';
 import { MainPageComponent } from './pages/main/main.component';
 import { DetailedInfoComponent } from './pages/detailed-info/detailed-info.component';
-import { CardService } from './services/card.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +38,5 @@ import { CardService } from './services/card.service';
   ],
   imports: [CommonModule, SharedModule, YoutubeRoutingModule, HttpClientModule],
   exports: [MainPageComponent, DetailedInfoComponent],
-  providers: [CardService],
 })
 export class YoutubeModule {}

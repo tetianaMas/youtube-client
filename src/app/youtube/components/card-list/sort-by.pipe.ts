@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Card } from '../../models/card.model';
+import { Card } from 'src/app/shared/models/card.model';
 import { SortType, TSortType } from '../../models/sortType.model';
 
 @Pipe({

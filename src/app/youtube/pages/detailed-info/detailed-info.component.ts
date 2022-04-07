@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { Card } from '../../models/card.model';
-import { CardService } from '../../services/card.service';
+import { map } from 'rxjs/operators';
+import { Card } from 'src/app/shared/models/card.model';
+import { YoutubeService } from 'src/app/core/services/youtube.service';
 
 @Component({
   selector: 'ytube-client-detailed-info',
@@ -11,13 +10,13 @@ import { CardService } from '../../services/card.service';
   styleUrls: ['./detailed-info.component.scss'],
 })
 export class DetailedInfoComponent implements OnInit {
-  card$: Observable<Card | void> = new Observable();
+  card: Card | null = null;
 
-  constructor(private route: ActivatedRoute, private router: Router, private service: CardService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private service: YoutubeService) {}
 
   ngOnInit() {
-    this.card$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => this.service.getCard(params.get('id') || '')),
-    );
+    this.route.paramMap
+      .pipe(map((params: ParamMap) => this.service.getCardById(params.get('id') || '')))
+      .subscribe((card) => (this.card = card));
   }
 }

@@ -1,20 +1,17 @@
-<router-outlet>
-  <div class="container">
-    <div class="card" *ngIf="card$ | async as card">
-      <div class="card-img">
-        <img [src]="card?.imgUrl?.high?.url" alt="Youtube video image.">
-      </div>
+<div class="container">
+  <div class="card" *ngIf="card">
+    <div class="card-img">
+      <img [src]="card?.imgUrl?.high?.url" alt="Youtube video image.">
+    </div>
 
-      <div class="card-info">
-        <h2 class="card-title">{{ card?.title }}</h2>
-        <span class="card-date">{{ card?.publishedAt | date }}</span>
-        <p class="card-descr">
-          <span class="desrc-title">Description:</span>
-          {{ card?.description }}
-        </p>
-        <ytube-client-stat-panel [statistics]="card?.statistics || null"></ytube-client-stat-panel>
-      </div>
+    <div class="card-info">
+      <h2 class="card-title">{{ card?.title }}</h2>
+      <span class="card-date">{{ card?.publishedAt | date }}</span>
+      <p class="card-descr">
+        <span class="desrc-title">Description:</span>
+        {{ card?.description }}
+      </p>
+      <ytube-client-stat-panel [statistics]="card?.statistics || null"></ytube-client-stat-panel>
     </div>
   </div>
-
-</router-outlet>
+</div>

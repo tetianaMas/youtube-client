@@ -9,7 +9,6 @@ import { YtubeClientComponent } from './ytube-client.component';
 @NgModule({
   declarations: [YtubeClientComponent],
   imports: [BrowserModule, YtubeClientRoutingModule, CoreModule, BrowserAnimationsModule],
-  providers: [],
   bootstrap: [YtubeClientComponent],
 })
 export default class YtubeClientModule {}

@@ -1,10 +1,8 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, Input } from '@angular/core';
-import { Card } from '../../models/card.model';
+import { Card } from 'src/app/shared/models/card.model';
 import { TSortType } from '../../models/sortType.model';
 import { SORT_DATA_DEFAULT } from '../../shared/constants';
-import { ISearchResponseItem } from '../../models/search-response.model';
-import { response } from '../../mocks/response-mock';
 
 enum AnimationState {
   up = 'up',
@@ -39,8 +37,4 @@ export class CardListComponent {
   @Input() filterPhrase: string = '';
 
   readonly animationState = AnimationState;
-
-  constructor() {
-    this.cards = response.items.map((item: ISearchResponseItem) => new Card(item));
-  }
 }
