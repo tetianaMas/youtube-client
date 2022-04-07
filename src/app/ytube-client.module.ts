@@ -12,4 +12,4 @@ import { YtubeClientComponent } from './ytube-client.component';
   providers: [],
   bootstrap: [YtubeClientComponent],
 })
-export default class YtubeModule {}
+export default class YtubeClientModule {}

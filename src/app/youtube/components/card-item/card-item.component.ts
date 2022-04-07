@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Card } from '../../models/card.model';
 import { Router } from '@angular/router';
 
-const BUTTON_TEXT: string = 'more...';
+const BUTTON_TEXT = 'more...';
 
 @Component({
   selector: 'ytube-client-card-item',
@@ -10,13 +10,13 @@ const BUTTON_TEXT: string = 'more...';
   styleUrls: ['./card-item.component.scss'],
 })
 export class CardItemComponent {
-  @Input() public card: Card | null = null;
+  @Input() card: Card | null = null;
 
-  public readonly btnText: string = BUTTON_TEXT;
+  readonly btnText: string = BUTTON_TEXT;
 
   constructor(private router: Router) {}
 
-  public onClick(): void {
+  onClick(): void {
     this.router.navigate(['main', this.card?.id]);
   }
 }

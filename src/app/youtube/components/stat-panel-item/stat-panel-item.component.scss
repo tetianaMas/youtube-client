@@ -2,20 +2,17 @@
 @import "../../../../variables";
 
 .stat-panel-item {
-  @include flex-sp-between;
+  @include flex-sp-between();
+
   width: 100%;
   flex-wrap: nowrap;
 }
 
-.mat-icon {
+.stat-panel-icon {
   height: 13px;
 }
 
 .counter {
   align-self: flex-end;
-  font-family: $roboto-font;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 10px;
-  color: $statistic-font-color;
+  @include font(400, 10px, 10px, $statistic-font-color);
 }

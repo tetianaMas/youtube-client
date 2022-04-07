@@ -2,11 +2,17 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TSortType } from '../../models/sortType.model';
 
-const STATE_ACTIVE: string = 'active';
+enum AnimationState {
+  enter = ':enter',
+  leave = ':leave',
+}
 
-const STATE_VOID: string = 'void';
+enum AnimationStyle {
+  up = 'translateY(-10px)',
+  down = 'translateY(0)',
+}
 
-const ANIMATION_STYLE: string = '300ms ease-in';
+const ANIMATION_TIME = '500ms';
 
 @Component({
   selector: 'ytube-client-filters',
@@ -14,49 +20,32 @@ const ANIMATION_STYLE: string = '300ms ease-in';
   styleUrls: ['./filters.component.scss'],
   animations: [
     trigger('filtersShowing', [
-      transition(`${STATE_ACTIVE} => ${STATE_VOID}`, [
-        style({
-          opacity: 1,
-        }),
-        animate(
-          ANIMATION_STYLE,
-          style({
-            opacity: 0,
-          }),
-        ),
+      transition(AnimationState.enter, [
+        style({ opacity: 0, transform: AnimationStyle.up }),
+        animate(ANIMATION_TIME, style({ opacity: 1, transform: AnimationStyle.down })),
       ]),
-      transition(`${STATE_VOID} => ${STATE_ACTIVE}`, [
-        style({
-          opacity: 0,
-        }),
-        animate(
-          ANIMATION_STYLE,
-          style({
-            opacity: 1,
-          }),
-        ),
-      ]),
+      transition(AnimationState.leave, [animate(ANIMATION_TIME, style({ opacity: 0, transform: AnimationStyle.up }))]),
     ]),
   ],
 })
 export class FiltersComponent {
-  @Input() public isActive: boolean = false;
+  @Input() isActive: boolean = false;
 
-  @Input() public filterPhrase: string = '';
+  @Input() filterPhrase: string = '';
 
-  @Output() public sortBy: EventEmitter<TSortType> = new EventEmitter();
+  @Output() readonly sortBy = new EventEmitter<TSortType>();
 
-  @Output() public filterBy: EventEmitter<string> = new EventEmitter();
+  @Output() readonly filterBy = new EventEmitter<string>();
 
-  public animationStateActive: string = STATE_ACTIVE;
+  animationStateEnter = AnimationState.enter;
 
-  public animationStateVoid: string = STATE_VOID;
+  animationStateLeave = AnimationState.leave;
 
-  public onSort(event: TSortType) {
+  onSort(event: TSortType) {
     this.sortBy.emit(event);
   }
 
-  public onFilter(value: string) {
+  onFilter(value: string) {
     this.filterPhrase = value;
     this.filterBy.emit(value);
   }

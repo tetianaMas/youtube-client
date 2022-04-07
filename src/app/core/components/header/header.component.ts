@@ -7,17 +7,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Output() public filtersToggle: EventEmitter<void> = new EventEmitter();
+  @Output() readonly filtersToggle = new EventEmitter<void>();
 
-  @Output() public searchEmit: EventEmitter<string> = new EventEmitter();
+  @Output() readonly searchEmit = new EventEmitter<string>();
 
   constructor(private router: Router) {}
 
-  public onToggleFilter(): void {
+  onToggleFilter(): void {
     this.filtersToggle.emit();
   }
 
-  public onSearch(value: string): void {
+  onSearch(value: string): void {
     this.searchEmit.emit(value);
     this.router.navigateByUrl('main');
   }

@@ -8,7 +8,7 @@ const URL_DEFAULT: string = './assets/card-bg-default.jpg';
   styleUrls: ['./video-thumbnail.component.scss'],
 })
 export class VideoThumbnailComponent {
-  @Input() public imgUrl: string | void = '';
+  @Input() imgUrl: string = '';
 
-  public readonly imgUrlDefault: string = URL_DEFAULT;
+  readonly imgUrlDefault = URL_DEFAULT;
 }

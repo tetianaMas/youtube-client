@@ -6,22 +6,20 @@ import { SortType, TSortType } from '../../models/sortType.model';
   name: 'sortBy',
 })
 export class SortByPipe implements PipeTransform {
-  public transform(cards: Card[], sortParams: TSortType): Card[] {
-    if (!cards.length || cards.length === 1 || sortParams.type === SortType.default) return cards;
+  transform(cards: Card[], sortParams: TSortType): Card[] {
+    if (cards.length <= 1 || sortParams.type === SortType.default) return cards;
 
-    if (sortParams.type === SortType.date) {
-      return this.sortByDate(cards, sortParams.isAscendingOrder);
-    }
-
-    return this.sortByViewCount(cards, sortParams.isAscendingOrder);
+    return sortParams.type === SortType.date
+      ? this.sortByDate(cards, sortParams.isAscendingOrder)
+      : this.sortByViewCount(cards, sortParams.isAscendingOrder);
   }
 
   private sortByDate(cards: Card[], isAscendingOrder: boolean): Card[] {
     return cards.sort((first: Card, second: Card) => {
-      const date1 = new Date(first.publishedAt.slice(0, 10));
-      const date2 = new Date(second.publishedAt.slice(0, 10));
+      const date1 = new Date(this.getCurrentDate(first.publishedAt));
+      const date2 = new Date(this.getCurrentDate(second.publishedAt));
 
-      return isAscendingOrder ? date2.getTime() - date1.getTime() : date1.getTime() - date2.getTime();
+      return this.sortValues(date2.getTime(), date1.getTime(), isAscendingOrder);
     });
   }
 
@@ -30,7 +28,15 @@ export class SortByPipe implements PipeTransform {
       const count1 = Number(first.statistics.viewCount);
       const count2 = Number(second.statistics.viewCount);
 
-      return isAscendingOrder ? count1 - count2 : count2 - count1;
+      return this.sortValues(count1, count2, isAscendingOrder);
     });
+  }
+
+  private sortValues(firstVal: number, secondVal: number, isAscendingOrder: boolean): number {
+    return isAscendingOrder ? firstVal - secondVal : secondVal - firstVal;
+  }
+
+  private getCurrentDate(date: string): string {
+    return date.slice(0, 10);
   }
 }
