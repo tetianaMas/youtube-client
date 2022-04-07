@@ -9,7 +9,7 @@ const BUTTON_TEXT = 'more...';
   styleUrls: ['./card-item.component.scss'],
 })
 export class CardItemComponent {
-  @Input() public card: Card | null = null;
+  @Input() card: Card | null = null;
 
-  public readonly btnText = BUTTON_TEXT;
+  readonly btnText = BUTTON_TEXT;
 }

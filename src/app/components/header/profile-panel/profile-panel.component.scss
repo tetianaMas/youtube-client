@@ -9,16 +9,12 @@
   align-items: center;
 
   @media screen and (max-width: $laptop) {
-    .profile {
-      top: 0;
-      right: 20px;
-    }
+    top: 0;
+    right: 20px;
   }
 
   @media screen and (max-width: $mobile) {
-    .profile {
-      right: 3.5vw;
-    }
+    right: 3.5vw;
   }
 }
 
@@ -33,4 +29,9 @@
 
 .profile-icon {
   width: 19px;
+}
+
+.btn-wrapper {
+  width: 23px;
+  height: 24px;
 }

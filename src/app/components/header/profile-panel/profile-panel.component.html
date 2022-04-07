@@ -1,7 +1,9 @@
 <div class="profile">
   <p class="profile-name">{{ name || nameDefault }}</p>
-  <ytube-client-button [width]="btnWidth" [height]="btnHeight">
-    <mat-icon class="profile-icon" svgIcon="profile-btn" aria-hidden="false" aria-label="Settings toggle button">
-    </mat-icon>
-  </ytube-client-button>
+  <div class="btn-wrapper">
+    <ytube-client-button>
+      <mat-icon class="profile-icon" svgIcon="profile-btn" aria-hidden="false" aria-label="Settings toggle button">
+      </mat-icon>
+    </ytube-client-button>
+  </div>
 </div>

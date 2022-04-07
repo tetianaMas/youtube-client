@@ -10,15 +10,11 @@
   height: 24px;
 
   @media screen and (max-width: $laptop) {
-    .search-form {
-      width: 70vw;
-    }
+    width: 70vw;
   }
 
   @media screen and (max-width: $tablet) {
-    .search-form {
-      width: 71.5vw;
-    }
+    width: 71.5vw;
   }
 }
 
@@ -30,7 +26,13 @@
   color: $input-text-color;
   background-color: $input-bg-color;
   border: none;
+
   &::placeholder {
     color: $input-text-color-placeholder;
   }
+}
+
+.btn-wrapper {
+  width: 80px;
+  height: 24px;
 }

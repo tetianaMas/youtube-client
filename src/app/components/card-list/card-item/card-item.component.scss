@@ -11,14 +11,6 @@
   background-color: $background-color;
   filter: $card-shadow;
   border-bottom: inset 5px $border-yellow-color;
-
-  &:hover {
-    cursor: pointer;
-
-    .btn {
-      background-color: $btn-color-hovered;
-    }
-  }
 }
 
 .red-border {
@@ -31,4 +23,9 @@
 
 .blue-border {
   border-color: $border-blue-color;
+}
+
+.btn-wrapper {
+  width: 120px;
+  height: 32px;
 }

@@ -10,11 +10,9 @@ enum AnimationState {
 }
 
 enum AnimationStateStyle {
-  up = '400ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-  down = '300ms 100ms ease-in',
+  up = '400ms linear',
+  down = '300ms 200ms linear',
 }
-
-const STYLE_PADDING = 50;
 
 @Component({
   selector: 'ytube-client-card-list',
@@ -22,23 +20,23 @@ const STYLE_PADDING = 50;
   styleUrls: ['./card-list.component.scss'],
   animations: [
     trigger('smoothMoving', [
-      state(AnimationState.up, style({ paddingTop: STYLE_PADDING })),
-      state(AnimationState.down, style({ paddingTop: 0 })),
+      state(AnimationState.up, style({ transform: 'translateY(10px)' })),
+      state(AnimationState.down, style({ transform: 'translateY(0)' })),
       transition(`${AnimationState.down} => ${AnimationState.up}`, [animate(AnimationStateStyle.up)]),
       transition(`${AnimationState.up} => ${AnimationState.down}`, [animate(AnimationStateStyle.down)]),
     ]),
   ],
 })
 export class CardListComponent {
-  @Input() public cards: Card[] = [];
+  @Input() cards: Card[] = [];
 
-  @Input() public sortParams: TSortType = SORT_DATA_DEFAULT;
+  @Input() sortParams: TSortType = SORT_DATA_DEFAULT;
 
-  @Input() public isFilterActive: boolean = false;
+  @Input() isFilterActive: boolean = false;
 
-  @Input() public filterPhrase: string = '';
+  @Input() filterPhrase: string = '';
 
-  public readonly cardListStateUp: string = AnimationState.up;
+  readonly cardListStateUp = AnimationState.up;
 
-  public readonly cardListStateDown: string = AnimationState.down;
+  readonly cardListStateDown = AnimationState.down;
 }

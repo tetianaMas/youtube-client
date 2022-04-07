@@ -3,11 +3,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TSortType } from 'src/app/shared/models/sortType.model';
 
 enum AnimationState {
-  active = 'active',
-  void = 'void',
+  enter = ':enter',
+  leave = ':leave',
 }
 
-const ANIMATION_STYLE: string = '300ms ease-in';
+enum AnimationStyle {
+  up = 'translateY(-10px)',
+  down = 'translateY(0)',
+}
+
+const ANIMATION_TIME = '500ms';
 
 @Component({
   selector: 'ytube-client-filters',
@@ -15,28 +20,11 @@ const ANIMATION_STYLE: string = '300ms ease-in';
   styleUrls: ['./filters.component.scss'],
   animations: [
     trigger('filtersShowing', [
-      transition(`${AnimationState.active} => ${AnimationState.void}`, [
-        style({
-          opacity: 1,
-        }),
-        animate(
-          ANIMATION_STYLE,
-          style({
-            opacity: 0,
-          }),
-        ),
+      transition(AnimationState.enter, [
+        style({ opacity: 0, transform: AnimationStyle.up }),
+        animate(ANIMATION_TIME, style({ opacity: 1, transform: AnimationStyle.down })),
       ]),
-      transition(`${AnimationState.void} => ${AnimationState.active}`, [
-        style({
-          opacity: 0,
-        }),
-        animate(
-          ANIMATION_STYLE,
-          style({
-            opacity: 1,
-          }),
-        ),
-      ]),
+      transition(AnimationState.leave, [animate(ANIMATION_TIME, style({ opacity: 0, transform: AnimationStyle.up }))]),
     ]),
   ],
 })
@@ -45,13 +33,13 @@ export class FiltersComponent {
 
   @Input() filterPhrase: string = '';
 
-  @Output() readonly sortBy = new EventEmitter();
+  @Output() readonly sortBy = new EventEmitter<TSortType>();
 
-  @Output() readonly filterBy = new EventEmitter();
+  @Output() readonly filterBy = new EventEmitter<string>();
 
-  animationStateActive = AnimationState.active;
+  animationStateEnter = AnimationState.enter;
 
-  animationStateVoid = AnimationState.void;
+  animationStateLeave = AnimationState.leave;
 
   onSort(event: TSortType) {
     this.sortBy.emit(event);

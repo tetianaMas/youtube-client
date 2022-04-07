@@ -11,27 +11,27 @@ import { SORT_DATA_DEFAULT } from './shared/constants';
   styleUrls: ['./ytube-client.component.scss'],
 })
 export class YtubeClientComponent {
-  public cards: Card[] = [];
+  cards: Card[] = [];
 
-  public isShowingFilters: boolean = false;
+  isShowingFilters: boolean = false;
 
-  public sortData: TSortType = SORT_DATA_DEFAULT;
+  sortData: TSortType = SORT_DATA_DEFAULT;
 
-  public filterPhrase: string = '';
+  filterPhrase: string = '';
 
-  public onToggleFilters(): void {
+  onToggleFilters(): void {
     this.isShowingFilters = !this.isShowingFilters;
   }
 
-  public onSetSortData(sortData: TSortType): void {
+  onSetSortData(sortData: TSortType): void {
     this.sortData = sortData;
   }
 
-  public onSetFilterPhrase(filterPhrase: string): void {
+  onSetFilterPhrase(filterPhrase: string): void {
     this.filterPhrase = filterPhrase;
   }
 
-  public onSearch(value: string): void {
+  onSearch(value: string): void {
     if (!this.cards.length && value.length) {
       this.cards = response.items.map((resItem: ISearchResponseItem) => new Card(resItem));
     }

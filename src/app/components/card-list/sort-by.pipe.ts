@@ -6,7 +6,7 @@ import { SortType, TSortType } from 'src/app/shared/models/sortType.model';
   name: 'sortBy',
 })
 export class SortByPipe implements PipeTransform {
-  public transform(cards: Card[], sortParams: TSortType): Card[] {
+  transform(cards: Card[], sortParams: TSortType): Card[] {
     if (cards.length <= 1 || sortParams.type === SortType.default) return cards;
 
     return sortParams.type === SortType.date

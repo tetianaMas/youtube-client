@@ -6,15 +6,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Output() public filtersToggle: EventEmitter<void> = new EventEmitter();
+  @Output() readonly filtersToggle: EventEmitter<void> = new EventEmitter();
 
-  @Output() public searchEmit: EventEmitter<string> = new EventEmitter();
+  @Output() readonly searchEmit: EventEmitter<string> = new EventEmitter();
 
-  public onToggleFilter(): void {
+  onToggleFilter(): void {
     this.filtersToggle.emit();
   }
 
-  public onSearch(value: string): void {
+  onSearch(value: string): void {
     this.searchEmit.emit(value);
   }
 }

@@ -5,10 +5,8 @@
   height: 50px;
 
   @media screen and (max-width: $laptop) {
-    .logo {
-      position: absolute;
-      top: -12px;
-      left: 7vw;
-    }
+    position: absolute;
+    top: -12px;
+    left: 7vw;
   }
 }

@@ -18,13 +18,13 @@ const MILLISECONDS_IN_DAY = 86400000;
   selector: '[ytubeClientDateStatusColor]',
 })
 export class DateStatusColorDirective implements AfterViewInit {
-  @Input('ytubeClientDateStatusColor') public statusColor: string = '';
+  @Input('ytubeClientDateStatusColor') statusColor: string = '';
 
   private readonly date: Date = new Date();
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) {}
 
-  public ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     if (!this.statusColor) return;
 
     const currentDate = new Date(this.statusColor.substring(0, 10));

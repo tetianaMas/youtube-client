@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./video-title.component.scss'],
 })
 export class VideoTitleComponent {
-  @Input() public title: string = '';
+  @Input() title: string = '';
 }

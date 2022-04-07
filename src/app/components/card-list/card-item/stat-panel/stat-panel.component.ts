@@ -18,7 +18,7 @@ enum Icons {
   styleUrls: ['./stat-panel.component.scss'],
 })
 export class StatPanelComponent {
-  @Input() public statistics: IStatistics | null = null;
+  @Input() statistics: IStatistics | null = null;
 
   icons = Icons;
 

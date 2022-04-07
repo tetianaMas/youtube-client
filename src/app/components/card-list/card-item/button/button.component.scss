@@ -1,8 +1,13 @@
 @import "../../../../../variables";
 @import "../../../../../mixins";
 
-.btn {
+:host {
   width: 100%;
+  height: 100%;
+}
+
+.btn {
+  min-width: 100%;
   height: 100%;
   padding: 0;
   @include font(400, 12px, 14px, $font-color-primary);
