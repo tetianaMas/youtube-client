@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from './auth/services/auth-guard.service';
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
+import { AuthGuardService } from './core/services/auth-guard.service';
 
 const routes: Routes = [
   {
     path: 'main',
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
+    canLoad: [AuthGuardService],
     canActivate: [AuthGuardService],
   },
   {
@@ -18,11 +18,16 @@ const routes: Routes = [
     redirectTo: 'main',
     pathMatch: 'full',
   },
-  { path: '**', component: PageNotFoundComponent },
+  {
+    path: '**',
+    loadChildren: () => import('./page-not-found/page-not-found.module').then((m) => m.PageNotFoundModule),
+    canLoad: [AuthGuardService],
+    canActivate: [AuthGuardService],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class YtubeClientRoutingModule {}

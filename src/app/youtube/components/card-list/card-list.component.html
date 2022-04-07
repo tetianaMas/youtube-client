@@ -1,4 +1,4 @@
-<div class="container" [@smoothMoving]="isFilterActive ? cardListStateUp : cardListStateDown">
+<div class="container" [@smoothMoving]="isFilterActive ? animationState.up : animationState.down">
   <mat-list class="card-list">
     <ytube-client-card-item *ngFor="let cardItem of cards | filterBy: filterPhrase | sortBy: sortParams"
       [card]="cardItem">

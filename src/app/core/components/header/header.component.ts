@@ -22,7 +22,7 @@ export class HeaderComponent {
     this.router.navigateByUrl('main');
   }
 
-  public onLogoClick(): void {
+  onLogoClick(): void {
     this.router.navigateByUrl('');
   }
 }

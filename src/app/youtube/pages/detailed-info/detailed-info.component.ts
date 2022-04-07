@@ -16,6 +16,8 @@ export class DetailedInfoComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private service: CardService) {}
 
   ngOnInit() {
-    this.card$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.service.getCard(params.get('id'))));
+    this.card$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => this.service.getCard(params.get('id') || '')),
+    );
   }
 }

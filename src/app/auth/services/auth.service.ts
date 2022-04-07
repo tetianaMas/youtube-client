@@ -8,20 +8,20 @@ const TOKEN_NAME = 'user-token';
   providedIn: 'any',
 })
 export class AuthService {
-  constructor(private storage: LocalstorageService, public router: Router) {}
+  constructor(private storage: LocalstorageService, private router: Router) {}
 
-  public isAuthenticated(): boolean {
+  isAuthenticated(): boolean {
     return !!this.storage.getItem<string>(TOKEN_NAME);
   }
 
-  public login(email: string = '', password: string = ''): void {
+  login(email: string = '', password: string = ''): void {
     const token = (Math.random() * (email.length + password.length || 1) * 10).toString(16);
 
     this.storage.setItem<string>(TOKEN_NAME, token);
   }
 
-  public logout(): void {
+  logout(): void {
     this.storage.removeItem(TOKEN_NAME);
-    this.router.navigateByUrl('login');
+    this.router.navigate(['login']);
   }
 }

@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
-  public form: FormGroup;
+  form: FormGroup;
 
   constructor(private authService: AuthService, private router: Router) {
     this.form = new FormGroup({
@@ -18,7 +18,7 @@ export class LoginPageComponent {
     });
   }
 
-  public login(): void {
+  login(): void {
     const value = this.form.value;
     this.authService.login(value.email, value.password);
     if (this.authService.isAuthenticated()) {

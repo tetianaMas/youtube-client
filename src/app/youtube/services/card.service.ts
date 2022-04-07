@@ -12,11 +12,11 @@ export class CardService {
     this.cards = response.items.map((item: ISearchResponseItem) => new Card(item));
   }
 
-  public getCards(): Observable<Card[]> {
+  getCards(): Observable<Card[]> {
     return of(this.cards);
   }
 
-  public getCard(id: string | null = ''): Observable<Card | void> {
+  getCard(id: string): Observable<Card | void> {
     return this.getCards().pipe(map((cards: Card[]) => cards.find((card) => card.id === id)));
   }
 }

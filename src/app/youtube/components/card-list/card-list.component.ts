@@ -22,8 +22,8 @@ enum AnimationStateStyle {
   styleUrls: ['./card-list.component.scss'],
   animations: [
     trigger('smoothMoving', [
-      state(AnimationState.up, style({ transform: 'translateY(10px)' })),
-      state(AnimationState.down, style({ transform: 'translateY(0)' })),
+      state(AnimationState.up, style({ transform: 'translateY(0)' })),
+      state(AnimationState.down, style({ transform: 'translateY(10px)' })),
       transition(`${AnimationState.down} => ${AnimationState.up}`, [animate(AnimationStateStyle.up)]),
       transition(`${AnimationState.up} => ${AnimationState.down}`, [animate(AnimationStateStyle.down)]),
     ]),
@@ -38,9 +38,7 @@ export class CardListComponent {
 
   @Input() filterPhrase: string = '';
 
-  readonly cardListStateUp = AnimationState.up;
-
-  readonly cardListStateDown = AnimationState.down;
+  readonly animationState = AnimationState;
 
   constructor() {
     this.cards = response.items.map((item: ISearchResponseItem) => new Card(item));

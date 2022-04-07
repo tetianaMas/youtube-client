@@ -20,7 +20,7 @@ export class ProfilePanelComponent {
     iconRegistry.addSvgIcon('profile-btn', sanitizer.bypassSecurityTrustResourceUrl(ICON_PROFILE_PATH));
   }
 
-  public onClick(): void {
+  onClick(): void {
     this.router.navigate(['login']);
   }
 }

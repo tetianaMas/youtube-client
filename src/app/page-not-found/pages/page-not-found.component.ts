@@ -10,7 +10,7 @@ const ICON_NOT_FOUND_PATH = './assets/icons/page-not-found-icon.svg';
   styleUrls: ['./page-not-found.component.scss'],
 })
 export class PageNotFoundComponent {
-  public readonly notFoundIcon: string = 'not-found';
+  readonly notFoundIcon: string = 'not-found';
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(this.notFoundIcon, sanitizer.bypassSecurityTrustResourceUrl(ICON_NOT_FOUND_PATH));
