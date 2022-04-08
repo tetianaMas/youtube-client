@@ -1,7 +1,7 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FiltersService } from 'src/app/core/services/filters.service';
+import { FiltersService } from 'src/app/youtube/services/filters.service';
 
 enum AnimationState {
   enter = ':enter',

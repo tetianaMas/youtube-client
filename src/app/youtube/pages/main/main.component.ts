@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Card } from 'src/app/shared/models/card.model';
-import { YoutubeService } from 'src/app/core/services/youtube.service';
+import { YoutubeService } from 'src/app/youtube/services/youtube.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 

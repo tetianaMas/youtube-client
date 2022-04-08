@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CardsResolver } from '../core/resolvers/cards.resolver';
+import { CardsResolver } from './resolvers/cards.resolver';
 import { DetailedInfoComponent } from './pages/detailed-info/detailed-info.component';
 import { MainPageComponent } from './pages/main/main.component';
 

@@ -1,0 +1,31 @@
+@import "../../../../../variables";
+@import "../../../../../mixins";
+
+.filters-sort {
+  @include flex-sp-between;
+
+  max-width: 100%;
+  width: 190px;
+  margin-right: 20px;
+
+  @media screen and (max-width: $mobile) {
+    margin-bottom: 10px;
+  }
+}
+
+.filters-sort-text {
+  @include font(400, 12px, 14px, $input-text-color-placeholder);
+
+  margin: 0;
+}
+
+.filters-sort-btn {
+  @include font(400, 12px, 14px, $btn-color);
+
+  padding: 0;
+  min-width: auto;
+}
+
+.filters-sort-active {
+  text-decoration-line: underline;
+}
