@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { ActivatedRoute, Data } from '@angular/router';
 import { Card } from 'src/app/shared/models/card.model';
-import { YoutubeService } from 'src/app/core/services/youtube.service';
 
 @Component({
   selector: 'ytube-client-detailed-info',
@@ -12,11 +10,11 @@ import { YoutubeService } from 'src/app/core/services/youtube.service';
 export class DetailedInfoComponent implements OnInit {
   card: Card | null = null;
 
-  constructor(private route: ActivatedRoute, private router: Router, private service: YoutubeService) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.paramMap
-      .pipe(map((params: ParamMap) => this.service.getCardById(params.get('id') || '')))
-      .subscribe((card) => (this.card = card));
+    this.route.data.subscribe((data: Data) => {
+      this.card = data['card'];
+    });
   }
 }

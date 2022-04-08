@@ -23,8 +23,13 @@ export class SearchPanelComponent {
   constructor(private youtubeservice: YoutubeService, private router: Router) {}
 
   onSearch(): void {
-    this.youtubeservice.searchCards(this.seachInput.trim());
+    const searchVal = this.seachInput.trim();
+    if (!searchVal) {
+      return;
+    }
+    const params = { queryParams: { search: searchVal } };
+    this.router.navigate(['main'], params);
+    this.youtubeservice.searchCards(searchVal);
     this.seachInput = '';
-    this.router.navigate(['main']);
   }
 }

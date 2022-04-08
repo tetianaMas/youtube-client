@@ -8,20 +8,28 @@ import { Subject } from 'rxjs';
 export class YoutubeService {
   private cards: Card[] = [];
 
-  public cards$ = new Subject<Card[]>();
+  cards$: Subject<Card[]>;
+
+  constructor() {
+    this.cards$ = new Subject<Card[]>();
+  }
 
   searchCards(query: string): void {
     if (query) {
-      this.cards = response.items.map((item: ISearchResponseItem) => new Card(item));
-      this.cards$.next(this.cards);
+      this.allCards = response.items.map((item: ISearchResponseItem) => new Card(item));
+      this.cards$.next(this.allCards);
     }
   }
 
   getCardById(id: string = ''): Card | null {
-    return this.cards.length ? this.cards.find((card) => card.id === id) || null : null;
+    return (this.allCards.length && this.allCards.find((card) => card.id === id)) || null;
   }
 
   get allCards(): Card[] {
     return this.cards;
+  }
+
+  private set allCards(cards: Card[]) {
+    this.cards = cards;
   }
 }

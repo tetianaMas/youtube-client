@@ -24,10 +24,6 @@ export class AuthService {
     this.state$ = new BehaviorSubject<TUserState>(this.state);
   }
 
-  isAuthenticated(): boolean {
-    return !!this.state.token;
-  }
-
   login(name: string = '', password: string = ''): void {
     const token = this.getGeneratedToken(name + password);
     this.state = {
@@ -43,6 +39,10 @@ export class AuthService {
     this.router.navigate(['login']);
   }
 
+  isAuthenticated(): boolean {
+    return !!this.state.token;
+  }
+
   private getGeneratedToken(randomStr: string): string {
     return (Math.random() + (randomStr.length || 1)).toString(36).substring(2);
   }
@@ -53,6 +53,5 @@ export class AuthService {
 
   private set state(stateCur: TUserState) {
     this.storage.setItem<TUserState>(USER_STATE_KEY, stateCur);
-    this.stateValue = stateCur;
   }
 }

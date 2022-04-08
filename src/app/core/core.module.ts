@@ -8,14 +8,15 @@ import { SearchPanelComponent } from './components/search-panel/search-panel.com
 import { ProfilePanelComponent } from './components/profile-panel/profile-panel.component';
 import { SettingsButtonComponent } from './components/settings-button/settings-button.component';
 import { LogoComponent } from './components/logo/logo.component';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuardService } from './guards/auth-guard.service';
 import { YoutubeService } from './services/youtube.service';
 import { LocalstorageService } from './services/localstorage.service';
+import { CardsResolver } from './resolvers/cards.resolver';
 
 @NgModule({
   declarations: [HeaderComponent, SearchPanelComponent, ProfilePanelComponent, SettingsButtonComponent, LogoComponent],
   imports: [CommonModule, SharedModule, HttpClientModule],
   exports: [HeaderComponent],
-  providers: [YoutubeService, AuthGuardService, LocalstorageService],
+  providers: [CardsResolver, YoutubeService, AuthGuardService, LocalstorageService],
 })
 export class CoreModule {}
