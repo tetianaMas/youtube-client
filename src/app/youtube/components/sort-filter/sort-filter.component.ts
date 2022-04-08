@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { FiltersService } from 'src/app/core/services/filters.service';
 import { SortType, TSortType } from '../../models/sortType.model';
 
 @Component({
@@ -6,18 +8,31 @@ import { SortType, TSortType } from '../../models/sortType.model';
   templateUrl: './sort-filter.component.html',
   styleUrls: ['./sort-filter.component.scss'],
 })
-export class SortFilterComponent {
+export class SortFilterComponent implements OnInit, OnDestroy {
   @Output() readonly sortBy = new EventEmitter<TSortType>();
 
-  sortType: SortType = SortType.default;
-
-  private isAscendingOrder: boolean = true;
+  sortParams: TSortType = {
+    type: SortType.default,
+    isAscendingOrder: true,
+  };
 
   sortTypeEnum = SortType;
 
+  subs = Subscription.EMPTY;
+
+  constructor(private filtersService: FiltersService) {}
+
+  ngOnInit(): void {
+    this.subs = this.filtersService.sortParams$.subscribe((value) => (this.sortParams = value));
+  }
+
   onSort(type: SortType): void {
-    this.isAscendingOrder = this.sortType === type ? !this.isAscendingOrder : true;
-    this.sortType = type;
-    this.sortBy.emit({ type: this.sortType, isAscendingOrder: this.isAscendingOrder });
+    this.sortParams.isAscendingOrder = this.sortParams.type === type ? !this.sortParams.isAscendingOrder : true;
+    this.sortParams.type = type;
+    this.filtersService.setSortParams(this.sortParams);
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

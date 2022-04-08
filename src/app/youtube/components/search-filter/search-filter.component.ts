@@ -1,16 +1,28 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { FiltersService } from 'src/app/core/services/filters.service';
 
 @Component({
   selector: 'ytube-client-search-filter',
   templateUrl: './search-filter.component.html',
   styleUrls: ['./search-filter.component.scss'],
 })
-export class SearchFilterComponent {
-  @Input() inputValue: string = '';
+export class SearchFilterComponent implements OnInit, OnDestroy {
+  inputValue: string = '';
 
-  @Output() readonly filterBy = new EventEmitter<string>();
+  subs = Subscription.EMPTY;
+
+  constructor(private filtersService: FiltersService) {}
+
+  ngOnInit(): void {
+    this.subs = this.filtersService.filterParams$.subscribe((value) => (this.inputValue = value));
+  }
 
   onFilter(): void {
-    this.filterBy.emit(this.inputValue.trim());
+    this.filtersService.setFilterParams(this.inputValue.trim());
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

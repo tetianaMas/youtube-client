@@ -1,6 +1,7 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TSortType } from '../../models/sortType.model';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { FiltersService } from 'src/app/core/services/filters.service';
 
 enum AnimationState {
   enter = ':enter',
@@ -28,25 +29,22 @@ const ANIMATION_TIME = '500ms';
     ]),
   ],
 })
-export class FiltersComponent {
-  @Input() isActive: boolean = false;
+export class FiltersComponent implements OnInit, OnDestroy {
+  subs = Subscription.EMPTY;
 
-  @Input() filterPhrase: string = '';
-
-  @Output() readonly sortBy = new EventEmitter<TSortType>();
-
-  @Output() readonly filterBy = new EventEmitter<string>();
+  isActive: boolean = false;
 
   animationStateEnter = AnimationState.enter;
 
   animationStateLeave = AnimationState.leave;
 
-  onSort(event: TSortType) {
-    this.sortBy.emit(event);
+  constructor(private filtersService: FiltersService) {}
+
+  ngOnInit(): void {
+    this.subs = this.filtersService.isFiltersShown$.subscribe((isShown) => (this.isActive = isShown));
   }
 
-  onFilter(value: string) {
-    this.filterPhrase = value;
-    this.filterBy.emit(value);
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

@@ -12,11 +12,12 @@ import { AuthGuardService } from './guards/auth-guard.service';
 import { YoutubeService } from './services/youtube.service';
 import { LocalstorageService } from './services/localstorage.service';
 import { CardsResolver } from './resolvers/cards.resolver';
+import { FiltersService } from './services/filters.service';
 
 @NgModule({
   declarations: [HeaderComponent, SearchPanelComponent, ProfilePanelComponent, SettingsButtonComponent, LogoComponent],
   imports: [CommonModule, SharedModule, HttpClientModule],
   exports: [HeaderComponent],
-  providers: [CardsResolver, YoutubeService, AuthGuardService, LocalstorageService],
+  providers: [CardsResolver, YoutubeService, AuthGuardService, LocalstorageService, FiltersService],
 })
 export class CoreModule {}
