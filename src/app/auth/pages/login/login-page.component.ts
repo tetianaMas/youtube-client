@@ -27,7 +27,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   onLogin(): void {
     const value = this.form.value;
-    if (this.form.valid) this.authService.login(value.login, value.password);
+    if (value.login && value.password && this.form.valid) this.authService.login(value.login, value.password);
   }
 
   ngOnDestroy() {
