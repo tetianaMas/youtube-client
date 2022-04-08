@@ -1,4 +1,5 @@
 @import "../../../../variables";
+@import "../../../../mixins";
 
 .card {
   display: flex;
@@ -13,17 +14,7 @@
   border-bottom: inset 5px $border-yellow-color;
 }
 
-.red-border {
-  border-color: $border-red-color;
-}
-
-.green-border {
-  border-color: $border-green-color;
-}
-
-.blue-border {
-  border-color: $border-blue-color;
-}
+@include card-borders();
 
 .btn-wrapper {
   width: 120px;

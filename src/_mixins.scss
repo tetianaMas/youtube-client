@@ -13,3 +13,17 @@
   line-height: $line-height;
   color: $color;
 }
+
+@mixin card-borders() {
+  .red-border {
+    border-color: $border-red-color;
+  }
+
+  .green-border {
+    border-color: $border-green-color;
+  }
+
+  .blue-border {
+    border-color: $border-blue-color;
+  }
+}

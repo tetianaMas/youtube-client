@@ -9,7 +9,7 @@ import { CardItemComponent } from './components/card-item/card-item.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { SortFilterComponent } from './components/sort-filter/sort-filter.component';
 import { SearchFilterComponent } from './components/search-filter/search-filter.component';
-import { DateStatusColorDirective } from './components/card-item/date-status-color.directive';
+import { DateStatusColorDirective } from './shared/date-status-color.directive';
 import { SortByPipe } from './components/card-list/sort-by.pipe';
 import { FilterByPipe } from './components/card-list/filter-by.pipe';
 import { VideoThumbnailComponent } from './components/video-thumbnail/video-thumbnail.component';

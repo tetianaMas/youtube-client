@@ -18,7 +18,7 @@ export class Card {
     this.imgUrl = responseItem.snippet.thumbnails;
     this.title = responseItem.snippet.title.slice(0, 45).trim();
     this.publishedAt = responseItem.snippet.publishedAt;
-    this.description = responseItem.snippet.description;
+    this.description = responseItem.snippet.description.slice(0, 200).trim();
     this.statistics = responseItem.statistics;
   }
 }

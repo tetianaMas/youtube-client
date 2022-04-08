@@ -1,17 +1,24 @@
 <div class="container">
+  <div class="btn-back">
+    <ytube-client-button [radius]="btnRadius" (click)="onBackBtnClick()">
+      <div class="btn-back-icon"></div>
+    </ytube-client-button>
+  </div>
   <div class="card" *ngIf="card">
     <div class="card-img">
-      <img [src]="card?.imgUrl?.high?.url" alt="Youtube video image.">
+      <img class="img" [src]="card?.imgUrl?.high?.url" alt="Youtube video image.">
     </div>
 
-    <div class="card-info">
+    <div class="card-info" [ytubeClientDateStatusColor]="card?.publishedAt || ''">
       <h2 class="card-title">{{ card?.title }}</h2>
-      <span class="card-date">{{ card?.publishedAt | date }}</span>
-      <p class="card-descr">
-        <span class="desrc-title">Description:</span>
-        {{ card?.description }}
-      </p>
-      <ytube-client-stat-panel [statistics]="card?.statistics || null"></ytube-client-stat-panel>
+      <span class="card-date">{{ card?.publishedAt | date: 'EEEE, MMMM d, y'}}</span>
+      <div class="card-descr">
+        <span class="descr-title">Description:</span>
+        <p class="descr-text">{{ card?.description }}</p>
+      </div>
+      <div class="card-stat">
+        <ytube-client-stat-panel [statistics]="card?.statistics || null"></ytube-client-stat-panel>
+      </div>
     </div>
   </div>
 </div>

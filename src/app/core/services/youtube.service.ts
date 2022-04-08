@@ -3,6 +3,9 @@ import { Card } from 'src/app/shared/models/card.model';
 import { response } from 'src/app/shared/mocks/response-mock';
 import { ISearchResponseItem } from 'src/app/shared/models/search-response.model';
 import { Subject } from 'rxjs';
+import { LocalstorageService } from './localstorage.service';
+
+const CARDS_KEY = 'cards';
 
 @Injectable()
 export class YoutubeService {
@@ -10,14 +13,15 @@ export class YoutubeService {
 
   cards$: Subject<Card[]>;
 
-  constructor() {
+  constructor(private localStorage: LocalstorageService) {
     this.cards$ = new Subject<Card[]>();
   }
 
   searchCards(query: string): void {
     if (query) {
-      this.allCards = response.items.map((item: ISearchResponseItem) => new Card(item));
-      this.cards$.next(this.allCards);
+      this.cards = response.items.map((item: ISearchResponseItem) => new Card(item));
+      this.localStorage.setItem<Card[]>(CARDS_KEY, this.cards);
+      this.cards$.next(this.cards);
     }
   }
 
@@ -26,10 +30,6 @@ export class YoutubeService {
   }
 
   get allCards(): Card[] {
-    return this.cards;
-  }
-
-  private set allCards(cards: Card[]) {
-    this.cards = cards;
+    return this.localStorage.getItem<Card[]>(CARDS_KEY) || this.cards;
   }
 }

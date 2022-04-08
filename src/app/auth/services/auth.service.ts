@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   logout(): void {
-    this.storage.removeItem(USER_STATE_KEY);
+    this.storage.clear();
     this.state$.next(this.state);
     this.router.navigate(['login']);
   }
