@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardItemComponent } from './components/card-list/card-item/card-item.component';
@@ -38,7 +39,6 @@ import { DetailedCardComponent } from './components/detailed-card/detailed-card.
     DetailedInfoComponent,
     DetailedCardComponent,
   ],
-  imports: [CommonModule, SharedModule, YoutubeRoutingModule, HttpClientModule],
-  exports: [MainPageComponent, DetailedInfoComponent],
+  imports: [CommonModule, SharedModule, FormsModule, YoutubeRoutingModule, HttpClientModule],
 })
 export class YoutubeModule {}

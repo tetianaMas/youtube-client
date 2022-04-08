@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './components/header/header.component';
 import { SearchPanelComponent } from './components/header/search-panel/search-panel.component';
@@ -13,7 +14,7 @@ import { LocalstorageService } from './services/localstorage.service';
 
 @NgModule({
   declarations: [HeaderComponent, SearchPanelComponent, ProfilePanelComponent, SettingsButtonComponent, LogoComponent],
-  imports: [CommonModule, SharedModule, HttpClientModule],
+  imports: [CommonModule, SharedModule, HttpClientModule, FormsModule],
   exports: [HeaderComponent],
   providers: [AuthGuardService, LocalstorageService],
 })

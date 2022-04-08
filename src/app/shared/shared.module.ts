@@ -8,6 +8,6 @@ import { ButtonComponent } from './components/button/button.component';
 @NgModule({
   declarations: [ButtonComponent],
   imports: [CommonModule, MaterialModule, FormsModule],
-  exports: [MaterialModule, FormsModule, ButtonComponent],
+  exports: [MaterialModule, ButtonComponent],
 })
 export class SharedModule {}
