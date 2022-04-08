@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Card } from 'src/app/shared/models/card.model';
-import { Router } from '@angular/router';
 
 const BUTTON_TEXT = 'more...';
 
@@ -14,9 +13,7 @@ export class CardItemComponent {
 
   readonly btnText: string = BUTTON_TEXT;
 
-  constructor(private router: Router) {}
-
-  onClick(): void {
-    this.router.navigate(['main', this.card?.id]);
+  get currentRoute(): string {
+    return `${this.card?.id}`;
   }
 }
