@@ -1,10 +1,9 @@
 <div class="filters-sort">
   <p class="filters-sort-text">Sorting by:</p>
-  <button mat-button class="filters-sort-btn"
-    [ngClass]="{ 'filters-sort-active': sortParams.type === sortTypeEnum.date }"
-    (click)="onSort(sortTypeEnum.date)">date</button>
-  <button mat-button class="filters-sort-btn"
-    [ngClass]="{ 'filters-sort-active': sortParams.type === sortTypeEnum.viewCount }"
-    (click)="onSort(sortTypeEnum.viewCount)">count of
-    views</button>
+  <ytube-client-sort-filter-button [textBtn]="'date'" [currType]="sortTypeEnum.date" [sortType]="sortParams.type"
+    (sort)="onSort($event)">
+  </ytube-client-sort-filter-button>
+  <ytube-client-sort-filter-button [textBtn]="'count of views'" [currType]="sortTypeEnum.viewCount"
+    [sortType]="sortParams.type" (sort)="onSort($event)">
+  </ytube-client-sort-filter-button>
 </div>

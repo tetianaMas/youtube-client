@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { QUERY_KEY } from 'src/app/shared/constants';
 import { YoutubeService } from 'src/app/youtube/services/youtube.service';
 
 const BTN_TEXT: string = 'search';
@@ -18,6 +19,8 @@ export class SearchPanelComponent {
 
   readonly placeholderText = INPUT_PLACEHOLDER_TEXT;
 
+  @Input() isUserLoggedIn: boolean = false;
+
   seachInput: string = '';
 
   constructor(private youtubeservice: YoutubeService, private router: Router) {}
@@ -27,7 +30,7 @@ export class SearchPanelComponent {
     if (!searchVal) {
       return;
     }
-    const params = { queryParams: { search: searchVal } };
+    const params = { queryParams: { [QUERY_KEY]: searchVal } };
     this.router.navigate(['main'], params);
     this.youtubeservice.searchCards(searchVal);
     this.seachInput = '';

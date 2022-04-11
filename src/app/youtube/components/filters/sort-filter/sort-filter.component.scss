@@ -18,14 +18,3 @@
 
   margin: 0;
 }
-
-.filters-sort-btn {
-  @include font(400, 12px, 14px, $btn-color);
-
-  padding: 0;
-  min-width: auto;
-}
-
-.filters-sort-active {
-  text-decoration-line: underline;
-}

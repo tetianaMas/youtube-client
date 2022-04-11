@@ -1,8 +1,8 @@
 <div class="profile">
-  <p class="profile-name" [textContent]="userName"></p>
+  <p class="profile-name" [textContent]="isUserLoggedIn ? userName:''"></p>
   <div class="btn-wrapper">
     <ytube-client-button>
-      <mat-icon class="profile-icon" svgIcon="profile-btn" aria-hidden="false" aria-label="Settings toggle button">
+      <mat-icon class="profile-icon" svgIcon="profile-btn" aria-hidden="false" aria-label="Go to my profile button">
       </mat-icon>
     </ytube-client-button>
   </div>

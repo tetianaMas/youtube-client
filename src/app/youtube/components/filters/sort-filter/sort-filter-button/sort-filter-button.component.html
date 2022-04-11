@@ -1,0 +1,2 @@
+<button mat-button class="filters-sort-btn" [ngClass]="{ 'filters-sort-active': sortType === sortTypeEnum[currType] }"
+  (click)="onSort(sortTypeEnum[currType])">{{textBtn}}</button>

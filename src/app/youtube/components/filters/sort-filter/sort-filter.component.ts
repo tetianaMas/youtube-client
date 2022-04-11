@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FiltersService } from 'src/app/youtube/services/filters.service';
 import { SortType, TSortType } from '../../../models/sortType.model';
@@ -9,8 +9,6 @@ import { SortType, TSortType } from '../../../models/sortType.model';
   styleUrls: ['./sort-filter.component.scss'],
 })
 export class SortFilterComponent implements OnInit, OnDestroy {
-  @Output() readonly sortBy = new EventEmitter<TSortType>();
-
   sortParams: TSortType = {
     type: SortType.default,
     isAscendingOrder: true,
@@ -27,6 +25,7 @@ export class SortFilterComponent implements OnInit, OnDestroy {
   }
 
   onSort(type: SortType): void {
+    console.log(type, this.sortParams.type);
     this.sortParams.isAscendingOrder = this.sortParams.type === type ? !this.sortParams.isAscendingOrder : true;
     this.sortParams.type = type;
     this.filtersService.setSortParams(this.sortParams);

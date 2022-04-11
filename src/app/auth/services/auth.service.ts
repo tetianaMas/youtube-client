@@ -4,7 +4,6 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { LocalstorageService } from 'src/app/core/services/localstorage.service';
 
 const USER_STATE_KEY = 'user-state';
-const NAME_DEFAULT = 'Your name';
 
 type TUserState = {
   token: string;
@@ -15,7 +14,7 @@ type TUserState = {
 export class AuthService {
   private stateValue: TUserState = {
     token: '',
-    name: NAME_DEFAULT,
+    name: '',
   };
 
   state$: Subject<TUserState>;

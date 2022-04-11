@@ -1,4 +1,4 @@
-<div class="btn-wrapper">
+<div class="btn-wrapper" *ngIf="isUserLoggedIn">
   <ytube-client-button (click)="onToggleFiltersPanel()">
     <mat-icon class="btn-icon" svgIcon="settings-btn" aria-hidden="false" aria-label="Settings toggle button">
     </mat-icon>

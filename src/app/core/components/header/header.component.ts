@@ -1,21 +1,34 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'ytube-client-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
-  @Output() readonly filtersToggle = new EventEmitter<void>();
+export class HeaderComponent implements OnInit, OnDestroy {
+  private subs: Subscription = Subscription.EMPTY;
 
-  constructor(private router: Router) {}
+  userName: string = '';
 
-  onToggleFilter(): void {
-    this.filtersToggle.emit();
+  isUserLoggedIn: boolean = false;
+
+  constructor(private router: Router, private authSrvice: AuthService) {}
+
+  ngOnInit(): void {
+    this.subs = this.authSrvice.state$.subscribe((state) => {
+      this.isUserLoggedIn = !!state.token;
+      this.userName = state.name;
+    });
   }
 
-  onLogoClick(): void {
-    this.router.navigate(['main']);
+  onLogoutClick(): void {
+    this.authSrvice.logout();
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }

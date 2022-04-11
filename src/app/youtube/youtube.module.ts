@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from '../shared/material.module';
 
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardItemComponent } from './components/card-list/card-item/card-item.component';
@@ -20,6 +21,7 @@ import { StatPanelItemComponent } from './components/card-list/card-item/stat-pa
 import { MainPageComponent } from './pages/main/main.component';
 import { DetailedInfoComponent } from './pages/detailed-info/detailed-info.component';
 import { DetailedCardComponent } from './components/detailed-card/detailed-card.component';
+import { SortFilterButtonComponent } from './components/filters/sort-filter/sort-filter-button/sort-filter-button.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { DetailedCardComponent } from './components/detailed-card/detailed-card.
     MainPageComponent,
     DetailedInfoComponent,
     DetailedCardComponent,
+    SortFilterButtonComponent,
   ],
-  imports: [CommonModule, SharedModule, FormsModule, YoutubeRoutingModule, HttpClientModule],
+  imports: [CommonModule, SharedModule, FormsModule, YoutubeRoutingModule, HttpClientModule, MaterialModule],
 })
 export class YoutubeModule {}

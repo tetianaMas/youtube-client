@@ -1,3 +1,4 @@
+import { CARD_DESC_SIZE, CARD_TITLE_SIZE } from '../constants';
 import { ISearchResponseItem, IStatistics, IThumbnail } from './search-response.model';
 
 export class Card {
@@ -16,9 +17,9 @@ export class Card {
   constructor(responseItem: ISearchResponseItem) {
     this.id = responseItem.id;
     this.imgUrl = responseItem.snippet.thumbnails;
-    this.title = responseItem.snippet.title.slice(0, 45).trim();
+    this.title = responseItem.snippet.title.slice(0, CARD_TITLE_SIZE).trim();
     this.publishedAt = responseItem.snippet.publishedAt;
-    this.description = responseItem.snippet.description.slice(0, 200).trim();
+    this.description = responseItem.snippet.description.slice(0, CARD_DESC_SIZE).trim();
     this.statistics = responseItem.statistics;
   }
 }

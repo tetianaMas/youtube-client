@@ -1,9 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth/services/auth.service';
-import { Subscription } from 'rxjs';
 
 const LOGOUT_BTN_TEXT = 'Logout';
 const ICON_PROFILE_PATH = './assets/icons/profile-button-icon.svg';
@@ -13,37 +10,20 @@ const ICON_PROFILE_PATH = './assets/icons/profile-button-icon.svg';
   templateUrl: './profile-panel.component.html',
   styleUrls: ['./profile-panel.component.scss'],
 })
-export class ProfilePanelComponent implements OnInit, OnDestroy {
+export class ProfilePanelComponent {
   readonly logutBtnText = LOGOUT_BTN_TEXT;
 
-  private subs: Subscription | null = null;
+  @Input() isUserLoggedIn: boolean = false;
 
-  userName: string = '';
+  @Input() userName: string = '';
 
-  isUserLoggedIn: boolean = false;
+  @Output() readonly logout = new EventEmitter<void>();
 
-  constructor(
-    iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer,
-    private router: Router,
-    private authSrvice: AuthService,
-  ) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('profile-btn', sanitizer.bypassSecurityTrustResourceUrl(ICON_PROFILE_PATH));
   }
 
-  ngOnInit(): void {
-    this.subs = this.authSrvice.state$.subscribe((state) => {
-      this.isUserLoggedIn = !!state.token;
-      this.userName = state.name;
-    });
-  }
-
-  onLogoutClick(): void {
-    this.authSrvice.logout();
-    this.router.navigate(['login']);
-  }
-
-  ngOnDestroy() {
-    this.subs?.unsubscribe();
+  onLogoutClick() {
+    this.logout.emit();
   }
 }

@@ -3,6 +3,7 @@ import { Card } from 'src/app/shared/models/card.model';
 import { YoutubeService } from 'src/app/youtube/services/youtube.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { QUERY_KEY } from 'src/app/shared/constants';
 
 @Component({
   selector: 'ytube-client-main',
@@ -20,7 +21,9 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subsService = this.youtubeService.cards$.subscribe((cards) => (this.cards = cards));
-    this.subsRoute = this.route.queryParams.subscribe(({ search }) => this.youtubeService.searchCards(search));
+    this.subsRoute = this.route.queryParams.subscribe(({ [QUERY_KEY]: search }) =>
+      this.youtubeService.searchCards(search),
+    );
   }
 
   ngOnDestroy(): void {

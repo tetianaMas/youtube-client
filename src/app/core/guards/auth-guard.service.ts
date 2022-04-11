@@ -15,10 +15,11 @@ export class AuthGuardService implements CanActivate, CanLoad {
   }
 
   handleUserAuth(): boolean {
-    if (!this.auth.isAuthenticated()) {
+    const isAuthenticated = this.auth.isAuthenticated();
+    if (!isAuthenticated) {
       this.router.navigate(['login']);
-      return false;
     }
-    return true;
+
+    return isAuthenticated;
   }
 }

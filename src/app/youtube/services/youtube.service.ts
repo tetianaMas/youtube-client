@@ -20,11 +20,12 @@ export class YoutubeService {
   }
 
   searchCards(query: string): void {
-    if (query) {
-      this.cards = response.items.map((item: ISearchResponseItem) => new Card(item));
-      this.localStorage.setItem<Card[]>(CARDS_KEY, this.cards);
-      this.cards$.next(this.cards);
+    if (!query) {
+      return;
     }
+    this.cards = response.items.map((item: ISearchResponseItem) => new Card(item));
+    this.localStorage.setItem<Card[]>(CARDS_KEY, this.cards);
+    this.cards$.next(this.cards);
   }
 
   getCardById(id: string = ''): Card | null {

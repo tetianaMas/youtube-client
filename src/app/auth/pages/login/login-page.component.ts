@@ -16,8 +16,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private router: Router) {
     this.form = new FormGroup({
-      login: new FormControl('', Validators.minLength(2)),
-      password: new FormControl('', Validators.minLength(8)),
+      login: new FormControl('', [Validators.minLength(2), Validators.required]),
+      password: new FormControl('', [Validators.minLength(8), Validators.required]),
     });
   }
 
@@ -27,7 +27,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   onLogin(): void {
     const value = this.form.value;
-    if (value.login && value.password && this.form.valid) this.authService.login(value.login, value.password);
+    if (this.form.valid) this.authService.login(value.login, value.password);
   }
 
   ngOnDestroy() {
