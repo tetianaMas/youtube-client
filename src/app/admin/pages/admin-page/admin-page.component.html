@@ -1,24 +1,27 @@
 <div class="container">
-  <ytube-client-custom-form [form]="form" [title]="'Create new card'" (submit)="onSubmit()">
+  <ytube-client-custom-form [form]="form" [title]="formTitle" (submit)="onSubmit()">
 
-    <ytube-client-form-field [parentForm]="form" [name]="'title'" [label]="'title'" [errors]="errors['title']">
-    </ytube-client-form-field>
+    <ytube-client-form-input-text [control]="title" [name]="'title'" [label]="'Title'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [field]="title" [errors]="errors['title']"></ytube-client-form-error>
 
-    <ytube-client-form-field [parentForm]="form" [name]="'description'" [label]="'description'"
-      [errors]="errors['description']">
-    </ytube-client-form-field>
+    <ytube-client-form-input-text [control]="description" [name]="'description'" [label]="'Description'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [field]="description" [errors]="errors['description']"></ytube-client-form-error>
 
-    <ytube-client-form-field [parentForm]="form" [name]="'img'" [label]="'image'" [errors]="errors['img']">
-    </ytube-client-form-field>
+    <ytube-client-form-input-text [control]="img" [name]="'img'" [label]="'Image link'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [field]="img" [errors]="errors['img']"></ytube-client-form-error>
 
-    <ytube-client-form-field [parentForm]="form" [name]="'linkVideo'" [label]="'link video'"
-      [errors]="errors['linkVideo']">
-    </ytube-client-form-field>
+    <ytube-client-form-input-text [control]="linkVideo" [name]="'linkVideo'" [label]="'Video link'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [field]="linkVideo" [errors]="errors['linkVideo']"></ytube-client-form-error>
 
-    <ytube-client-form-field [parentForm]="form" [name]="'dateCreation'" [label]="'date creation'" [type]="'date'"
-      [errors]="errors['dateCreation']">
-    </ytube-client-form-field>
+    <ytube-client-form-input-text [control]="dateCreation" [type]="'date'" [name]="'dateCreation'"
+      [label]="'Date creation'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [field]="dateCreation" [errors]="errors['dateCreation']"></ytube-client-form-error>
 
-    <ytube-client-button [disabled]="!form.valid">Create card</ytube-client-button>
+    <ytube-client-form-button [isBtnDisabled]="!form.valid" [btnText]="'Create new card'"></ytube-client-form-button>
   </ytube-client-custom-form>
 </div>

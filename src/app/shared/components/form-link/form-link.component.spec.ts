@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomFormButtonsComponent } from './custom-form-buttons.component';
+import { FormLinkComponent } from './form-link.component';
 
-describe('CustomFormButtonsComponent', () => {
-  let component: CustomFormButtonsComponent;
-  let fixture: ComponentFixture<CustomFormButtonsComponent>;
+describe('FormLinkComponent', () => {
+  let component: FormLinkComponent;
+  let fixture: ComponentFixture<FormLinkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomFormButtonsComponent ]
+      declarations: [ FormLinkComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomFormButtonsComponent);
+    fixture = TestBed.createComponent(FormLinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

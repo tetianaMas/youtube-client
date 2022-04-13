@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomFormFieldComponent } from './custom-form-field.component';
+import { FormInputPasswordComponent } from './form-input-password.component';
 
-describe('CustomFormFieldComponent', () => {
-  let component: CustomFormFieldComponent;
-  let fixture: ComponentFixture<CustomFormFieldComponent>;
+describe('FormInputPasswordComponent', () => {
+  let component: FormInputPasswordComponent;
+  let fixture: ComponentFixture<FormInputPasswordComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomFormFieldComponent ]
+      declarations: [ FormInputPasswordComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomFormFieldComponent);
+    fixture = TestBed.createComponent(FormInputPasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

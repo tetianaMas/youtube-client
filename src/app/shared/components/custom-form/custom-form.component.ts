@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./custom-form.component.scss'],
 })
 export class CustomFormComponent {
-  @Input() form!: FormGroup;
+  @Input() form: FormGroup = new FormGroup({});
 
   @Input() title: string = '';
 }

@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { CustomValidationService } from 'src/app/auth/services/custom-validation.service';
+import { TValidationError } from 'src/app/shared/models/error-type';
 
 const FORM_TITLE = 'Registration';
-const ERRORS_MESSAGES = {
+const ERRORS_MESSAGES: TValidationError = {
   firstName: [
     { type: 'required', message: 'Please enter a first name.' },
     { type: 'minlength', message: 'The min length is 2 symbols.' },
@@ -43,8 +44,15 @@ const ERRORS_MESSAGES = {
       type: 'required',
       message: 'Please confirm a password.',
     },
+    {
+      type: 'passwordMismatch',
+      message: 'Passwords do not match!',
+    },
   ],
 };
+
+const MIN_LENGTH_FIRST_NAME = 2;
+const MIN_LENGTH_LAST_NAME = 2;
 
 @Component({
   selector: 'ytube-client-registration-page',
@@ -64,13 +72,25 @@ export class RegistrationPageComponent implements OnInit, OnDestroy {
 
   isToggleBtnShow = true;
 
-  constructor(private authService: AuthService, private router: Router, private validService: CustomValidationService) {
-    this.form = new FormGroup({
-      firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', Validators.compose([Validators.required, this.validService.passwordValidator()])),
-      confirmPassword: new FormControl('', [Validators.required]),
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private validationService: CustomValidationService,
+    private fb: FormBuilder,
+  ) {
+    this.form = this.fb.group({
+      firstName: ['', [Validators.required, Validators.minLength(MIN_LENGTH_FIRST_NAME)]],
+      lastName: ['', [Validators.required, Validators.minLength(MIN_LENGTH_LAST_NAME)]],
+      email: ['', [Validators.email, Validators.required]],
+      passwords: this.fb.group(
+        {
+          password: ['', Validators.compose([Validators.required, this.validationService.validatePassword()])],
+          confirmPassword: ['', [Validators.required]],
+        },
+        {
+          validators: this.validationService.confirmPassword(),
+        },
+      ),
     });
   }
 
@@ -79,23 +99,23 @@ export class RegistrationPageComponent implements OnInit, OnDestroy {
   }
 
   get lastName() {
-    return this.form.get('lastName');
+    return <FormControl>this.form.get('lastName');
   }
 
   get firstName() {
-    return this.form.get('firstName');
+    return <FormControl>this.form.get('firstName');
   }
 
   get email() {
-    return this.form.get('email');
+    return <FormControl>this.form.get('email');
   }
 
   get password() {
-    return this.form.get('password');
+    return <FormControl>this.form.get(['passwords', 'password']);
   }
 
   get confirmPassword() {
-    return this.form.get('confirmPassword');
+    return <FormControl>this.form.get(['passwords', 'confirmPassword']);
   }
 
   onTogglePasswordVisibility(): void {
@@ -104,7 +124,7 @@ export class RegistrationPageComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     const value = this.form.value;
-    console.log(value);
+    if (this.form.valid) this.authService.login(value.email, value.password);
   }
 
   ngOnDestroy() {

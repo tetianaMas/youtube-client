@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { TValidationError } from 'src/app/shared/models/error-type';
 import { AuthService } from '../../services/auth.service';
 import { CustomValidationService } from '../../services/custom-validation.service';
 
-const ERRORS_MESSAGES = {
+const FORM_TITLE = 'Login';
+const ERRORS_MESSAGES: TValidationError = {
   login: [
     {
       type: 'required',
@@ -46,10 +48,17 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   isToggleBtnShow = true;
 
-  constructor(private authService: AuthService, private router: Router, private validService: CustomValidationService) {
-    this.form = new FormGroup({
-      login: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', Validators.compose([Validators.required, this.validService.passwordValidator()])),
+  formTitle = FORM_TITLE;
+
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private validService: CustomValidationService,
+  ) {
+    this.form = this.fb.group({
+      login: ['', [Validators.email, Validators.required]],
+      password: ['', Validators.compose([Validators.required, this.validService.validatePassword()])],
     });
   }
 
@@ -58,18 +67,18 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   get login() {
-    return this.form.get('login');
+    return <FormControl>this.form.controls['login'];
   }
 
   get password() {
-    return this.form.get('password');
+    return <FormControl>this.form.get('password');
   }
 
   onTogglePasswordVisibility(): void {
     this.fieldTextType = !this.fieldTextType;
   }
 
-  onLogin(): void {
+  onSubmit(): void {
     const value = this.form.value;
     if (this.form.valid) this.authService.login(value.login, value.password);
   }

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CustomValidationService } from 'src/app/auth/services/custom-validation.service';
+import { TValidationError } from 'src/app/shared/models/error-type';
 
-const ERRORS_MESSAGES = {
+const FORM_TITLE = 'Create new card';
+const ERRORS_MESSAGES: TValidationError = {
   title: [
     {
       type: 'required',
@@ -42,10 +44,14 @@ const ERRORS_MESSAGES = {
     { type: 'required', message: 'Please enter a creation date' },
     {
       type: 'invalidDate',
-      message: 'The date is invalid.',
+      message: 'The date is invalid. The date cannot be in the past.',
     },
   ],
 };
+
+const MIN_TITLE_LENGTH = 3;
+const MAX_TITLE_LENGTH = 20;
+const MAX_DESC_LENGTH = 255;
 
 @Component({
   selector: 'ytube-client-admin-page',
@@ -61,13 +67,18 @@ export class AdminPageComponent {
 
   errors = ERRORS_MESSAGES;
 
-  constructor(private validService: CustomValidationService) {
-    this.form = new FormGroup({
-      title: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-      description: new FormControl('', [Validators.maxLength(255)]),
-      img: new FormControl('', [Validators.required, this.validService.checkUrlValidity()]),
-      linkVideo: new FormControl('', [Validators.required, this.validService.checkUrlValidity()]),
-      dateCreation: new FormControl('', [Validators.required, this.validService.checkDateValidity()]),
+  formTitle = FORM_TITLE;
+
+  constructor(private validService: CustomValidationService, private fb: FormBuilder) {
+    this.form = this.fb.group({
+      title: [
+        '',
+        [Validators.required, Validators.minLength(MIN_TITLE_LENGTH), Validators.maxLength(MAX_TITLE_LENGTH)],
+      ],
+      description: ['', [Validators.maxLength(MAX_DESC_LENGTH)]],
+      img: ['', [Validators.required, this.validService.validateUrl()]],
+      linkVideo: ['', [Validators.required, this.validService.validateUrl()]],
+      dateCreation: ['', [Validators.required, this.validService.validateDate()]],
     });
   }
 
@@ -76,22 +87,22 @@ export class AdminPageComponent {
   }
 
   get title() {
-    return this.form.get('title');
+    return <FormControl>this.form.get('title');
   }
 
   get description() {
-    return this.form.get('description');
+    return <FormControl>this.form.get('description');
   }
 
   get img() {
-    return this.form.get('img');
+    return <FormControl>this.form.get('img');
   }
 
   get linkVideo() {
-    return this.form.get('linkVideo');
+    return <FormControl>this.form.get('linkVideo');
   }
 
   get dateCreation() {
-    return this.form.get('dateCreation');
+    return <FormControl>this.form.get('dateCreation');
   }
 }

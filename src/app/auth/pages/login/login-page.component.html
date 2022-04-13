@@ -1,15 +1,17 @@
 <div class="container">
-  <ytube-client-custom-form [form]="form" [title]="'Login'" (submit)="onLogin()">
+  <ytube-client-custom-form [form]="form" [title]="formTitle" (submit)="onSubmit()">
 
-    <ytube-client-form-field [parentForm]="form" [name]="'login'" [label]="'Login'" [errors]="errors['login']">
-    </ytube-client-form-field>
+    <ytube-client-form-input-text [control]="login" [name]="'login'" [label]="'Login'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [field]="login" [errors]="errors['login']"></ytube-client-form-error>
 
-    <ytube-client-form-field [parentForm]="form" [name]="'password'" [type]="'password'" [label]="'Password'"
-      [isToggleBtnShow]="isToggleBtnShow" [errors]="errors['password']">
-    </ytube-client-form-field>
+    <ytube-client-form-input-password [control]="password" [name]="'password'" [label]="'Password'">
+    </ytube-client-form-input-password>
+    <ytube-client-form-error [field]="password" [errors]="errors['password']"></ytube-client-form-error>
 
-    <a class="form-link" href="#" [routerLink]="'../registration'">Register</a>
-    <ytube-client-button [disabled]="!form.valid">Login</ytube-client-button>
-
+    <ytube-client-form-submit-block>
+      <ytube-client-form-link [linkUrl]="'../registration'" [linkText]="'Registration'"></ytube-client-form-link>
+      <ytube-client-form-button [isBtnDisabled]="!form.valid" [btnText]="'Login'"></ytube-client-form-button>
+    </ytube-client-form-submit-block>
   </ytube-client-custom-form>
 </div>

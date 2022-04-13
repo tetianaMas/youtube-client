@@ -5,7 +5,7 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
   providedIn: 'root',
 })
 export class CustomValidationService {
-  passwordValidator(): ValidatorFn {
+  validatePassword(): ValidatorFn {
     return (control: AbstractControl) => {
       if (!control.value) {
         return null;
@@ -16,7 +16,7 @@ export class CustomValidationService {
     };
   }
 
-  checkUrlValidity(): ValidatorFn {
+  validateUrl(): ValidatorFn {
     return (control: AbstractControl) => {
       if (!control.value) {
         return null;
@@ -27,7 +27,7 @@ export class CustomValidationService {
     };
   }
 
-  checkDateValidity(): ValidatorFn {
+  validateDate(): ValidatorFn {
     return (control: AbstractControl) => {
       if (!control.value) {
         return null;
@@ -35,6 +35,26 @@ export class CustomValidationService {
       const now = new Date();
       const userDate = new Date(control.value);
       return userDate.getTime() - now.getTime() > 0 ? null : { invalidDate: true };
+    };
+  }
+
+  confirmPassword(): ValidatorFn {
+    return (control: AbstractControl) => {
+      const passwordControl = control.get('password');
+      const confirmPasswordControl = control.get('confirmPassword');
+
+      if (!passwordControl || !confirmPasswordControl) {
+        return null;
+      }
+
+      if (passwordControl.value !== confirmPasswordControl.value) {
+        const errorValue = { passwordMismatch: true };
+        confirmPasswordControl.setErrors(errorValue);
+
+        return errorValue;
+      }
+
+      return null;
     };
   }
 }
