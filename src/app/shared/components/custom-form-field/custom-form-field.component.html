@@ -1,0 +1,10 @@
+<div class="form-field" [formGroup]="parentForm">
+  <label class="form-label" for="{{name}}-input">{{ label }}</label>
+  <input class="form-input" [name]="name" [formControlName]="name" [type]="type" [placeholder]="'Enter ' + label"
+    id="{{name}}-input">
+
+  <ytube-client-form-toggle-btn *ngIf="isToggleBtnShow" [isVisible]="isVisibleValue" (click)="onToggleVisibility()">
+  </ytube-client-form-toggle-btn>
+
+  <ytube-client-form-error [field]="parentForm.get(name)" [errors]="errors"></ytube-client-form-error>
+</div>

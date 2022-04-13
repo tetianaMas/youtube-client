@@ -1,16 +1,15 @@
 <div class="container">
-  <form class="form" [formGroup]="form" (submit)="onLogin()">
-    <h1 class="form-title">Login</h1>
-    <div class="form-field">
-      <label class="form-label" for="login-input">Login</label>
-      <input class="form-input" name="login" formControlName="login" type="text" id="login-input">
-    </div>
-    <div class="form-field">
-      <label class="form-label" for="password-input">Password</label>
-      <input class="form-input" name="password" formControlName="password" type="password" id="password-input">
-    </div>
-    <div class="form-buttons">
-      <ytube-client-button>Login</ytube-client-button>
-    </div>
-  </form>
+  <ytube-client-custom-form [form]="form" [title]="'Login'" (submit)="onLogin()">
+
+    <ytube-client-form-field [parentForm]="form" [name]="'login'" [label]="'Login'" [errors]="errors['login']">
+    </ytube-client-form-field>
+
+    <ytube-client-form-field [parentForm]="form" [name]="'password'" [type]="'password'" [label]="'Password'"
+      [isToggleBtnShow]="isToggleBtnShow" [errors]="errors['password']">
+    </ytube-client-form-field>
+
+    <a class="form-link" href="#" [routerLink]="'../registration'">Register</a>
+    <ytube-client-button [disabled]="!form.valid">Login</ytube-client-button>
+
+  </ytube-client-custom-form>
 </div>

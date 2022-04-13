@@ -1,0 +1,24 @@
+<div class="container">
+  <ytube-client-custom-form [form]="form" [title]="'Create new card'" (submit)="onSubmit()">
+
+    <ytube-client-form-field [parentForm]="form" [name]="'title'" [label]="'title'" [errors]="errors['title']">
+    </ytube-client-form-field>
+
+    <ytube-client-form-field [parentForm]="form" [name]="'description'" [label]="'description'"
+      [errors]="errors['description']">
+    </ytube-client-form-field>
+
+    <ytube-client-form-field [parentForm]="form" [name]="'img'" [label]="'image'" [errors]="errors['img']">
+    </ytube-client-form-field>
+
+    <ytube-client-form-field [parentForm]="form" [name]="'linkVideo'" [label]="'link video'"
+      [errors]="errors['linkVideo']">
+    </ytube-client-form-field>
+
+    <ytube-client-form-field [parentForm]="form" [name]="'dateCreation'" [label]="'date creation'" [type]="'date'"
+      [errors]="errors['dateCreation']">
+    </ytube-client-form-field>
+
+    <ytube-client-button [disabled]="!form.valid">Create card</ytube-client-button>
+  </ytube-client-custom-form>
+</div>

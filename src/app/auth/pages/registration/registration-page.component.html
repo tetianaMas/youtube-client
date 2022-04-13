@@ -1,0 +1,27 @@
+<div class="container">
+  <ytube-client-custom-form [form]="form" [title]="formTitle" (submit)="onSubmit()">
+
+    <ytube-client-form-field [parentForm]="form" [name]="'firstName'" [label]="'First name'"
+      [errors]="errors['firstName']">
+    </ytube-client-form-field>
+
+    <ytube-client-form-field [parentForm]="form" [name]="'lastName'" [label]="'Last name'"
+      [errors]="errors['lastName']">
+    </ytube-client-form-field>
+
+    <ytube-client-form-field [parentForm]="form" [type]="'email'" [name]="'email'" [label]="'Email'"
+      [errors]="errors['email']">
+    </ytube-client-form-field>
+
+    <ytube-client-form-field [parentForm]="form" [type]="'password'" [name]="'password'" [label]="'Password'"
+      [isToggleBtnShow]="isToggleBtnShow" [errors]="errors['password']">
+    </ytube-client-form-field>
+
+    <ytube-client-form-field [parentForm]="form" [type]="'password'" [name]="'confirmPassword'"
+      [label]="'Confirm password'" [isToggleBtnShow]="isToggleBtnShow" [errors]="errors['confirmPassword']">
+    </ytube-client-form-field>
+
+    <a class="form-link" href="#" routerLink="'../login'">Login</a>
+    <ytube-client-button [disabled]="!form.valid">Register</ytube-client-button>
+  </ytube-client-custom-form>
+</div>
