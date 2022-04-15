@@ -7,7 +7,6 @@ import { IVideoResponseItem, SearchResponce, VideoResponce } from 'src/app/share
 
 const CARDS_KEY = 'cards';
 const MAX_RESULTS = 20;
-const YOUTUBE_PATH = 'https://youtube-client-backend9.herokuapp.com/';
 
 @Injectable()
 export class YoutubeService {
@@ -19,9 +18,9 @@ export class YoutubeService {
 
   seachValue$ = new Subject<string>();
 
-  baseUrl: string = `${YOUTUBE_PATH}search`;
+  baseUrl: string = `search`;
 
-  statUrl: string = `${YOUTUBE_PATH}videos`;
+  statUrl: string = `videos`;
 
   params = new HttpParams().set('part', 'snippet,statistics');
 
