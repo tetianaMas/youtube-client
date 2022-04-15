@@ -45,7 +45,18 @@ export interface IStatistics {
   commentCount: string;
 }
 
+interface IVideoKind {
+  videoId: string;
+  kind: string;
+}
+
 export interface ISearchResponseItem {
+  kind: string;
+  etag: string;
+  id: IVideoKind;
+}
+
+export interface IVideoResponseItem {
   kind: string;
   etag: string;
   id: string;
@@ -53,9 +64,13 @@ export interface ISearchResponseItem {
   statistics: IStatistics;
 }
 
-export interface ISearchResponse {
+export interface ISearchResponse<T> {
   kind: string;
   etag: string;
   pageInfo: IPageInfo;
-  items: ISearchResponseItem[];
+  items: T[];
 }
+
+export interface SearchResponce extends ISearchResponse<ISearchResponseItem> {}
+
+export interface VideoResponce extends ISearchResponse<IVideoResponseItem> {}

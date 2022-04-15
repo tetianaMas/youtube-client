@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Card } from 'src/app/shared/models/card.model';
 import { Location } from '@angular/common';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, switchMap } from 'rxjs';
 
 @Component({
   selector: 'ytube-client-detailed-info',
@@ -14,12 +14,13 @@ export class DetailedInfoComponent implements OnInit, OnDestroy {
 
   subs = Subscription.EMPTY;
 
+  card$ = new Observable<Card>();
+
   constructor(private route: ActivatedRoute, private location: Location) {}
 
   ngOnInit(): void {
-    this.subs = this.route.data.subscribe((data: Data) => {
-      this.card = data['card'];
-    });
+    this.card$ = this.route.data.pipe(switchMap((data) => data['card'] as Observable<Card>));
+    this.card$.subscribe((res) => (this.card = res));
   }
 
   onBackBtnClick(): void {

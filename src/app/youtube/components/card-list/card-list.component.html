@@ -4,7 +4,7 @@
       [card]="cardItem">
     </ytube-client-card-item>
   </mat-list>
-  <div class="no-data" *ngIf="!cards.length">
+  <div class="no-data" *ngIf="!isDataLoading">
     <p class="no-data-text">No data. Enter a search value to find videos.</p>
   </div>
 </div>

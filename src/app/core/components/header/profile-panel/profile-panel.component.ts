@@ -3,6 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
 const LOGOUT_BTN_TEXT = 'Logout';
+const LOGIN_BTN_TEXT = 'Login';
+
 const ICON_PROFILE_PATH = './assets/icons/profile-button-icon.svg';
 
 @Component({
@@ -11,13 +13,17 @@ const ICON_PROFILE_PATH = './assets/icons/profile-button-icon.svg';
   styleUrls: ['./profile-panel.component.scss'],
 })
 export class ProfilePanelComponent {
-  readonly logutBtnText = LOGOUT_BTN_TEXT;
+  readonly logoutBtnText = LOGOUT_BTN_TEXT;
+
+  readonly loginBtnText = LOGIN_BTN_TEXT;
 
   @Input() isUserLoggedIn: boolean = false;
 
   @Input() userName: string = '';
 
   @Output() readonly logout = new EventEmitter<void>();
+
+  @Output() readonly login = new EventEmitter<void>();
 
   @Output() readonly profile = new EventEmitter<void>();
 
@@ -27,6 +33,10 @@ export class ProfilePanelComponent {
 
   onLogoutClick() {
     this.logout.emit();
+  }
+
+  onLoginClick() {
+    this.login.emit();
   }
 
   onUserProfile() {
