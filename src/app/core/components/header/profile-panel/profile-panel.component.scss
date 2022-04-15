@@ -24,6 +24,11 @@
   margin: 0;
   margin-right: 8px;
   white-space: nowrap;
+
+  @media screen and (max-width: $mobile) {
+    width: 100px;
+    overflow: hidden;
+  }
 }
 
 .profile-icon {
