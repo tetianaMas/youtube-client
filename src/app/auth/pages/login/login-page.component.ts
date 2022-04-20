@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ReplaySubject, takeUntil } from 'rxjs';
 import { TValidationError } from 'src/app/shared/models/error-type';
 import { AuthService } from '../../services/auth.service';
 import { CustomValidationService } from '../../services/custom-validation.service';
@@ -32,6 +32,10 @@ const ERRORS_MESSAGES: TValidationError = {
     },
   ],
 };
+
+const CONTROL_LOGIN = 'login';
+const CONTROL_PASSWORD = 'password';
+
 @Component({
   selector: 'ytube-client-login',
   templateUrl: './login-page.component.html',
@@ -40,7 +44,7 @@ const ERRORS_MESSAGES: TValidationError = {
 export class LoginPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
-  subs = Subscription.EMPTY;
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   fieldTextType: boolean = false;
 
@@ -49,6 +53,10 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   isToggleBtnShow = true;
 
   formTitle = FORM_TITLE;
+
+  readonly controlNameLogin = CONTROL_LOGIN;
+
+  readonly controlNamePassword = CONTROL_PASSWORD;
 
   constructor(
     private fb: FormBuilder,
@@ -63,15 +71,17 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subs = this.authService.state$.subscribe((state) => !!state.token && this.router.navigate(['main']));
+    this.authService.state$
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((state) => !!state.token && this.router.navigate(['main']));
   }
 
   get login() {
-    return <FormControl>this.form.controls['login'];
+    return <FormControl>this.form.controls[this.controlNameLogin];
   }
 
   get password() {
-    return <FormControl>this.form.get('password');
+    return <FormControl>this.form.get(this.controlNamePassword);
   }
 
   onTogglePasswordVisibility(): void {
@@ -84,6 +94,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subs.unsubscribe();
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 }

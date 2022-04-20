@@ -19,11 +19,6 @@ export class FormInputPasswordComponent {
 
   onToggleVisibility() {
     this.isVisibleValue = !this.isVisibleValue;
-
-    if (this.isVisibleValue) {
-      this.type = 'text';
-    } else {
-      this.type = 'password';
-    }
+    this.type = this.isVisibleValue ? 'text' : 'password';
   }
 }

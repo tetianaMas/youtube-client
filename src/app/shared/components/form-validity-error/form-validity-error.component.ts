@@ -8,7 +8,7 @@ import { TFormError } from '../../models/error-type';
   styleUrls: ['./form-validity-error.component.scss'],
 })
 export class FormValidityErrorComponent {
-  @Input() field: AbstractControl | null = null;
+  @Input() control: AbstractControl | null = null;
 
   @Input() errors: TFormError[] = [];
 }

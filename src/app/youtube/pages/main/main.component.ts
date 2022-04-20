@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Card } from 'src/app/shared/models/card.model';
 import { YoutubeService } from 'src/app/youtube/services/youtube.service';
-import { Subscription } from 'rxjs';
+import { ReplaySubject, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { QUERY_KEY } from 'src/app/shared/constants';
 
@@ -11,24 +11,22 @@ import { QUERY_KEY } from 'src/app/shared/constants';
   styleUrls: ['./main.component.scss'],
 })
 export class MainPageComponent implements OnInit, OnDestroy {
-  private subsService = Subscription.EMPTY;
-
-  private subsRoute = Subscription.EMPTY;
+  private destroyed$ = new ReplaySubject<boolean>(1);
 
   cards: Card[] = [];
 
   constructor(private youtubeService: YoutubeService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.subsService = this.youtubeService.cards$.subscribe((cards) => (this.cards = cards));
-    this.subsRoute = this.route.queryParams.subscribe(({ [QUERY_KEY]: search }) =>
-      this.youtubeService.searchCards(search),
-    );
+    this.youtubeService.cards$.pipe(takeUntil(this.destroyed$)).subscribe((cards) => (this.cards = cards));
+    this.route.queryParams
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(({ [QUERY_KEY]: search }) => this.youtubeService.searchCards(search));
   }
 
   ngOnDestroy(): void {
     this.cards = [];
-    this.subsService.unsubscribe();
-    this.subsRoute.unsubscribe();
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 }

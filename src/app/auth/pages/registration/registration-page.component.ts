@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ReplaySubject, Subscription, takeUntil } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { CustomValidationService } from 'src/app/auth/services/custom-validation.service';
 import { TValidationError } from 'src/app/shared/models/error-type';
@@ -53,6 +53,11 @@ const ERRORS_MESSAGES: TValidationError = {
 
 const MIN_LENGTH_FIRST_NAME = 2;
 const MIN_LENGTH_LAST_NAME = 2;
+const CONTROL_FIRST_NAME = 'firstName';
+const CONTROL_LAST_NAME = 'lastName';
+const CONTROL_EMAIL = 'email';
+const CONTROL_PASSWORD = 'password';
+const CONTROL_PASSWORD_CONFIRM = 'confirmPassword';
 
 @Component({
   selector: 'ytube-client-registration-page',
@@ -71,6 +76,18 @@ export class RegistrationPageComponent implements OnInit, OnDestroy {
   errors = ERRORS_MESSAGES;
 
   isToggleBtnShow = true;
+
+  readonly controlNameFirstName = CONTROL_FIRST_NAME;
+
+  readonly controlNameLastName = CONTROL_LAST_NAME;
+
+  readonly controlNameEmail = CONTROL_EMAIL;
+
+  readonly controlNamePassword = CONTROL_PASSWORD;
+
+  readonly controlNamePasswordConfirm = CONTROL_PASSWORD_CONFIRM;
+
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(
     private authService: AuthService,
@@ -95,27 +112,29 @@ export class RegistrationPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subs = this.authService.state$.subscribe((state) => !!state.token && this.router.navigate(['main']));
+    this.authService.state$
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((state) => !!state.token && this.router.navigate(['main']));
   }
 
   get lastName() {
-    return <FormControl>this.form.get('lastName');
+    return <FormControl>this.form.get(this.controlNameLastName);
   }
 
   get firstName() {
-    return <FormControl>this.form.get('firstName');
+    return <FormControl>this.form.get(this.controlNameFirstName);
   }
 
   get email() {
-    return <FormControl>this.form.get('email');
+    return <FormControl>this.form.get(this.controlNameEmail);
   }
 
   get password() {
-    return <FormControl>this.form.get(['passwords', 'password']);
+    return <FormControl>this.form.get(['passwords', this.controlNamePassword]);
   }
 
   get confirmPassword() {
-    return <FormControl>this.form.get(['passwords', 'confirmPassword']);
+    return <FormControl>this.form.get(['passwords', this.controlNamePasswordConfirm]);
   }
 
   onTogglePasswordVisibility(): void {
@@ -128,6 +147,7 @@ export class RegistrationPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subs.unsubscribe();
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 }
