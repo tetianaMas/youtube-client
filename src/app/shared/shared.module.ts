@@ -11,7 +11,7 @@ import { FormValidityErrorComponent } from './components/form-validity-error/for
 import { FormToggleBtnComponent } from './components/form-toggle-btn/form-toggle-btn.component';
 import { FormInputTextComponent } from './components/form-input-text/form-input-text.component';
 import { FormInputPasswordComponent } from './components/form-input-password/form-input-password.component';
-import { FormLinkComponent } from './components/form-link/form-link.component';
+import { LinkComponent } from './components/link/link.component';
 import { FormSubmitBlockComponent } from './components/form-submit-block/form-submit-block.component';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { FormSubmitBlockComponent } from './components/form-submit-block/form-su
     FormToggleBtnComponent,
     FormInputTextComponent,
     FormInputPasswordComponent,
-    FormLinkComponent,
+    LinkComponent,
     FormSubmitBlockComponent,
   ],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule],
@@ -34,7 +34,7 @@ import { FormSubmitBlockComponent } from './components/form-submit-block/form-su
     FormValidityErrorComponent,
     FormInputTextComponent,
     FormInputPasswordComponent,
-    FormLinkComponent,
+    LinkComponent,
     FormSubmitBlockComponent,
   ],
 })

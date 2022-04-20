@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { CustomValidationService } from 'src/app/auth/services/custom-validation.service';
 import { TValidationError } from 'src/app/shared/models/error-type';
 
@@ -49,6 +48,12 @@ const ERRORS_MESSAGES: TValidationError = {
   ],
 };
 
+const CONTROL_TITLE = 'title';
+const CONTROL_DESCRIPTION = 'description';
+const CONTROL_IMG = 'img';
+const CONTROL_LINK_VIDEO = 'linkVideo';
+const CONTROL_DATE_CREATION = 'dateCreation';
+
 const MIN_TITLE_LENGTH = 3;
 const MAX_TITLE_LENGTH = 20;
 const MAX_DESC_LENGTH = 255;
@@ -61,13 +66,21 @@ const MAX_DESC_LENGTH = 255;
 export class AdminPageComponent {
   form: FormGroup;
 
-  subs = Subscription.EMPTY;
-
   fieldTextType: boolean = false;
 
   errors = ERRORS_MESSAGES;
 
   formTitle = FORM_TITLE;
+
+  readonly controlNameTitle = CONTROL_TITLE;
+
+  readonly controlNameDesc = CONTROL_DESCRIPTION;
+
+  readonly controlNameImg = CONTROL_IMG;
+
+  readonly controlNameLinkVideo = CONTROL_LINK_VIDEO;
+
+  readonly controlNameDateCreation = CONTROL_DATE_CREATION;
 
   constructor(private validService: CustomValidationService, private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -87,22 +100,22 @@ export class AdminPageComponent {
   }
 
   get title() {
-    return <FormControl>this.form.get('title');
+    return <FormControl>this.form.get(this.controlNameTitle);
   }
 
   get description() {
-    return <FormControl>this.form.get('description');
+    return <FormControl>this.form.get(this.controlNameDesc);
   }
 
   get img() {
-    return <FormControl>this.form.get('img');
+    return <FormControl>this.form.get(this.controlNameImg);
   }
 
   get linkVideo() {
-    return <FormControl>this.form.get('linkVideo');
+    return <FormControl>this.form.get(this.controlNameLinkVideo);
   }
 
   get dateCreation() {
-    return <FormControl>this.form.get('dateCreation');
+    return <FormControl>this.form.get(this.controlNameDateCreation);
   }
 }

@@ -1,6 +1,6 @@
-<mat-error *ngIf="field?.invalid && (field?.dirty || field?.touched)">
+<mat-error *ngIf="control?.invalid && (control?.dirty || control?.touched)">
   <ng-container *ngFor="let error of errors">
-    <p *ngIf="field?.errors?.[error.type]">
+    <p *ngIf="control?.errors?.[error.type]">
       {{error.message}}
     </p>
   </ng-container>

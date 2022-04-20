@@ -1,6 +1,6 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ReplaySubject, takeUntil } from 'rxjs';
 import { FiltersService } from 'src/app/youtube/services/filters.service';
 import { Card } from 'src/app/shared/models/card.model';
 import { TSortType } from '../../models/sortType.model';
@@ -32,11 +32,7 @@ enum AnimationStateStyle {
 export class CardListComponent implements OnInit, OnDestroy {
   @Input() cards: Card[] = [];
 
-  subs = Subscription.EMPTY;
-
-  subsSort = Subscription.EMPTY;
-
-  subsFilter = Subscription.EMPTY;
+  private destroyed$ = new ReplaySubject<boolean>(1);
 
   sortParams: TSortType = SORT_DATA_DEFAULT;
 
@@ -51,14 +47,19 @@ export class CardListComponent implements OnInit, OnDestroy {
   constructor(private filtersService: FiltersService) {}
 
   ngOnInit(): void {
-    this.subs = this.filtersService.isFiltersShown$.subscribe((isShown) => (this.isFilterActive = isShown));
-    this.subsSort = this.filtersService.sortParams$.subscribe((params) => (this.sortParams = { ...params }));
-    this.subsFilter = this.filtersService.filterParams$.subscribe((params) => (this.filterPhrase = params));
+    this.filtersService.isFiltersShown$
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((isShown) => (this.isFilterActive = isShown));
+    this.filtersService.sortParams$
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((params) => (this.sortParams = { ...params }));
+    this.filtersService.filterParams$
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((params) => (this.filterPhrase = params));
   }
 
   ngOnDestroy() {
-    this.subs.unsubscribe();
-    this.subsSort.unsubscribe();
-    this.subsFilter.unsubscribe();
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 }
