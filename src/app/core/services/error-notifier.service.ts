@@ -5,17 +5,9 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class ErrorNotifierService {
-  private isErrorShown = false;
-
   errorState$ = new Subject<boolean>();
 
-  showError(): void {
-    this.isErrorShown = true;
-    this.errorState$.next(this.isErrorShown);
-  }
-
-  hideError(): void {
-    this.isErrorShown = false;
-    this.errorState$.next(this.isErrorShown);
+  toggleError(value: boolean): void {
+    this.errorState$.next(value);
   }
 }

@@ -3,7 +3,7 @@ import { Card } from 'src/app/shared/models/card.model';
 import { LocalstorageService } from '../../core/services/localstorage.service';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { map, Observable, of, Subject, switchMap } from 'rxjs';
-import { IVideoResponseItem, SearchResponce, VideoResponce } from 'src/app/shared/models/search-response.model';
+import { IVideoResponseItem, SearchResponse, VideoResponse } from 'src/app/shared/models/search-response.model';
 
 const CARDS_KEY = 'cards';
 const MAX_RESULTS = 20;
@@ -30,7 +30,7 @@ export class YoutubeService {
 
   searchCards(query: string): void {
     const params = new HttpParams().set('q', query).set('maxResults', MAX_RESULTS);
-    this.getResponce<SearchResponce>(this.baseUrl, params)
+    this.getResponce<SearchResponse>(this.baseUrl, params)
       .pipe(
         map((val) => {
           return val.items.reduce((acc, { id: { videoId } }) => {
@@ -38,16 +38,16 @@ export class YoutubeService {
             return acc;
           }, <string[]>[]);
         }),
-        switchMap((res) => this.getResponce<VideoResponce>(this.statUrl, this.params.set('id', res.toString()))),
+        switchMap((res) => this.getResponce<VideoResponse>(this.statUrl, this.params.set('id', res.toString()))),
       )
-      .subscribe((result) => this.createCards(result as VideoResponce));
+      .subscribe((result) => this.createCards(result as VideoResponse));
   }
 
   searchCardById(id: string): Observable<Card> {
     const card = this.getCardById(id);
     return card
       ? of(card)
-      : this.getResponce<VideoResponce>(this.statUrl, this.params.set('id', id)).pipe(
+      : this.getResponce<VideoResponse>(this.statUrl, this.params.set('id', id)).pipe(
           map((res) => {
             return new Card(res.items[0]);
           }),
@@ -60,7 +60,7 @@ export class YoutubeService {
     });
   }
 
-  private createCards(response: VideoResponce): void {
+  private createCards(response: VideoResponse): void {
     this.cards = response.items.map((item: IVideoResponseItem) => new Card(item));
     this.localStorage.setItem<Card[]>(CARDS_KEY, this.cards);
     this.cards$.next(this.cards);

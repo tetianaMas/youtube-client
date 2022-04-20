@@ -1,2 +1,2 @@
-<div class="overflow" *ngIf="isShown"></div>
-<mat-spinner *ngIf="isShown" class="spinner" color="accent"></mat-spinner>
+<div class="overflow" *ngIf="loaderService.spinnerVisibility$ | async"></div>
+<mat-spinner *ngIf="loaderService.spinnerVisibility$ | async" class="spinner" color="accent"></mat-spinner>

@@ -11,7 +11,7 @@ export class ErrorNotifierInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error) => {
         if (error instanceof HttpErrorResponse) {
-          this.errorNotifier.showError();
+          this.errorNotifier.toggleError(true);
           console.log(error);
         }
         return EMPTY;

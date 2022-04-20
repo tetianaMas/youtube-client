@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 import { ErrorNotifierService } from 'src/app/core/services/error-notifier.service';
 
 const ERROR_MESSAGE = 'Some error occured. Please try again later.';
@@ -9,24 +8,12 @@ const ERROR_MESSAGE = 'Some error occured. Please try again later.';
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.scss'],
 })
-export class ErrorComponent implements OnInit, OnDestroy {
+export class ErrorComponent {
   message = ERROR_MESSAGE;
 
-  isErrorShown: boolean = false;
-
-  subs = Subscription.EMPTY;
-
-  constructor(private errorNotifierService: ErrorNotifierService) {}
-
-  ngOnInit(): void {
-    this.subs = this.errorNotifierService.errorState$.subscribe((value) => (this.isErrorShown = value));
-  }
+  constructor(public errorNotifierService: ErrorNotifierService) {}
 
   hideError(): void {
-    this.errorNotifierService.hideError();
-  }
-
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
+    this.errorNotifierService.toggleError(false);
   }
 }

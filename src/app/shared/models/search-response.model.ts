@@ -71,6 +71,6 @@ export interface ISearchResponse<T> {
   items: T[];
 }
 
-export interface SearchResponce extends ISearchResponse<ISearchResponseItem> {}
+export interface SearchResponse extends ISearchResponse<ISearchResponseItem> {}
 
-export interface VideoResponce extends ISearchResponse<IVideoResponseItem> {}
+export interface VideoResponse extends ISearchResponse<IVideoResponseItem> {}
