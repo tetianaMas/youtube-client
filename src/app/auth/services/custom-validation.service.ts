@@ -34,7 +34,16 @@ export class CustomValidationService {
       }
       const now = new Date();
       const userDate = new Date(control.value);
-      return userDate.getTime() - now.getTime() > 0 ? null : { invalidDate: true };
+      now.setHours(0);
+      userDate.setHours(0);
+      now.setMinutes(0);
+      userDate.setMinutes(0);
+      now.setSeconds(0);
+      userDate.setSeconds(0);
+      now.setMilliseconds(0);
+      userDate.setMilliseconds(0);
+
+      return userDate.getTime() - now.getTime() >= 0 ? null : { invalidDate: true };
     };
   }
 

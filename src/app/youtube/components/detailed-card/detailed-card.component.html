@@ -6,7 +6,7 @@
   </div>
   <div class="card" *ngIf="card">
     <div class="card-img">
-      <img class="img" [src]="card?.imgUrl?.high?.url" alt="Youtube video image.">
+      <img class="img" [src]="card?.imgUrl" alt="Youtube video image.">
     </div>
 
     <div class="card-info" [ytubeClientDateStatusColor]="card?.publishedAt || ''">

@@ -1,22 +1,25 @@
 import { CARD_DESC_SIZE, CARD_TITLE_SIZE } from '../constants';
-import { IStatistics, IThumbnail, IVideoResponseItem } from './search-response.model';
+import { CardAbstract } from './card-abstract';
+import { IStatistics, IVideoResponseItem } from './search-response.model';
 
-export class Card {
+export class Card implements CardAbstract {
   id: string;
 
-  imgUrl: IThumbnail;
+  imgUrl: string;
 
   title: string;
 
   description: string;
 
-  statistics: IStatistics;
+  statistics: IStatistics | null;
 
   publishedAt: string;
 
+  linkVideo: string = '';
+
   constructor(responseItem: IVideoResponseItem) {
     this.id = responseItem.id;
-    this.imgUrl = responseItem.snippet.thumbnails;
+    this.imgUrl = responseItem.snippet?.thumbnails?.standard?.url || responseItem?.snippet?.thumbnails?.high?.url || '';
     this.title = responseItem.snippet.title.slice(0, CARD_TITLE_SIZE).trim();
     this.publishedAt = responseItem.snippet.publishedAt;
     this.description = responseItem.snippet.description.slice(0, CARD_DESC_SIZE).trim();

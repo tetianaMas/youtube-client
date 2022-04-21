@@ -1,4 +1,5 @@
 <ytube-client-filters></ytube-client-filters>
 <main>
-  <ytube-client-card-list [cards]="cards" [isDataLoading]="isDataLoading"></ytube-client-card-list>
+  <ytube-client-card-list [cards]="cards$ | async">
+  </ytube-client-card-list>
 </main>

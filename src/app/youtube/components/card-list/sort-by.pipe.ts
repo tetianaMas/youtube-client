@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Card } from 'src/app/shared/models/card.model';
+import { CardAbstract } from 'src/app/shared/models/card-abstract';
 import { SortType, TSortType } from '../../models/sortType.model';
 
 @Pipe({
   name: 'sortBy',
 })
 export class SortByPipe implements PipeTransform {
-  transform(cards: Card[], sortParams: TSortType): Card[] {
+  transform(cards: CardAbstract[], sortParams: TSortType): CardAbstract[] {
     if (cards.length <= 1 || sortParams.type === SortType.default) return cards;
 
     return sortParams.type === SortType.date
@@ -14,8 +14,8 @@ export class SortByPipe implements PipeTransform {
       : this.sortByViewCount(cards, sortParams.isAscendingOrder);
   }
 
-  private sortByDate(cards: Card[], isAscendingOrder: boolean): Card[] {
-    return cards.sort((first: Card, second: Card) => {
+  private sortByDate(cards: CardAbstract[], isAscendingOrder: boolean): CardAbstract[] {
+    return cards.sort((first: CardAbstract, second: CardAbstract) => {
       const date1 = new Date(this.getCurrentDate(first.publishedAt));
       const date2 = new Date(this.getCurrentDate(second.publishedAt));
 
@@ -23,10 +23,10 @@ export class SortByPipe implements PipeTransform {
     });
   }
 
-  private sortByViewCount(cards: Card[], isAscendingOrder: boolean): Card[] {
-    return cards.sort((first: Card, second: Card) => {
-      const count1 = Number(first.statistics.viewCount);
-      const count2 = Number(second.statistics.viewCount);
+  private sortByViewCount(cards: CardAbstract[], isAscendingOrder: boolean): CardAbstract[] {
+    return cards.sort((first: CardAbstract, second: CardAbstract) => {
+      const count1 = Number(first.statistics?.viewCount || 1);
+      const count2 = Number(second.statistics?.viewCount || 1);
 
       return this.sortValues(count1, count2, isAscendingOrder);
     });

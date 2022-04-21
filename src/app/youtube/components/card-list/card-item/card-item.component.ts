@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Card } from 'src/app/shared/models/card.model';
+import { CardAbstract } from 'src/app/shared/models/card-abstract';
+import { CustomCard } from 'src/app/shared/models/custom-card.model';
 
 const BUTTON_TEXT = 'more...';
 
@@ -9,7 +10,9 @@ const BUTTON_TEXT = 'more...';
   styleUrls: ['./card-item.component.scss'],
 })
 export class CardItemComponent {
-  @Input() card: Card | null = null;
+  @Input() card: CardAbstract | null = null;
+
+  @Input() customCard: CustomCard | null = null;
 
   readonly btnText: string = BUTTON_TEXT;
 

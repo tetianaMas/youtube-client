@@ -4,29 +4,32 @@ import { LocalstorageService } from '../../core/services/localstorage.service';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { map, Observable, of, Subject, switchMap } from 'rxjs';
 import { IVideoResponseItem, SearchResponse, VideoResponse } from 'src/app/shared/models/search-response.model';
+import { Store } from '@ngrx/store';
+import { StoreState } from 'src/app/redux/state.model';
+import { addCards } from 'src/app/redux/videoCards/actions/youTubeApi.actions';
+import { CARDS_KEY } from 'src/app/shared/constants';
 
-const CARDS_KEY = 'cards';
 const MAX_RESULTS = 20;
 
 @Injectable()
 export class YoutubeService {
   private cards: Card[] = [];
 
-  cards$: Subject<Card[]>;
-
   searchRes$ = new Observable();
 
   seachValue$ = new Subject<string>();
 
-  baseUrl: string = `search`;
+  baseUrl: string = 'search';
 
-  statUrl: string = `videos`;
+  statUrl: string = 'videos';
 
   params = new HttpParams().set('part', 'snippet,statistics');
 
-  constructor(private localStorage: LocalstorageService, private http: HttpClient) {
-    this.cards$ = new Subject<Card[]>();
-  }
+  constructor(
+    private localStorage: LocalstorageService,
+    private http: HttpClient,
+    private storage: Store<StoreState>,
+  ) {}
 
   searchCards(query: string): void {
     const params = new HttpParams().set('q', query).set('maxResults', MAX_RESULTS);
@@ -62,8 +65,7 @@ export class YoutubeService {
 
   private createCards(response: VideoResponse): void {
     this.cards = response.items.map((item: IVideoResponseItem) => new Card(item));
-    this.localStorage.setItem<Card[]>(CARDS_KEY, this.cards);
-    this.cards$.next(this.cards);
+    this.storage.dispatch(addCards({ videoCards: this.cards }));
   }
 
   private getCardById(id: string = ''): Card | null {
