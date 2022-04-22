@@ -3,6 +3,7 @@ import { CardAbstract } from './card-abstract';
 import { CardType } from './card-type.model';
 import { IStatistics, IVideoResponseItem } from './search-response.model';
 
+const VIDEO_LINK_YOUTUBE = 'https://www.youtube.com/watch?v=';
 export class Card implements CardAbstract {
   id: string;
 
@@ -16,7 +17,7 @@ export class Card implements CardAbstract {
 
   publishedAt: string;
 
-  linkVideo: string = '';
+  linkVideo: string;
 
   cardType = CardType.default;
 
@@ -27,5 +28,6 @@ export class Card implements CardAbstract {
     this.publishedAt = responseItem.snippet.publishedAt;
     this.description = responseItem.snippet.description.slice(0, CARD_DESC_SIZE).trim();
     this.statistics = responseItem.statistics;
+    this.linkVideo = `${VIDEO_LINK_YOUTUBE}${this.id}`;
   }
 }

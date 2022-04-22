@@ -25,7 +25,6 @@ export class SortFilterComponent implements OnInit, OnDestroy {
   }
 
   onSort(type: SortType): void {
-    console.log(type, this.sortParams.type);
     this.sortParams.isAscendingOrder = this.sortParams.type === type ? !this.sortParams.isAscendingOrder : true;
     this.sortParams.type = type;
     this.filtersService.setSortParams(this.sortParams);

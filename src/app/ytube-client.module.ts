@@ -5,12 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { YtubeClientRoutingModule } from './ytube-client-routing.module';
 import { StoreModule } from '@ngrx/store';
+
 import { customCardsReducer } from './redux/reducers/customCards.reducers';
 import { videoCardsReducer } from './redux/reducers/videoCards.reducers';
 import { metaReducers } from './redux/meta-reducers/lsState.meta-reducers';
 
 import { YtubeClientComponent } from './ytube-client.component';
 import { EffectsModule } from '@ngrx/effects';
+import { extModules } from './build-specifics';
 
 @NgModule({
   declarations: [YtubeClientComponent],
@@ -25,6 +27,7 @@ import { EffectsModule } from '@ngrx/effects';
       { metaReducers: metaReducers },
     ),
     EffectsModule.forRoot([]),
+    extModules,
   ],
   bootstrap: [YtubeClientComponent],
 })

@@ -61,7 +61,8 @@ export class YoutubeService {
   }
 
   private getCardById(id: string = ''): Card | null {
-    return (this.allCards.length && this.allCards.find((card) => card.id === id)) || null;
+    const cards = this.allCards;
+    return (cards.length && cards.find((card) => card.id === id)) || null;
   }
 
   get allCards(): Card[] {
