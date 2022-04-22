@@ -1,3 +1,3 @@
-import { StoreState } from './state.model';
+import { StoreState } from '../state.model';
 
 export const selectAllCards = (state: StoreState) => state;

@@ -15,3 +15,5 @@ export enum CustomCardsControls {
 }
 
 export const CARDS_KEY = 'cards';
+
+export const DEBOUNCE_TIME = 750;

@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { QUERY_KEY } from 'src/app/shared/constants';
 import { Store } from '@ngrx/store';
 import { StoreState } from 'src/app/redux/state.model';
-import { selectAllCards } from 'src/app/redux/app.selectors';
+import { selectAllCards } from 'src/app/redux/selectors/app.selectors';
 import { CardAbstract } from 'src/app/shared/models/card-abstract';
 
 @Component({

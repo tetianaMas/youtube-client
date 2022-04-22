@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { QUERY_KEY } from 'src/app/shared/constants';
+import { Store } from '@ngrx/store';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
+import { searchCards } from 'src/app/redux/actions/youTubeApi.actions';
+import { StoreState } from 'src/app/redux/state.model';
+import { DEBOUNCE_TIME, QUERY_KEY } from 'src/app/shared/constants';
 
 const BTN_TEXT: string = 'search';
 const INPUT_PLACEHOLDER_TEXT = 'What do you want to find?';
 const BTN_RADIUS: string = '0 4px 4px 0';
-const DEBOUNCE_TIME = 750;
 const MIN_SEARCH_LENGTH = 3;
 
 @Component({
@@ -28,7 +29,7 @@ export class SearchPanelComponent {
 
   seachValue$ = new Subject<string>();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private store: Store<StoreState>) {
     this.seachValue$.pipe(debounceTime(DEBOUNCE_TIME), distinctUntilChanged()).subscribe((val) => this.search(val));
   }
 
@@ -44,5 +45,6 @@ export class SearchPanelComponent {
     const params = { queryParams: { [QUERY_KEY]: term } };
     this.router.navigate(['main'], params);
     this.seachInput = '';
+    this.store.dispatch(searchCards({ search: term }));
   }
 }

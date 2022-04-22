@@ -25,6 +25,8 @@ import { MainPageComponent } from './pages/main/main.component';
 import { DetailedInfoComponent } from './pages/detailed-info/detailed-info.component';
 import { DetailedCardComponent } from './components/detailed-card/detailed-card.component';
 import { SortFilterButtonComponent } from './components/filters/sort-filter/sort-filter-button/sort-filter-button.component';
+import { EffectsModule } from '@ngrx/effects';
+import { VideoCardsEffects } from '../redux/effects/videoCards.effects';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,15 @@ import { SortFilterButtonComponent } from './components/filters/sort-filter/sort
     DetailedCardComponent,
     SortFilterButtonComponent,
   ],
-  imports: [CommonModule, SharedModule, FormsModule, YoutubeRoutingModule, MaterialModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    FormsModule,
+    YoutubeRoutingModule,
+    MaterialModule,
+    HttpClientModule,
+    EffectsModule.forFeature([VideoCardsEffects]),
+  ],
   providers: [YoutubeService, CardsResolver, httpInterceptorProviders],
 })
 export class YoutubeModule {}

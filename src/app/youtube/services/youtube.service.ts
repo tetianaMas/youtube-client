@@ -4,9 +4,6 @@ import { LocalstorageService } from '../../core/services/localstorage.service';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { map, Observable, of, Subject, switchMap } from 'rxjs';
 import { IVideoResponseItem, SearchResponse, VideoResponse } from 'src/app/shared/models/search-response.model';
-import { Store } from '@ngrx/store';
-import { StoreState } from 'src/app/redux/state.model';
-import { addCards } from 'src/app/redux/videoCards/actions/youTubeApi.actions';
 import { CARDS_KEY } from 'src/app/shared/constants';
 
 const MAX_RESULTS = 20;
@@ -25,25 +22,20 @@ export class YoutubeService {
 
   params = new HttpParams().set('part', 'snippet,statistics');
 
-  constructor(
-    private localStorage: LocalstorageService,
-    private http: HttpClient,
-    private storage: Store<StoreState>,
-  ) {}
+  constructor(private localStorage: LocalstorageService, private http: HttpClient) {}
 
-  searchCards(query: string): void {
+  searchCards(query: string) {
     const params = new HttpParams().set('q', query).set('maxResults', MAX_RESULTS);
-    this.getResponce<SearchResponse>(this.baseUrl, params)
-      .pipe(
-        map((val) => {
-          return val.items.reduce((acc, { id: { videoId } }) => {
-            acc.push(videoId);
-            return acc;
-          }, <string[]>[]);
-        }),
-        switchMap((res) => this.getResponce<VideoResponse>(this.statUrl, this.params.set('id', res.toString()))),
-      )
-      .subscribe((result) => this.createCards(result as VideoResponse));
+    return this.getResponce<SearchResponse>(this.baseUrl, params).pipe(
+      map((val) => {
+        return val.items.reduce((acc, { id: { videoId } }) => {
+          acc.push(videoId);
+          return acc;
+        }, <string[]>[]);
+      }),
+      switchMap((res) => this.getResponce<VideoResponse>(this.statUrl, this.params.set('id', res.toString()))),
+      map((response) => this.createCards(response)),
+    );
   }
 
   searchCardById(id: string): Observable<Card> {
@@ -63,9 +55,9 @@ export class YoutubeService {
     });
   }
 
-  private createCards(response: VideoResponse): void {
+  private createCards(response: VideoResponse): Card[] {
     this.cards = response.items.map((item: IVideoResponseItem) => new Card(item));
-    this.storage.dispatch(addCards({ videoCards: this.cards }));
+    return this.cards;
   }
 
   private getCardById(id: string = ''): Card | null {

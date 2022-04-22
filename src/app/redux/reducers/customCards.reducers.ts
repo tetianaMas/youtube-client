@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { initialState } from '../../state.model';
+import { initialState } from '../state.model';
 import * as CustomCardActions from '../actions/customCards.actions';
 
 export const customCardsReducer = createReducer(

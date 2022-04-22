@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CustomValidationService } from 'src/app/auth/services/custom-validation.service';
-import { addCustomCard } from 'src/app/redux/customCards/actions/customCards.actions';
+import { addCustomCard } from 'src/app/redux/actions/customCards.actions';
 import { CustomCardsControls } from 'src/app/shared/constants';
 import { CustomCard } from 'src/app/shared/models/custom-card.model';
 import { ERRORS_MESSAGES } from './error-messages';
