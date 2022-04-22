@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map, Observable, ReplaySubject, takeUntil } from 'rxjs';
+import { Observable, ReplaySubject, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { QUERY_KEY } from 'src/app/shared/constants';
 import { Store } from '@ngrx/store';
@@ -16,9 +16,7 @@ import { searchCards } from 'src/app/redux/actions/youTubeApi.actions';
 export class MainPageComponent implements OnInit, OnDestroy {
   private destroyed$ = new ReplaySubject<boolean>(1);
 
-  cards$: Observable<CardAbstract[]> = this.store
-    .select(selectAllCards)
-    .pipe(map((state) => [...state.customCards, ...state.videoCards]));
+  cards$: Observable<CardAbstract[]> = this.store.select(selectAllCards);
 
   constructor(private route: ActivatedRoute, private store: Store<StoreState>) {}
 

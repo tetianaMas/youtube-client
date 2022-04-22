@@ -1,3 +1,9 @@
+import { createSelector } from '@ngrx/store';
+import { CardAbstract } from 'src/app/shared/models/card-abstract';
 import { StoreState } from '../state.model';
 
-export const selectAllCards = (state: StoreState) => state;
+const stateSelector = (state: StoreState) => state;
+export const selectAllCards = createSelector(
+  stateSelector,
+  (st) => <CardAbstract[]>[...st.customCards, ...st.videoCards],
+);
