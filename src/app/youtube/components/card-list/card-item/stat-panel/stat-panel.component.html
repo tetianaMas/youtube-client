@@ -1,4 +1,4 @@
-<div class="stat-panel">
+<div class="stat-panel" *ngIf="statistics">
   <ytube-client-stat-panel-item [count]="statistics?.viewCount || ''" [iconName]="icons.viewsCount">
   </ytube-client-stat-panel-item>
   <ytube-client-stat-panel-item [count]="statistics?.likeCount || ''" [iconName]="icons.likesCount">

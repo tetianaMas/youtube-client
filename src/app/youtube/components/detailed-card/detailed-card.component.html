@@ -5,6 +5,7 @@
     </ytube-client-button>
   </div>
   <div class="card" *ngIf="card">
+    <ytube-client-card-badge [type]="card.cardType"></ytube-client-card-badge>
     <div class="card-img">
       <img class="img" [src]="card?.imgUrl" alt="Youtube video image.">
     </div>

@@ -1,4 +1,5 @@
 <mat-card class="card" [ytubeClientDateStatusColor]="card && card.publishedAt || ''">
+  <ytube-client-card-badge [type]="card?.cardType || null"></ytube-client-card-badge>
   <ytube-client-video-thumbnail [imgUrl]="card?.imgUrl || ''">
   </ytube-client-video-thumbnail>
   <ytube-client-stat-panel [statistics]="card?.statistics || null"></ytube-client-stat-panel>

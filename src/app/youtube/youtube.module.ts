@@ -27,6 +27,7 @@ import { DetailedCardComponent } from './components/detailed-card/detailed-card.
 import { SortFilterButtonComponent } from './components/filters/sort-filter/sort-filter-button/sort-filter-button.component';
 import { EffectsModule } from '@ngrx/effects';
 import { VideoCardsEffects } from '../redux/effects/videoCards.effects';
+import { CardBadgeComponent } from './components/card-badge/card-badge.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { VideoCardsEffects } from '../redux/effects/videoCards.effects';
     DetailedInfoComponent,
     DetailedCardComponent,
     SortFilterButtonComponent,
+    CardBadgeComponent,
   ],
   imports: [
     CommonModule,

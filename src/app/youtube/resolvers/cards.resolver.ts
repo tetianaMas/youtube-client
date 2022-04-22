@@ -10,14 +10,8 @@ export class CardsResolver implements Resolve<Observable<Observable<Card | void>
   constructor(private youtubeService: YoutubeService, private router: Router, private lsService: LocalstorageService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Observable<Card | void>> {
-    const id = route.paramMap.get('id');
-    let card = of((this.lsService.getItem<Card[]>('cards') || []).find((elem) => elem.id === id));
-
-    if (!card) {
-      card = this.youtubeService.searchCardById(route.paramMap.get('id') || '');
-    }
     return of(
-      card.pipe(
+      this.youtubeService.searchCardById(route.paramMap.get('id') || '').pipe(
         catchError(() => {
           this.router.navigateByUrl('404', { skipLocationChange: true });
           return EMPTY;
