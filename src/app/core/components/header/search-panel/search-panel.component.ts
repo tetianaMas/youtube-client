@@ -41,6 +41,5 @@ export class SearchPanelComponent {
   search(term: string) {
     const params = { queryParams: { [QUERY_KEY]: term } };
     this.router.navigate(['main'], params);
-    this.seachInput = '';
   }
 }
