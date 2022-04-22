@@ -1,5 +1,4 @@
 import { Action, ActionReducer, MetaReducer } from '@ngrx/store';
-import environment from 'src/environments/environment';
 import { CARDS_KEY } from '../../shared/constants';
 import { StoreState } from '../state.model';
 
@@ -17,4 +16,4 @@ export function lsStateReducer(reducer: ActionReducer<StoreState>): ActionReduce
   };
 }
 
-export const metaReducers: MetaReducer<StoreState>[] = environment.production ? [] : [lsStateReducer];
+export const metaReducers: MetaReducer<StoreState>[] = [lsStateReducer];
