@@ -51,7 +51,10 @@ export class AdminPageComponent {
       description: ['', [Validators.maxLength(MAX_DESC_LENGTH)]],
       img: ['', [Validators.required, this.validService.validateUrl()]],
       linkVideo: ['', [Validators.required, this.validService.validateUrl()]],
-      dateCreation: ['', [Validators.required, this.validService.validateDate()]],
+      dateCreation: [
+        new Date().toISOString().substring(0, 10),
+        [Validators.required, this.validService.validateDate()],
+      ],
     });
   }
 
