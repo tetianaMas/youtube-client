@@ -1,5 +1,6 @@
 import { CardAbstract } from './card-abstract';
-import { IStatistics } from './search-response.model';
+import { CardType } from './card-type.model';
+import { FormValueCustomCard } from './fromValue.model';
 
 export class CustomCard implements CardAbstract {
   title: string;
@@ -14,9 +15,9 @@ export class CustomCard implements CardAbstract {
 
   id: string;
 
-  statistics: IStatistics | null = null;
+  cardType = CardType.custom;
 
-  constructor(cardValue: any) {
+  constructor(cardValue: FormValueCustomCard) {
     this.title = cardValue.title || '';
     this.description = cardValue.description || '';
     this.imgUrl = cardValue.img || '';

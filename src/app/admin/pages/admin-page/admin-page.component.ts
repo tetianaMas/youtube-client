@@ -3,9 +3,9 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CustomValidationService } from 'src/app/auth/services/custom-validation.service';
-import { addCustomCard } from 'src/app/redux/actions/customCards.actions';
+import { createCustomCard } from 'src/app/redux/actions/customCards.actions';
 import { CustomCardsControls } from 'src/app/shared/constants';
-import { CustomCard } from 'src/app/shared/models/custom-card.model';
+import { FormValueCustomCard } from 'src/app/shared/models/fromValue.model';
 import { ERRORS_MESSAGES } from './error-messages';
 
 const FORM_TITLE = 'Create new card';
@@ -56,7 +56,8 @@ export class AdminPageComponent {
   }
 
   onSubmit(): void {
-    this.store.dispatch(addCustomCard({ card: new CustomCard(this.form.value) }));
+    this.store.dispatch(createCustomCard({ formValue: <FormValueCustomCard>this.form.value }));
+    console.log(<FormValueCustomCard>this.form.value);
     this.form.reset();
     this.router.navigate(['main']);
   }

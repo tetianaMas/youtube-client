@@ -4,7 +4,7 @@ import { CARDS_KEY } from '../../shared/constants';
 import { StoreState } from '../state.model';
 
 export function lsStateReducer(reducer: ActionReducer<StoreState>): ActionReducer<any, any> {
-  return function (state: StoreState | undefined, action: Action) {
+  return function (state: StoreState, action: Action) {
     const nextState = reducer(state, action);
 
     try {

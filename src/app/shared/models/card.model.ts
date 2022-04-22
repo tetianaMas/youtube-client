@@ -1,5 +1,6 @@
 import { CARD_DESC_SIZE, CARD_TITLE_SIZE } from '../constants';
 import { CardAbstract } from './card-abstract';
+import { CardType } from './card-type.model';
 import { IStatistics, IVideoResponseItem } from './search-response.model';
 
 export class Card implements CardAbstract {
@@ -11,11 +12,13 @@ export class Card implements CardAbstract {
 
   description: string;
 
-  statistics: IStatistics | null;
+  statistics: IStatistics;
 
   publishedAt: string;
 
   linkVideo: string = '';
+
+  cardType = CardType.default;
 
   constructor(responseItem: IVideoResponseItem) {
     this.id = responseItem.id;
