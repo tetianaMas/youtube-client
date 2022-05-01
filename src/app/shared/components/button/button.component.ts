@@ -10,4 +10,6 @@ export class ButtonComponent {
   @Input() text: string = '';
 
   @Input() radius: string = RADIUS;
+
+  @Input() disabled: boolean = false;
 }

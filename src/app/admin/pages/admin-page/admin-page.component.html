@@ -1,0 +1,28 @@
+<div class="container">
+  <ytube-client-custom-form [form]="form" [title]="formTitle" (submit)="onSubmit()">
+
+    <ytube-client-form-input-text [control]="title" [name]="controlNameTitle" [label]="'Title'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [control]="title" [errors]="errors[controlNameTitle]"></ytube-client-form-error>
+
+    <ytube-client-form-input-text [control]="description" [name]="controlNameDesc" [label]="'Description'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [control]="description" [errors]="errors[controlNameDesc]"></ytube-client-form-error>
+
+    <ytube-client-form-input-text [control]="img" [name]="controlNameImg" [label]="'Image link'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [control]="img" [errors]="errors[controlNameImg]"></ytube-client-form-error>
+
+    <ytube-client-form-input-text [control]="linkVideo" [name]="controlNameLinkVideo" [label]="'Video link'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [control]="linkVideo" [errors]="errors[controlNameLinkVideo]"></ytube-client-form-error>
+
+    <ytube-client-form-input-text [control]="dateCreation" [type]="'date'" [name]="controlNameDateCreation"
+      [label]="'Date creation'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [control]="dateCreation" [errors]="errors[controlNameDateCreation]">
+    </ytube-client-form-error>
+
+    <ytube-client-form-button [isBtnDisabled]="!form.valid" [btnText]="'Create new card'"></ytube-client-form-button>
+  </ytube-client-custom-form>
+</div>

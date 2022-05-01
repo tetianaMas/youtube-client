@@ -1,0 +1,11 @@
+@import "../../../../variables";
+
+.link {
+  margin-right: 20px;
+  color: $btn-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

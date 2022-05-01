@@ -23,5 +23,6 @@
 
   &:disabled {
     background-color: $btn-color-disabled;
+    filter: none;
   }
 }

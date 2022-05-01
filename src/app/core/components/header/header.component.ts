@@ -28,6 +28,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSrvice.logout();
   }
 
+  onProfileClick() {
+    this.router.navigate(['admin']);
+  }
+
   ngOnDestroy() {
     this.subs.unsubscribe();
   }

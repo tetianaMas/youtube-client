@@ -1,0 +1,5 @@
+<div class="form-field">
+  <label class="form-label" *ngIf="label" for="{{name}}-input">{{ label }}</label>
+  <input class="form-input" [name]="name" [formControl]="control" [type]="type"
+    [placeholder]="'Enter ' + (label || 'value')" id="{{name}}-input">
+</div>

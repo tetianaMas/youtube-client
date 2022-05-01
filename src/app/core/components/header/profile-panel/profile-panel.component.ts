@@ -19,11 +19,17 @@ export class ProfilePanelComponent {
 
   @Output() readonly logout = new EventEmitter<void>();
 
+  @Output() readonly profile = new EventEmitter<void>();
+
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('profile-btn', sanitizer.bypassSecurityTrustResourceUrl(ICON_PROFILE_PATH));
   }
 
   onLogoutClick() {
     this.logout.emit();
+  }
+
+  onUserProfile() {
+    this.profile.emit();
   }
 }

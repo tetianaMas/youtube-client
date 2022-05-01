@@ -1,0 +1,14 @@
+@import "../../../../variables";
+
+:host {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btn-wrapper {
+  width: 150px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
