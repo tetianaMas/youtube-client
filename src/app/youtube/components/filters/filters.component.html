@@ -1,0 +1,6 @@
+<div class="filters" [@filtersShowing]="isActive ? animationStateEnter : animationStateLeave" *ngIf="isActive">
+  <div class="container">
+    <ytube-client-sort-filter></ytube-client-sort-filter>
+    <ytube-client-search-filter></ytube-client-search-filter>
+  </div>
+</div>

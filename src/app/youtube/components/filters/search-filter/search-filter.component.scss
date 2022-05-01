@@ -1,0 +1,30 @@
+@import "../../../../../variables";
+@import "../../../../../mixins";
+
+.filters-search {
+  @include flex-sp-between;
+
+  max-width: 100%;
+}
+
+.filters-search-text {
+  @include font(400, 12px, 14px, $btn-color);
+
+  margin: 0;
+  margin-right: 10px;
+}
+
+.filters-search-input {
+  width: 149px;
+  height: 13px;
+  font-size: 12px;
+  border: none;
+
+  &:focus {
+    outline: $title-color;
+  }
+
+  @media screen and (max-width: $mobile) {
+    width: 36vw;
+  }
+}

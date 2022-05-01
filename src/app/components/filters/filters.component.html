@@ -1,6 +1,0 @@
-<div class="filters" [@filtersShowing]="isActive ? animationStateEnter : animationStateLeave" *ngIf="isActive">
-  <div class="container">
-    <ytube-client-sort-filter (sortBy)="onSort($event)"></ytube-client-sort-filter>
-    <ytube-client-search-filter (filterBy)="onFilter($event)" [inputValue]="filterPhrase"></ytube-client-search-filter>
-  </div>
-</div>

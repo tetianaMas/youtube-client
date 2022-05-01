@@ -1,0 +1,18 @@
+@import "../../../../../../../mixins";
+@import "../../../../../../../variables";
+
+.stat-panel-item {
+  @include flex-sp-between();
+
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.stat-panel-icon {
+  height: 13px;
+}
+
+.counter {
+  align-self: flex-end;
+  @include font(400, 10px, 10px, $statistic-font-color);
+}

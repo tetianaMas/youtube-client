@@ -10,6 +10,9 @@ $header-bg-color: #e5e5e5;
 $input-bg-color: #efefef;
 $input-text-color: #333;
 $input-text-color-placeholder: #929292;
+$login-form-bg-color: #f2f2f2;
+$login-form-label-font-color: #828282;
+$login-form-input-font-color: #e0e0e0;
 $border-red-color: #eb5757;
 $border-yellow-color: #f2c94c;
 $border-green-color: #27ae60;
@@ -20,6 +23,7 @@ $roboto-font: "Roboto", sans-serif;
 
 //shadows
 $card-shadow: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+$card-details-shadow: drop-shadow(5px 10px 10px rgba(47, 128, 237, 0.25));
 $button-shadow: drop-shadow(2px 0px 4px $btn-color);
 
 //breakpoints

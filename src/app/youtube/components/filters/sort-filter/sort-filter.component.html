@@ -1,0 +1,9 @@
+<div class="filters-sort">
+  <p class="filters-sort-text">Sorting by:</p>
+  <ytube-client-sort-filter-button [textBtn]="'date'" [currType]="sortTypeEnum.date" [sortType]="sortParams.type"
+    (sort)="onSort($event)">
+  </ytube-client-sort-filter-button>
+  <ytube-client-sort-filter-button [textBtn]="'count of views'" [currType]="sortTypeEnum.viewCount"
+    [sortType]="sortParams.type" (sort)="onSort($event)">
+  </ytube-client-sort-filter-button>
+</div>

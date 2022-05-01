@@ -1,6 +1,5 @@
-import { SortType, TSortType } from './models/sortType.model';
+export const QUERY_KEY = 'search';
 
-export const SORT_DATA_DEFAULT: TSortType = {
-  type: SortType.default,
-  isAscendingOrder: true,
-};
+export const CARD_DESC_SIZE = 200;
+
+export const CARD_TITLE_SIZE = 45;
