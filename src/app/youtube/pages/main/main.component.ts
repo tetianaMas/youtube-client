@@ -15,13 +15,15 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   cards: Card[] = [];
 
+  isDataLoading = false;
+
   constructor(private youtubeService: YoutubeService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.youtubeService.cards$.pipe(takeUntil(this.destroyed$)).subscribe((cards) => (this.cards = cards));
     this.route.queryParams
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(({ [QUERY_KEY]: search }) => this.youtubeService.searchCards(search));
+      .subscribe(({ [QUERY_KEY]: search }) => search && this.youtubeService.searchCards(search));
   }
 
   ngOnDestroy(): void {

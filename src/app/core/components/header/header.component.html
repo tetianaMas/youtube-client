@@ -5,8 +5,8 @@
       <ytube-client-search-panel [isUserLoggedIn]="isUserLoggedIn"></ytube-client-search-panel>
       <ytube-client-settings-button [isUserLoggedIn]="isUserLoggedIn"></ytube-client-settings-button>
     </div>
-    <ytube-client-profile-panel (logout)="onLogoutClick()" (profile)="onProfileClick()" [userName]="userName"
-      [isUserLoggedIn]="isUserLoggedIn">
+    <ytube-client-profile-panel (logout)="onLogoutClick()" (login)="onLoginClick()" (profile)="onProfileClick()"
+      [userName]="userName" [isUserLoggedIn]="isUserLoggedIn">
     </ytube-client-profile-panel>
   </div>
 </header>

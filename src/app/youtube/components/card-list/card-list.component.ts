@@ -40,6 +40,8 @@ export class CardListComponent implements OnInit, OnDestroy {
 
   filterPhrase: string = '';
 
+  @Input() isDataLoading: boolean = false;
+
   readonly animationState = AnimationState;
 
   constructor(private filtersService: FiltersService) {}

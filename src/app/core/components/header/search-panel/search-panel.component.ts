@@ -1,11 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { QUERY_KEY } from 'src/app/shared/constants';
-import { YoutubeService } from 'src/app/youtube/services/youtube.service';
 
 const BTN_TEXT: string = 'search';
 const INPUT_PLACEHOLDER_TEXT = 'What do you want to find?';
 const BTN_RADIUS: string = '0 4px 4px 0';
+const DEBOUNCE_TIME = 750;
+const MIN_SEARCH_LENGTH = 3;
 
 @Component({
   selector: 'ytube-client-search-panel',
@@ -23,16 +26,23 @@ export class SearchPanelComponent {
 
   seachInput: string = '';
 
-  constructor(private youtubeservice: YoutubeService, private router: Router) {}
+  seachValue$ = new Subject<string>();
+
+  constructor(private router: Router) {
+    this.seachValue$.pipe(debounceTime(DEBOUNCE_TIME), distinctUntilChanged()).subscribe((val) => this.search(val));
+  }
 
   onSearch(): void {
     const searchVal = this.seachInput.trim();
-    if (!searchVal) {
+    if (!searchVal || searchVal.length < MIN_SEARCH_LENGTH) {
       return;
     }
-    const params = { queryParams: { [QUERY_KEY]: searchVal } };
+    this.seachValue$.next(searchVal);
+  }
+
+  search(term: string) {
+    const params = { queryParams: { [QUERY_KEY]: term } };
     this.router.navigate(['main'], params);
-    this.youtubeservice.searchCards(searchVal);
     this.seachInput = '';
   }
 }

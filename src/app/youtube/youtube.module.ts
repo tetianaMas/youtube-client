@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { YoutubeRoutingModule } from './youtube-routing.module';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
+import { YoutubeService } from './services/youtube.service';
+import { CardsResolver } from './resolvers/cards.resolver';
+import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from '../interceptors';
 
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardItemComponent } from './components/card-list/card-item/card-item.component';
@@ -42,6 +45,7 @@ import { SortFilterButtonComponent } from './components/filters/sort-filter/sort
     DetailedCardComponent,
     SortFilterButtonComponent,
   ],
-  imports: [CommonModule, SharedModule, FormsModule, YoutubeRoutingModule, HttpClientModule, MaterialModule],
+  imports: [CommonModule, SharedModule, FormsModule, YoutubeRoutingModule, MaterialModule, HttpClientModule],
+  providers: [YoutubeService, CardsResolver, httpInterceptorProviders],
 })
 export class YoutubeModule {}

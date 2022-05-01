@@ -28,6 +28,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSrvice.logout();
   }
 
+  onLoginClick(): void {
+    this.router.navigate(['auth/login']);
+  }
+
   onProfileClick() {
     this.router.navigate(['admin']);
   }
