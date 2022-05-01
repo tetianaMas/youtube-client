@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Card } from 'src/app/shared/models/card.model';
+import { CardAbstract } from 'src/app/shared/models/card-abstract';
 
 @Pipe({
   name: 'filterBy',
 })
 export class FilterByPipe implements PipeTransform {
-  transform(cards: Card[], wordToFilter: string): Card[] {
+  transform(cards: CardAbstract[], wordToFilter: string): CardAbstract[] {
     return cards.length && wordToFilter
-      ? cards.filter((card: Card) => card.title.toLowerCase().includes(wordToFilter.toLowerCase()))
+      ? cards.filter((card: CardAbstract) => card.title.toLowerCase().includes(wordToFilter.toLowerCase()))
       : cards;
   }
 }

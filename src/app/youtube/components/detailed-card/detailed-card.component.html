@@ -5,19 +5,23 @@
     </ytube-client-button>
   </div>
   <div class="card" *ngIf="card">
+    <ytube-client-card-badge [type]="card?.cardType || null"></ytube-client-card-badge>
     <div class="card-img">
-      <img class="img" [src]="card?.imgUrl?.high?.url" alt="Youtube video image.">
+      <img class="img" [src]="card?.imgUrl || ''" alt="Youtube video image.">
     </div>
 
     <div class="card-info" [ytubeClientDateStatusColor]="card?.publishedAt || ''">
-      <h2 class="card-title">{{ card?.title }}</h2>
+      <h2 class="card-title">{{ card?.title || '' }}</h2>
       <span class="card-date">{{ card?.publishedAt | date: 'EEEE, MMMM d, y'}}</span>
-      <div class="card-descr">
+      <div class="card-descr" *ngIf="card?.description">
         <span class="descr-title">Description:</span>
-        <p class="descr-text">{{ card?.description }}</p>
+        <p class="descr-text">{{ card?.description || ''}}</p>
       </div>
       <div class="card-stat">
         <ytube-client-stat-panel [statistics]="card?.statistics || null"></ytube-client-stat-panel>
+      </div>
+      <div class="card-link" *ngIf="card?.linkVideo">
+        <a [href]="card?.linkVideo || ''" target="_blank">{{ linkText }}</a>
       </div>
     </div>
   </div>

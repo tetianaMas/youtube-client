@@ -27,17 +27,6 @@ export class CustomValidationService {
     };
   }
 
-  validateDate(): ValidatorFn {
-    return (control: AbstractControl) => {
-      if (!control.value) {
-        return null;
-      }
-      const now = new Date();
-      const userDate = new Date(control.value);
-      return userDate.getTime() - now.getTime() > 0 ? null : { invalidDate: true };
-    };
-  }
-
   confirmPassword(): ValidatorFn {
     return (control: AbstractControl) => {
       const passwordControl = control.get('password');

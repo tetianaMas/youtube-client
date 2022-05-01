@@ -2,9 +2,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { FiltersService } from 'src/app/youtube/services/filters.service';
-import { Card } from 'src/app/shared/models/card.model';
 import { TSortType } from '../../models/sortType.model';
 import { SORT_DATA_DEFAULT } from '../../shared/constants';
+import { CardAbstract } from 'src/app/shared/models/card-abstract';
 
 enum AnimationState {
   up = 'up',
@@ -30,7 +30,7 @@ enum AnimationStateStyle {
   ],
 })
 export class CardListComponent implements OnInit, OnDestroy {
-  @Input() cards: Card[] = [];
+  @Input() cards: CardAbstract[] | null = [];
 
   private destroyed$ = new ReplaySubject<boolean>(1);
 
@@ -39,8 +39,6 @@ export class CardListComponent implements OnInit, OnDestroy {
   isFilterActive: boolean = false;
 
   filterPhrase: string = '';
-
-  @Input() isDataLoading: boolean = false;
 
   readonly animationState = AnimationState;
 

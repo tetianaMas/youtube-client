@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Card } from 'src/app/shared/models/card.model';
-import { YoutubeService } from 'src/app/youtube/services/youtube.service';
-import { ReplaySubject, takeUntil } from 'rxjs';
+import { Observable, ReplaySubject, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { QUERY_KEY } from 'src/app/shared/constants';
+import { Store } from '@ngrx/store';
+import { StoreState } from 'src/app/redux/state.model';
+import { selectAllCards } from 'src/app/redux/selectors/app.selectors';
+import { CardAbstract } from 'src/app/shared/models/card-abstract';
+import { searchCards } from 'src/app/redux/actions/youTubeApi.actions';
 
 @Component({
   selector: 'ytube-client-main',
@@ -13,21 +16,17 @@ import { QUERY_KEY } from 'src/app/shared/constants';
 export class MainPageComponent implements OnInit, OnDestroy {
   private destroyed$ = new ReplaySubject<boolean>(1);
 
-  cards: Card[] = [];
+  cards$: Observable<CardAbstract[]> = this.store.select(selectAllCards);
 
-  isDataLoading = false;
-
-  constructor(private youtubeService: YoutubeService, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private store: Store<StoreState>) {}
 
   ngOnInit(): void {
-    this.youtubeService.cards$.pipe(takeUntil(this.destroyed$)).subscribe((cards) => (this.cards = cards));
     this.route.queryParams
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(({ [QUERY_KEY]: search }) => search && this.youtubeService.searchCards(search));
+      .subscribe(({ [QUERY_KEY]: search }) => search && this.store.dispatch(searchCards({ search })));
   }
 
   ngOnDestroy(): void {
-    this.cards = [];
     this.destroyed$.next(true);
     this.destroyed$.complete();
   }

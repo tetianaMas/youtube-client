@@ -1,0 +1,23 @@
+@import "../../../../variables";
+@import "../../../../mixins";
+
+:host {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card-badge {
+  background-color: $border-yellow-color;
+  min-width: 50px;
+  min-height: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  filter: $card-shadow;
+}
+
+.card-badge-text {
+  @include font(500, 14px, 16px, $input-text-color);
+
+  margin-bottom: 0;
+}
