@@ -35,8 +35,6 @@ export class AdminPageComponent {
 
   readonly controlNameLinkVideo = CustomCardsControls.linkVideo;
 
-  readonly controlNameDateCreation = CustomCardsControls.dateCreation;
-
   constructor(
     private validService: CustomValidationService,
     private fb: FormBuilder,
@@ -51,10 +49,6 @@ export class AdminPageComponent {
       description: ['', [Validators.maxLength(MAX_DESC_LENGTH)]],
       img: ['', [Validators.required, this.validService.validateUrl()]],
       linkVideo: ['', [Validators.required, this.validService.validateUrl()]],
-      dateCreation: [
-        new Date().toISOString().substring(0, 10),
-        [Validators.required, this.validService.validateDate()],
-      ],
     });
   }
 
@@ -78,9 +72,5 @@ export class AdminPageComponent {
 
   get linkVideo() {
     return <FormControl>this.form.get(this.controlNameLinkVideo);
-  }
-
-  get dateCreation() {
-    return <FormControl>this.form.get(this.controlNameDateCreation);
   }
 }

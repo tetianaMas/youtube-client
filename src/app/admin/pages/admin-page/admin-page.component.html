@@ -17,12 +17,6 @@
     </ytube-client-form-input-text>
     <ytube-client-form-error [control]="linkVideo" [errors]="errors[controlNameLinkVideo]"></ytube-client-form-error>
 
-    <ytube-client-form-input-text [control]="dateCreation" [type]="'date'" [name]="controlNameDateCreation"
-      [label]="'Date creation'">
-    </ytube-client-form-input-text>
-    <ytube-client-form-error [control]="dateCreation" [errors]="errors[controlNameDateCreation]">
-    </ytube-client-form-error>
-
     <ytube-client-form-button [isBtnDisabled]="!form.valid" [btnText]="'Create new card'"></ytube-client-form-button>
   </ytube-client-custom-form>
 </div>

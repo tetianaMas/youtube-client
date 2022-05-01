@@ -4,11 +4,11 @@ import { TypedAction } from '@ngrx/store/src/models';
 import { map } from 'rxjs/operators';
 import { CustomCard } from 'src/app/shared/models/custom-card.model';
 import { FormValueCustomCard } from 'src/app/shared/models/fromValue.model';
-import { ActionType } from '../actionTypes.model';
+import { CustomCardActionType } from '../actionTypes.model';
 
 type CreateCustomActionType = {
   formValue: FormValueCustomCard;
-} & TypedAction<ActionType.createCustomCard>;
+} & TypedAction<CustomCardActionType.createCard>;
 
 @Injectable()
 export class CustomCardsEffects {
@@ -16,8 +16,8 @@ export class CustomCardsEffects {
 
   searchCards$ = createEffect(() =>
     this.actions$.pipe(
-      ofType<CreateCustomActionType>(ActionType.createCustomCard),
-      map((action) => ({ type: ActionType.addCustomCard, card: new CustomCard(action.formValue) })),
+      ofType<CreateCustomActionType>(CustomCardActionType.createCard),
+      map((action) => ({ type: CustomCardActionType.addCard, card: new CustomCard(action.formValue) })),
     ),
   );
 }

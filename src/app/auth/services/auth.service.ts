@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { LocalstorageService } from 'src/app/core/services/localstorage.service';
-import { removeCards } from 'src/app/redux/actions/app.actions';
+import { removeCards } from 'src/app/redux/actions/youTubeApi.actions';
+import { removeCustomCards } from 'src/app/redux/actions/customCards.actions';
+
 import { StoreState } from 'src/app/redux/state.model';
 
 const USER_STATE_KEY = 'user-state';
@@ -38,6 +40,7 @@ export class AuthService {
   logout(): void {
     this.storage.clear();
     this.state$.next(this.state);
+    this.store.dispatch(removeCustomCards());
     this.store.dispatch(removeCards());
     this.router.navigate(['login']);
   }

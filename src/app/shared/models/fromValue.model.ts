@@ -3,5 +3,4 @@ export type FormValueCustomCard = {
   description: string;
   img: string;
   linkVideo: string;
-  dateCreation: string;
 };

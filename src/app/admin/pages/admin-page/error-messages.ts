@@ -35,11 +35,4 @@ export const ERRORS_MESSAGES: TValidationError = {
     },
     { type: 'invalidUrl', message: 'The video link is invalid.' },
   ],
-  dateCreation: [
-    { type: 'required', message: 'Please enter a creation date' },
-    {
-      type: 'invalidDate',
-      message: 'The date is invalid. The date cannot be in the past.',
-    },
-  ],
 };

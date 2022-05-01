@@ -1,3 +1,4 @@
+import { getCurrentDateFormatted } from '../utils';
 import { CardAbstract } from './card-abstract';
 import { CardType } from './card-type.model';
 import { FormValueCustomCard } from './fromValue.model';
@@ -22,7 +23,7 @@ export class CustomCard implements CardAbstract {
     this.description = cardValue.description || '';
     this.imgUrl = cardValue.img || '';
     this.linkVideo = cardValue.linkVideo || '';
-    this.publishedAt = cardValue.dateCreation || '';
+    this.publishedAt = getCurrentDateFormatted();
     this.id = (Math.random() * 10).toString(36).substring(2);
   }
 }

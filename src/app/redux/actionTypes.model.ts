@@ -1,7 +1,11 @@
-export enum ActionType {
-  addCustomCard = '[Admin Page] add card',
-  createCustomCard = '[Admin Page] create card',
-  addVideoCards = '[Youtube API] add cards',
-  searchVideoCards = '[Youtube API] search cards',
-  removeCards = '[Auth Page] remove cards',
+export enum CustomCardActionType {
+  addCard = '[Custom Card] add card',
+  createCard = '[Custom Card] create card',
+  removeCards = '[Custom Card] remove cards',
+}
+
+export enum YoutubeCardActionType {
+  addCards = '[Youtube API] add cards',
+  searchCards = '[Youtube API] search cards',
+  removeCards = '[Youtube API] remove cards',
 }

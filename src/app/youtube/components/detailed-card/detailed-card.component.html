@@ -13,7 +13,7 @@
     <div class="card-info" [ytubeClientDateStatusColor]="card?.publishedAt || ''">
       <h2 class="card-title">{{ card?.title || '' }}</h2>
       <span class="card-date">{{ card?.publishedAt | date: 'EEEE, MMMM d, y'}}</span>
-      <div class="card-descr">
+      <div class="card-descr" *ngIf="card?.description">
         <span class="descr-title">Description:</span>
         <p class="descr-text">{{ card?.description || ''}}</p>
       </div>

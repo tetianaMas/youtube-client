@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { CardAbstract } from 'src/app/shared/models/card-abstract';
 import { SortType, TSortType } from '../../models/sortType.model';
 
+const VIEW_COUNT_DEFAULT = 1;
 @Pipe({
   name: 'sortBy',
 })
@@ -25,8 +26,8 @@ export class SortByPipe implements PipeTransform {
 
   private sortByViewCount(cards: CardAbstract[], isAscendingOrder: boolean): CardAbstract[] {
     return cards.sort((first: CardAbstract, second: CardAbstract) => {
-      const count1 = Number(first.statistics?.viewCount || 1);
-      const count2 = Number(second.statistics?.viewCount || 1);
+      const count1 = Number(first.statistics?.viewCount || VIEW_COUNT_DEFAULT);
+      const count2 = Number(second.statistics?.viewCount || VIEW_COUNT_DEFAULT);
 
       return this.sortValues(count1, count2, isAscendingOrder);
     });
