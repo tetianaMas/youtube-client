@@ -1,0 +1,37 @@
+@import "../../../../variables";
+@import "../../../../mixins";
+
+.profile {
+  position: absolute;
+  top: 13px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: $laptop) {
+    top: 0;
+    right: 20px;
+  }
+
+  @media screen and (max-width: $mobile) {
+    right: 3.5vw;
+  }
+}
+
+.profile-name {
+  @include font();
+
+  margin: 0;
+  margin-right: 8px;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.profile-icon {
+  width: 19px;
+}
+
+.btn-wrapper {
+  width: 23px;
+  height: 24px;
+}

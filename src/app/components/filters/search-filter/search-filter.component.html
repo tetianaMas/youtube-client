@@ -1,1 +1,7 @@
-<p>search-filter works!</p>
+<div class="filters-search">
+  <form>
+    <label class="filters-search-text" for="search-input">by word or sentence</label>
+    <input matInput class="filters-search-input" name="filter-input" id="search-input" [(ngModel)]="inputValue"
+      (input)="onFilter()">
+  </form>
+</div>
