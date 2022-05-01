@@ -1,0 +1,7 @@
+<mat-error *ngIf="control?.invalid && (control?.dirty || control?.touched)">
+  <ng-container *ngFor="let error of errors">
+    <p *ngIf="control?.errors?.[error.type]">
+      {{error.message}}
+    </p>
+  </ng-container>
+</mat-error>

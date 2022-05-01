@@ -1,0 +1,6 @@
+<div class="error-wrapper" *ngIf="errorNotifierService.errorState$ | async">
+  <p class="error-text">{{message}}</p>
+  <button class="error-btn" (click)="hideError()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

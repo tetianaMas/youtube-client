@@ -1,0 +1,12 @@
+<header class="header">
+  <div class="container">
+    <div class="header-content-wrapper">
+      <ytube-client-logo></ytube-client-logo>
+      <ytube-client-search-panel [isUserLoggedIn]="isUserLoggedIn"></ytube-client-search-panel>
+      <ytube-client-settings-button [isUserLoggedIn]="isUserLoggedIn"></ytube-client-settings-button>
+    </div>
+    <ytube-client-profile-panel (logout)="onLogoutClick()" (login)="onLoginClick()" (profile)="onProfileClick()"
+      [userName]="userName" [isUserLoggedIn]="isUserLoggedIn">
+    </ytube-client-profile-panel>
+  </div>
+</header>

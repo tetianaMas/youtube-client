@@ -1,0 +1,29 @@
+@import "./variables";
+
+@mixin flex-sp-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin font($weight: 400, $size: 12px, $line-height: 14px, $color: $title-color) {
+  font-family: $roboto-font;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  color: $color;
+}
+
+@mixin card-borders() {
+  .red-border {
+    border-color: $border-red-color;
+  }
+
+  .green-border {
+    border-color: $border-green-color;
+  }
+
+  .blue-border {
+    border-color: $border-blue-color;
+  }
+}

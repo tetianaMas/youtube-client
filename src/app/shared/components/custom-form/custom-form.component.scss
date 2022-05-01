@@ -1,0 +1,17 @@
+@import "../../../../variables";
+@import "../../../../mixins";
+
+.form {
+  max-width: 100%;
+  width: 345px;
+  margin: 0 auto;
+  padding: 28px 20px;
+  background-color: $login-form-bg-color;
+  border-radius: 5px;
+}
+
+.form-title {
+  @include font(700, 18px, 21px, $statistic-font-color);
+
+  margin-bottom: 10px;
+}

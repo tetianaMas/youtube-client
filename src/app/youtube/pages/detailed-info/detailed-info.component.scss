@@ -1,0 +1,10 @@
+@import "../../../../variables";
+@import "../../../../mixins";
+
+.container {
+  padding: 40px 0;
+
+  @media screen and (max-width: $tablet) {
+    padding: 40px 20px;
+  }
+}

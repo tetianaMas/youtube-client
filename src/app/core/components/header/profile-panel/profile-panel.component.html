@@ -1,0 +1,15 @@
+<div class="profile">
+  <p class="profile-name" [textContent]="isUserLoggedIn ? userName:''"></p>
+  <div class="btn-wrapper" *ngIf="isUserLoggedIn">
+    <ytube-client-button (click)="onUserProfile()">
+      <mat-icon class="profile-icon" svgIcon="profile-btn" aria-hidden="false" aria-label="Go to my profile button">
+      </mat-icon>
+    </ytube-client-button>
+  </div>
+  <div class="btn-logout-wrapper" *ngIf="!isUserLoggedIn">
+    <ytube-client-button [text]="loginBtnText" (click)="onLoginClick()"></ytube-client-button>
+  </div>
+  <div class="btn-logout-wrapper" *ngIf="isUserLoggedIn">
+    <ytube-client-button [text]="logoutBtnText" (click)="onLogoutClick()"></ytube-client-button>
+  </div>
+</div>

@@ -31,6 +31,7 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
                             "src/styles.scss"
                         ],
                         "scripts": []
@@ -51,6 +52,9 @@
                             "fileReplacements": [{
                                 "replace": "src/environments/environment.ts",
                                 "with": "src/environments/environment.prod.ts"
+                            }, {
+                                "replace": "src/app/build-specifics/index.ts",
+                                "with": "src/app/build-specifics/index.prod.ts"
                             }],
                             "outputHashing": "all"
                         },
@@ -96,6 +100,7 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
                             "src/styles.scss"
                         ],
                         "scripts": []

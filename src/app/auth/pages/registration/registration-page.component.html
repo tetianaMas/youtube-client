@@ -1,0 +1,31 @@
+<div class="container">
+  <ytube-client-custom-form [form]="form" [title]="formTitle" (submit)="onSubmit()">
+
+    <ytube-client-form-input-text [control]="firstName" [name]="controlNameFirstName" [label]="'First Name'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [control]="firstName" [errors]="errors[controlNameFirstName]"></ytube-client-form-error>
+
+    <ytube-client-form-input-text [control]="lastName" [name]="controlNameLastName" [label]="'Last Name'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [control]="lastName" [errors]="errors[controlNameLastName]"></ytube-client-form-error>
+
+    <ytube-client-form-input-text [control]="email" [type]="'email'" [name]="controlNameEmail" [label]="'Email'">
+    </ytube-client-form-input-text>
+    <ytube-client-form-error [control]="email" [errors]="errors[controlNameEmail]"></ytube-client-form-error>
+
+    <ytube-client-form-input-password [control]="password" [name]="controlNamePassword" [label]="'Password'">
+    </ytube-client-form-input-password>
+    <ytube-client-form-error [control]="password" [errors]="errors[controlNamePassword]"></ytube-client-form-error>
+
+    <ytube-client-form-input-password [control]="confirmPassword" [name]="controlNamePasswordConfirm"
+      [label]="'Confirm Password'">
+    </ytube-client-form-input-password>
+    <ytube-client-form-error [control]="confirmPassword" [errors]="errors[controlNamePasswordConfirm]">
+    </ytube-client-form-error>
+
+    <ytube-client-form-submit-block>
+      <ytube-client-link [linkUrl]="'../login'" [linkText]="'Login'"></ytube-client-link>
+      <ytube-client-form-button [isBtnDisabled]="!form.valid" [btnText]="'Register'"></ytube-client-form-button>
+    </ytube-client-form-submit-block>
+  </ytube-client-custom-form>
+</div>
